@@ -1,0 +1,1544 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../interesting-addendum/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>环境配置指南 - 2026 年 Python 秋冬学习资料</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="2026 年 Python 秋冬学习资料" class="md-header__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2026 年 Python 秋冬学习资料
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              环境配置指南
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../faq/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  常见问题
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  实验文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../interesting-addendum/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  一些有意思的补充资料
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="2026 年 Python 秋冬学习资料" class="md-nav__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    2026 年 Python 秋冬学习资料
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../faq/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    常见问题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/basic_io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/typing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    类型与值
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/control_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    程序的控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/complex_types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    复合类型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    map 函数与列表推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/stdlib/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    标准库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/exam_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于实验考试的提示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    理论考前常见问题总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验文档
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境配置指南
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境配置指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#thonny" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thonny 的安装和使用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thonny 的安装和使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thonny_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下载并安装 Thonny
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thonny_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thonny 界面介绍和使用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thonny_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 Thonny 进行包管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-studio-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visual Studio Code 的安装和使用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visual Studio Code 的安装和使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 的安装和命令行使用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Python 的安装和命令行使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 的下载和安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        命令行的使用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 pip 进行包管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        环境变量相关事宜
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一些建议安装的插件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        补充设置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一些基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验提交要求
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../interesting-addendum/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一些有意思的补充资料
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    一些有意思的补充资料
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#thonny" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thonny 的安装和使用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thonny 的安装和使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thonny_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下载并安装 Thonny
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thonny_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thonny 界面介绍和使用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thonny_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 Thonny 进行包管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-studio-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visual Studio Code 的安装和使用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visual Studio Code 的安装和使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 的安装和命令行使用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Python 的安装和命令行使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 的下载和安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        命令行的使用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 pip 进行包管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        环境变量相关事宜
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一些建议安装的插件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        补充设置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一些基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验提交要求
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">环境配置指南</h1>
+<!-- 如序言所述，我们建议读者使用 Visual Studio Code 完成实验，因此其使用方式会放在最开始进行介绍. 与之对应的，我们也准备了命令行的使用方法的介绍. 我们也保留了关于 Thonny 的介绍，这是历来学生较为喜欢的方式，也最为简单. -->
+
+<p>在本指南中，我们介绍两种 Python 环境配置的方法. 一种是 Thonny 的安装与使用，另一种是 Visual Studio Code 的安装与使用以及在 VSCode 中运行 Python 需要的环境配置.</p>
+<div class="admonition note">
+<p class="admonition-title">重点提示</p>
+<p>Thonny 和 VSCode + Python 安装的方式二选一即可，都可以完成本实验。</p>
+</div>
+<h2 id="thonny">Thonny 的安装和使用</h2>
+<p>Thonny 是一个用于学习和教学编程的 Python 集成开发环境（IDE），它可以让程序可视化成为初学者工作流程的天然一部分.它的突出特点包括多种代码单步执行方式、逐步表达式求值、调用栈的直观可视化以及用于解释引用和堆概念的模式.它免费使用且支持扩展.</p>
+<h3 id="thonny_1">下载并安装 Thonny</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows</label><label for="__tabbed_1_2">macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>打开 <a href="https://thonny.org">Thonny 官网</a>，将鼠标移动到下图右上角的 "Windows" 上，选择第一个链接进行下载. 不建议使用 Python 3.8 的版本，事实上 Python 3.10 也并非最新，但对于本课程来说已经足够使用了.</p>
+<p><img alt="thonny-install" src="../../assets/lab0/thonny-install-windows.png" /></p>
+<p>然后运行安装程序，按照指引完成安装. 等到出现如下界面，就表明安装已经完成：</p>
+<p><img alt="thonny-install-success" src="../../assets/lab0/thonny-install-windows-success.png" /></p>
+</div>
+<div class="tabbed-block">
+<p>打开 <a href="https://thonny.org">Thonny 官网</a>，将鼠标移动到下图右上角的 "Mac" 上，点击链接下载.</p>
+<p><img alt="" src="../../assets/lab0/thonny-install-macos.png" /></p>
+<p>打开下载的 <code>pkg</code> 文件，按照指引完成安装.</p>
+<p><img alt="" src="../../assets/lab0/thonny-install-macos-pkg.png" /></p>
+<p>安装完成后，你可以在启动台中找到 Thonny 的图标.</p>
+</div>
+</div>
+</div>
+<h3 id="thonny_2">Thonny 界面介绍和使用</h3>
+<p>点击 Thonny，选择简体中文，打开后其界面应当如下图所示：</p>
+<p><img alt="thonny-interface" src="../../assets/lab0/thonny-interface.png" /></p>
+<p>可以看见，其界面的编辑区域分上下两块，其中上面是正常的编辑器，下面是交互式终端. 首先，可以在交互式终端输入命令进行测试：</p>
+<p><img alt="thonny-interactive" src="../../assets/lab0/thonny-interactive.png" /></p>
+<p>可以看见，输出的两个 3 是有所不同的，这是因为 <code>print</code> 函数是正常的输出函数，而直接输入 <code>a</code> 输出 3 是在交互式终端中的特别结果. 应当注意，在正常的程序编写当中，只有 <code>print</code> 这样的函数会真正产生输出. 接下来在编辑器中尝试输入以下代码：</p>
+<p><img alt="thonny-editor" src="../../assets/lab0/thonny-editor.png" /></p>
+<p>在菜单栏的运行菜单中选择“运行”，如下图所示：</p>
+<p><img alt="thonny-run" src="../../assets/lab0/thonny-run.png" /></p>
+<p>或者你也可以直接点击 F5 进行运行. 注意到，在上图高亮的行末有一个 F5，这是 Thonny 中对快捷键的提示. 你会发现，在交互式终端的窗口中，出现了下面的输出：</p>
+<p><img alt="thonny-output" src="../../assets/lab0/thonny-output.png" /></p>
+<p>这就表明程序正常运行并输出了结果.</p>
+<h3 id="thonny_3">使用 Thonny 进行包管理</h3>
+<p>点击菜单栏中的工具并选择“管理包…”，如下图：</p>
+<p><img alt="thonny-manage-package" src="../../assets/lab0/thonny-manage-package.png" /></p>
+<p>这将打开下图的窗口：</p>
+<p><img alt="thonny-manager" src="../../assets/lab0/thonny-manager.png" /></p>
+<p>在上面的搜索栏中输入包名，并且点击搜索，打开对应的蓝色链接，这里以 NumPy 为例，你将看到下面的界面：</p>
+<p><img alt="thonny-install-numpy" src="../../assets/lab0/thonny-install-numpy.png" /></p>
+<p>点击安装并等待安装完成. 安装完成后，安装按钮会变成“升级”和“卸载”，关闭窗口. 可以在交互式终端中使用 <code>import</code> 命令导入包以测试其安装是否完成：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
+</code></pre></div>
+<p>如果没有红色报错信息，则说明安装正常.</p>
+<h2 id="visual-studio-code">Visual Studio Code 的安装和使用</h2>
+<p>进入<a href="https://code.visualstudio.com/">官方网页</a>下载并安装. 注意，Visual Studio Code（下简称 VSCode）是一个<strong>编辑器</strong>而非集成开发环境，因此想要在 VSCode 中运行 Python，读者需要先进行 Python 的安装，同时为了更好的使用，我们给出了一些常用的插件.</p>
+<h3 id="python">Python 的安装和命令行使用</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>这里的许多配置都并非最佳选项. 在本机上直接安装 Python 及其软件包更为推荐的一种方式是建立虚拟环境，使用例如 conda 之类的工具进行管理，否则可能会出现尾大不掉、甚至版本冲突的问题. 但是在此为了简单起见，我们直接使用本机的基础环境建立 Python 安装，这对于我们的这些实验本身来说足够了. 有兴趣的同学自可查找关于 conda 的相关信息，我们以后也可能会在补充文档中进行介绍.</p>
+<p>这里我们仅对 Windows 系统用户进行介绍. 如果使用 macOS，请读者跳到<a href="#_3">命令行的使用部分</a>，用终端执行对应的指令完成操作. 至于 Linux 系统用户，你都用 Linux 了还需要文档吗？</p>
+</div>
+<h4 id="python_1">Python 的下载和安装</h4>
+<p>打开 <a href="https://www.python.org/">Python 官网</a>，点击图示按钮下载 Python 的安装包：</p>
+<p><img alt="python-download" src="../../assets/lab0/python-download.png" /></p>
+<p>运行安装包进行安装. 在安装过程中，勾选选项 "add to environment variable". 如果没有勾选，会出现在 Powershell 中无法识别指令的问题，请参见“环境变量相关事宜”一节进行解决.</p>
+<h4 id="_2">命令行的使用</h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Windows</label><label for="__tabbed_2_2">macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>按 <span class="keys"><kbd class="key-windows">Win</kbd><span>+</span><kbd class="key-r">R</kbd></span> 打开运行界面，输入 powershell 并回车. 你应当会看到一片蓝色的界面：</p>
+<p><img alt="powershell-line" src="../../assets/lab0/powershell-line.png" /></p>
+<p>其中 <code>Frigh</code> 应该是你的用户名. 在其中输入 <code>python</code>，并回车. 为美观起见，下面笔者的界面都是安装了 Windows Terminal 之后的执行结果，默认终端输入输出无殊.</p>
+<p><img alt="powershell-interactive-python" src="../../assets/lab0/powershell-interactive-python.png" /></p>
+<p>你会发现我们同样进入了交互式终端的界面. 在其中你同样可以进行交互式终端的操作. 输入 <code>exit()</code> 或者 <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-z">Z</kbd></span> 以退出.</p>
+</div>
+<div class="tabbed-block">
+<p>在启动台中搜索“终端”，打开终端. 也可以使用快捷键 <span class="keys"><kbd class="key-command">Cmd</kbd><span>+</span><kbd class="key-space">Space</kbd></span>，然后输入“终端”进行搜索.</p>
+<p><img alt="launchpad" src="../../assets/lab0/launchpad.png" /></p>
+<p>在终端中输入 <code>python3</code> 并回车. 若之前没有使用过命令行工具，会提示安装 Xcode Command Line Tools，按照提示进行安装即可.</p>
+<p><img alt="xcode-select" src="../../assets/lab0/xcode-select.png" /></p>
+<p>安装完成后，即可通过在终端中输入 <code>python3</code> 并回车进入 Python 交互式终端. 输入 <code>exit()</code> 或者 <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span> 以退出. <strong>在后文中提到在命令行中输入 <code>python</code> 时，macOS 用户应当使用 <code>python3</code> 代替.</strong></p>
+<p><img alt="macos-terminal" src="../../assets/lab0/macos-terminal.png" /></p>
+</div>
+</div>
+</div>
+<h4 id="pip">使用 pip 进行包管理</h4>
+<p>在终端中输入下面的指令并按下回车：</p>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">install</span> <span class="p">&lt;</span><span class="n">包名</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>其中 <code>&lt;包名&gt;</code> 需要替换成你需要安装的包. 我们以 NumPy 为例：</p>
+<p><img alt="pip-install-numpy" src="../../assets/lab0/pip-install-numpy.png" /></p>
+<p>于是 NumPy 就已经安装成功. 同样可以打开交互式终端以验证其安装.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里我们使用的是</p>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">install</span> <span class="p">&lt;</span><span class="n">包名</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>而不是一般的教程使用的更精简的</p>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="p">&lt;</span><span class="n">包名</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>这是因为直接使用 <code>pip</code> 指令进行安装的方式在较新的版本中将被弃置.</p>
+<p>此外，如果 <code>python</code> 指令不起作用，可以尝试直接使用 <code>py</code> 或者 <code>python3</code>，如果依旧不行，请参阅环境变量相关事宜一节.</p>
+</div>
+<h4 id="_3">环境变量相关事宜</h4>
+<div class="admonition note">
+<p class="admonition-title">提示</p>
+<p>本节仅供 Windows 用户参考.</p>
+</div>
+<p>通俗地讲，环境变量（environment variable / PATH）就是系统在收到一个指令之后应该到哪里去寻找这个指令. 打开 Python 的安装目录，我们会看到一堆 exe 类型的文件：</p>
+<p><img alt="python-install-dir" src="../../assets/lab0/python-install-dir.png" /></p>
+<p>复制这个路径以备使用. 在设置中搜索“环境变量”，打开“修改本账户的环境变量”，你会看到以下窗口：</p>
+<p><img alt="edit-path" src="../../assets/lab0/edit-path.png" /></p>
+<p>然后选择 Path 变量，点击编辑，将这个目录和 <code>Scripts</code> 目录都加在最前面. 因为笔者使用的安装目录为 <code>D:\Python3.12.5</code>，修改完的 Path 就如上图所示. 修改完后，重启电脑，重新进行操作，你应当能够正常在命令行中执行 <code>python</code> 指令.</p>
+<h3 id="_4">一些建议安装的插件</h3>
+<p>VSCode 一大核心功能就是插件（extensions）. 安装之后打开，会在左侧看到一个图标，如下图所示（图片来自正在写文档的助教工作区）：</p>
+<p><img alt="" src="../../assets/lab0/vscode-extension.png" /></p>
+<p>点开，在 Search Extension 当中搜索插件名字，如下图：</p>
+<p><img alt="" src="../../assets/lab0/vscode-search-ext.png" /></p>
+<p>点击 Install 即可安装. 右上角标出的就是下载量，我们推荐的插件下载量都较大，且均由 Microsoft 官方提供，请大家注意辨别. 下面是建议安装的插件配置：</p>
+<ul>
+<li>Chinese (Simplified) (简体中文) Language Pack for Visual Studio Code</li>
+<li>Python</li>
+<li>Pylance</li>
+</ul>
+<h3 id="_5">补充设置</h3>
+<p>按 <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-comma">,</kbd></span> 可以打开首选项界面，我们建议打开下面的选项：</p>
+<p><img alt="" src="../../assets/lab0/vscode-ambiguous.png" /></p>
+<p>它将高亮代码文件中易混淆的字符，例如中英文括号、逗号、冒号等等. 这些是初学者经常出现的错误. 当然，我们还是建议读者养成良好的输入习惯，防止出现问题.</p>
+<h3 id="_6">一些基本概念</h3>
+<p>在 VSCode 中，代码是以文件夹的形式进行管理的. 点击文件菜单，打开文件夹（或者使用快捷键 <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-k">K</kbd></span> <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-o">O</kbd></span>，意思是依次按下这两个组合）. 可以新建一个空文件夹以开始. 不建议将文件夹放在系统目录（例如桌面）以及使用路径中带有中文的文件夹.</p>
+<p>打开文件夹之后，在左侧边栏的第一个按钮点开可以看到一个空页面，可以在此对文件夹中的文件进行管理. 在页面下面有一个终端（如果没有可以用快捷键 <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-grave">`</kbd></span> 呼出），其中会有以当前工作目录开头的一个提示. 下面称“使用终端执行”时，也都可以使用这个终端来完成. 需要注意，在修改环境变量（包括安装 Python）之后，需要重启 VSCode 以使更改生效.</p>
+<p>使用 VSCode 执行 Python 代码的方式非常简单，在安装推荐插件并按照推荐配置安装 Python 后只要点击右上角即可. </p>
+<!-- ## 使用 Ollama 在本地使用 Deepseek-R1（选做）
+
+作为一个补充练习，以熟练文档阅读和命令行的使用，请阅读 [Ollama 官网上的文档](https://github.com/ollama/ollama/blob/main/README.md#quickstart)并且使用其运行 deepseek-r1:1.5b 或 deepseek-r1（后者需要至少 5GB 磁盘空间，前者只需要约 1.5GB）.
+
+## 提交内容
+
+提交一个 txt 文档，其中包含自己的系统信息、硬件配置以及所使用的 Python 版本信息，这个信息将在后续实验中用来安排实验任务，尽可能保证能在最糟糕的系统状态下执行. 可以选择提交一个 pdf 文档，其中包含自己的实验过程、心得以及与 AI 的互动等等信息以及选做内容.
+
+### 对抗人工智能（选做）
+
+下面的实验是一个人类和人工智能对抗的尝试. 请通过各种你能想到的可逆加密方式加密你提交的 txt 文档，保证：
+
+1. deepseek-r1:1.5b 不能从密文恢复出明文；
+2. 通过一定的步骤（在 pdf 中给出）人类能够恢复出明文；
+3. 不涉及自定义密码本等额外信息（例如新华字典的页数-第几个字这样的信息就是不被允许的，因为它对人工智能来说是未知的）.
+
+我们将会根据加密方式的简洁性和创造性给予一定的加分支持. -->
+
+<h2 id="_7">实验提交要求</h2>
+<p>实验报告要求上传 pdf 文件，其中需要包含以下内容：</p>
+<ol>
+<li>成功输出 <code>Hello, Python2025</code> 的结果截图，</li>
+<li>自己的系统信息、硬件配置以及所使用的 Python 版本信息.</li>
+</ol>
+<p>请在 Sept. 30 23:59 之前提交到学在浙大.</p>
+<h2 id="_8">参考资料</h2>
+<ul>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code 官网</a></li>
+<li><a href="https://thonny.org">Thonny 官网</a></li>
+<li><a href="https://www.python.org">Python 官网</a></li>
+<li><a href="https://pip.pypa.io/en/stable/user_guide/">pip 官方文档</a></li>
+<li><a href="https://ollama.com/download">Ollama 官网</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js"
+        data-repo="FrightenedFoxCN/python2024aw"
+        data-repo-id="R_kgDOMv5ryg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMv5rys4CiXhG"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+var giscus = document.querySelector("script[src*=giscus]")
+
+// Set palette on initial load
+var palette = __md_get("__palette")
+if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate"
+    ? "transparent_dark"
+    : "light"
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme) 
+}
+
+// Register event handlers after documented loaded
+document.addEventListener("DOMContentLoaded", function() {
+    var ref = document.querySelector("[data-md-component=palette]")
+    ref.addEventListener("change", function() {
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame")
+        frame.contentWindow.postMessage(
+        { giscus: { setConfig: { theme } } },
+        "https://giscus.app"
+        )
+    }
+    })
+})
+</script>
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

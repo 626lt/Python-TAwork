@@ -1,0 +1,1178 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../map/">
+      
+      
+        <link rel="next" href="../exam_tips/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>标准库 - 2026 年 Python 秋冬学习资料</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="2026 年 Python 秋冬学习资料" class="md-header__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2026 年 Python 秋冬学习资料
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              标准库
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  常见问题
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  实验文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../interesting-addendum/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  一些有意思的补充资料
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="2026 年 Python 秋冬学习资料" class="md-nav__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    2026 年 Python 秋冬学习资料
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    常见问题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    类型与值
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    程序的控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../complex_types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    复合类型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    map 函数与列表推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    标准库
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    标准库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        标准库的阅读方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#random" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        random 库和随机数生成
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exam_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于实验考试的提示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    理论考前常见问题总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../labs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验文档
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/00env/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境配置指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../interesting-addendum/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一些有意思的补充资料
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    一些有意思的补充资料
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        标准库的阅读方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#random" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        random 库和随机数生成
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">标准库</h1>
+<div class="admonition note">
+<p class="admonition-title">关于标准库</p>
+<p><a href="https://docs.python.org/zh-cn/3/library/index.html">标准库</a>指的是 Python 自带的一些可用的函数库. 读者可以自行阅读文档中关于它的叙述. 在这里，我们会首先介绍文档书写和阅读的规范，然后再介绍一些重要的模块. 在计算机相关的学习中，文档阅读能力往往是相当重要的，标准库文档也是大量可用的 Python 库文档的参照，对其进行阅读，并了解其中使用的术语和惯例将会有助于读者更进一步的学习. 另外，鉴于其它的文档可能没有中译，在分析过程中，我们将会引用英文的文档，再进行解释，读者也可自行打开中文文档对照阅读.</p>
+<p>一般地，在标准库文档中的术语的定义如未说明，都会出现在<a href="https://docs.python.org/zh-cn/3/reference/index.html">语言参考手册</a>中，但是这种文档的叙述往往会更加技术性，也会有更多（或者说，过多）掉书袋式的专业内容. 我们将会在<a href="../../interesting-addendum/lang_ref/">补充材料</a>中讨论它的解读方式，供有兴趣的读者参考.</p>
+</div>
+<h2 id="_2">标准库的阅读方式</h2>
+<p>让我们以 <a href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str"><code class="highlight"><span class="nb">str</span></code> 类型的文档</a>为例. 我们已经在<a href="../complex_types/">之前的学习</a>中了解了它的基本概念，接下来，我们将会一起阅读理解标准库中对其的一些叙述，借此来理解标准库文档中的术语和书写惯例.</p>
+<p>在标准库的介绍当中，标题之下首先出现了一些引言：</p>
+<details class="info">
+<summary>引言与概述性信息 - 点击展开</summary>
+<p>Textual data in Python is handled with <a href="https://docs.python.org/3/library/stdtypes.html#str"><code class="highlight"><span class="nb">str</span></code></a> objects, or <em>strings</em>. Strings are immutable <a href="https://docs.python.org/3/library/stdtypes.html#typesseq">sequences</a> of Unicode code points. String literals are written in a variety of ways:</p>
+<ul>
+<li>Single quotes: <code class="highlight"><span class="s1">'allows embedded "double" quotes'</span></code></li>
+<li>Double quotes: <code class="highlight"><span class="s2">"allows embedded 'single' quotes"</span></code></li>
+<li>Triple quoted: <code class="highlight"><span class="sd">'''Three single quotes'''</span><span class="p">,</span> <span class="s2">"""Three double quotes"""</span></code></li>
+</ul>
+<p>Triple quoted strings may span multiple lines - all associated whitespace will be included in the string literal.</p>
+<p>String literals that are part of a single expression and have only whitespace between them will be implicitly converted to a single string literal. That is, <code class="highlight"><span class="p">(</span><span class="s2">"spam "</span> <span class="s2">"eggs"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"spam eggs"</span></code>.</p>
+<p>See <a href="https://docs.python.org/3/reference/lexical_analysis.html#strings">String and Bytes literals</a> for more about the various forms of string literal, including supported escape sequences, and the <code>r</code> (“raw”) prefix that disables most escape sequence processing.</p>
+<p>Strings may also be created from other objects using the <a href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a> constructor.</p>
+<p>Since there is no separate “character” type, indexing a string produces strings of length 1. That is, for a non-empty string <em>s</em>, <code class="highlight"><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span></code>.</p>
+<p>There is also no mutable string type, but <a href="https://docs.python.org/3/library/stdtypes.html#str.join"><code>str.join()</code></a> or <a href="https://docs.python.org/3/library/io.html#io.StringIO"><code>io.StringIO</code></a> can be used to efficiently construct strings from multiple fragments.</p>
+<blockquote>
+<p><em>Changed in version 3.3</em>: For backwards compatibility with the Python 2 series, the <code>u</code> prefix is once again permitted on string literals. It has no effect on the meaning of string literals and cannot be combined with the <code>r</code> prefix.</p>
+</blockquote>
+</details>
+<p>在阅读这些内容之前，需要补充一些背景知识. 首先，在书写标准库文档时，作者通常字斟句酌. 也就是说，每一句叙述或者是功能性的描述，或者是设计者设计时思路的体现. 对于一些不太细致的文档而言，这一点不一定成立，但是 Python 标准库文档并非如此. 其次，标准库文档的目标是让编程人员快速入门这种类型/模块的使用方式，所以对于熟练的编程人员（希望读者现在已经配得上这个称呼），在阅读标准库的时候，应当配合编程实践完成——你可以不断地去尝试其中描述的内容，来对这些内容获得更具体的理解.</p>
+<p>接下来，让我们回到文档. 前面一部分开门见山，介绍了字符串类型的语法（syntax，即它“长什么样”）和语义（semantics，即它“表达什么含义”）. 第一句话就告诉你，字符串表示的是文本型数据（textual data），即它存储的是文本；第二句话告诉你，字符串是<strong>不可变的</strong>（immutable）的 Unicode 码点（code point）组成的序列（sequence）；第三句话及后续的列表、以及紧接着的一段告诉你字符串的语法长什么样，以及它的各种写法有什么作用.</p>
+<div class="admonition note">
+<p class="admonition-title">Unicode 编码和码点</p>
+<p>Unicode 编码是一个非常复杂的编码模式. 关于它的最详尽的描述可见于其<a href="https://www.unicode.org/versions/Unicode16.0.0/UnicodeStandard-16.0.pdf">标准</a>的叙述. 同样，这也相当复杂，关于码点的省流介绍如下（引自 2.4 节开头的位置）：</p>
+<blockquote>
+<p>On a computer, abstract characters are encoded internally as numbers. To create a complete character encoding, it is necessary to define the list of all characters to be encoded and to establish systematic rules for how the numbers represent the characters.</p>
+<p>The range of integers used to code the abstract characters is called the codespace. A particular integer in this set is called a code point. When an abstract character is mapped or assigned to a particular code point in the codespace, it is then referred to as an encoded character.</p>
+</blockquote>
+<p>简而言之，码点指的是用来编码字符的一个整数. 在通常的用法中，我们会称其为一个“字符”，但这样的叙述是不精确的，因此标准库的作者使用了 Unicode 标准的术语，将其称作码点.</p>
+</div>
+<p>在这一小段话中，包含了非常大的信息量. 首先，第一句话实际上是对 <em>string</em> 这个术语的定义. 注意文档中的斜体标识，往往这意味着强调或者术语，也用于单独出现的变量名. 这里说 <code class="highlight"><span class="nb">str</span></code> objects or strings 的意思就是我们用字符串 strings 来称呼一个 <code class="highlight"><span class="nb">str</span></code> 类型的对象. 第二句话的关键信息之一是不可变的（immutable）这个词，它告诉了你这个类型的属性；序列（sequence）这个词初看不起眼，但是它作为一个链接的身份暴露了它：这意味着 <code class="highlight"><span class="nb">str</span></code> 类型具备所有序列应该具备的操作，点击链接，你会看到一个巨大的表格，其中覆盖了所有可以在字符串上（以及其它序列类型上）执行的操作和运算符. 同样，在下面介绍标准库时，所有说到用<strong>序列</strong>作为参数的地方也都可以传入字符串，当然，要求可变序列时不行. 第三句话和下面的内容中，则介绍了它的构造方法以及其它属性. 注意，其中的例子往往也说明了一些东西，其例子用代码块包裹，意思是这是有意义的代码，其中介绍说，单引号中字符串可以包含双引号，双引号字符串中可以包含单引号，这也是一个可以关注的点. 所谓的字面量（literal）可以被粗略地理解成所见即所得的东西：它会被直接拿进去当成一个这一类型的对象处理.</p>
+<p>在列表下边有一段简短的叙述，关于三引号字符串. 注意其中的空白符（whitespace）这个词. 作为一个术语，空白符不止意味着空格，还包含制表符（tab），回车（enter）等等格式性的字符. 这意味着我们可以写出下边的代码：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">"""*   *</span>
+<span class="s2">*   *</span>
+<span class="s2">*****</span>
+<span class="s2">*   *</span>
+<span class="s2">*   *"""</span><span class="p">)</span>
+</code></pre></div>
+<p>并且期望它输出：</p>
+<div class="highlight"><pre><span></span><code>*   *
+*   *
+*****
+*   *
+*   *
+</code></pre></div>
+<p>这在有些时候是一个非常有用的小技巧. 注意，这里的连接符意味着后边的话是对前面的话的解释说明：如果一个三引号字符串跨越了很多行，它意味着什么呢？意味着其中的空白符（包括回车）也会被直接算入到字符串当中去.</p>
+<p>接下来阅读下面的信息. 它指出，那些<strong>作为单一表达式的部分</strong>（part of a single expression）且其中只有空白符间隔的字符串字面量会被当成同一个字面量处理，并且给出了例子. 注意我们加粗的这一部分，它强调的是作为单一表达式的部分，作为一个反例，请看下面的代码：</p>
+<div class="highlight"><pre><span></span><code><span class="n">p</span> <span class="o">=</span> <span class="s2">"hello"</span>
+<span class="s2">"world"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</code></pre></div>
+<p>简单的尝试会告诉你，它的输出是 <code>hello</code> 而不是 <code>helloworld</code>，这貌似和之前关于空白符包含回车的说明矛盾. 但是，单一表达式这个条件提醒你，在换行之后，这就是两个表达式：一个赋值表达式、一个什么都不干的单个字面量表达式. 如果要深入了解其细节，需要参照其语言参考对于表达式的定义，但粗略地理解就是，这是两个表达式，不符合“作为单一表达式的部分”的条件.</p>
+<p>接下来，它还告诉你，可以参照另一部分文档理解更多字符串字面量的形式. 当然，这一部分文档来自语言参考中的词法分析（lexical analysis）章节，其中使用 BNF（Backus-Naur Form）来表述了字符串字面量的语法细节. 这里需要涉及更多的技术性细节，在此暂且略过，我们会在补充文档中介绍一点相关的内容. 当然，其中关于转义序列（escape sequence）的叙述告诉你你也可以在那里找到所有支持的转义序列，并且告诉你可以用 <code>r</code> 前缀来取消<strong>大部分</strong>（most）转义序列的处理，如果你（作为一个更专业的技术人员）阅读了这段叙述和对应的 BNF 公式，你就会知道我们可以这样写：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">"hello\nworld"</span><span class="p">)</span>
+</code></pre></div>
+<p>它会直接输出 <code>hello\nworld</code>. 而如果没有 <code>r</code> 前缀，它就会在中间将 <code>\n</code> 转义成换行. 这里的“大部分”这个词也会迫使你去阅读语言参考手册，其中有更详尽的叙述，但和我们此处讨论的内容无关.</p>
+<p>接下来，它告诉你如何去创建（create）一个字符串，它使用 <code class="highlight"><span class="nb">str</span></code> 构造函数（constructor）来完成. 点击这个 <code class="highlight"><span class="nb">str</span></code> 的链接将会跳转到类型构造函数，我们在后面也会分析它的文档. 下面一段告诉你，取下标也会直接产生一个字符串，其原因是没有单个字符（character）类型. 它提出的是它和序列（sequence）在取下标时语义的细小差异（例如，对列表取下标，取出的是其中的元素而不是单元素的列表，与切片不同）及其原因. 最后一句正文，它告诉你如何从多个字符串片段构造一个完整的字符串，并且指出没有可变的（mutable）字符串类型，点击涉及的函数也会让你能够跳转到对应的文档.</p>
+<p>最后是一段非正文性的部分. 其中标出了 <em>Changes in version 3.3</em>，即在 Python 3.3 版本中更新的部分，其目标是为了和 Python 2 系列向后兼容（backwards compatibility），并且陈述了 <code>u</code> 前缀的语义，这对于现代的程序员来说用处不大，仅仅陈述了版本兼容性的问题. 往往，我们在使用一些更古老的环境（例如某些地方陈旧的生产环境或者维护老项目）时需要注意这些叙述，确保自己使用的功能在这个版本已经被支持或者兼容.</p>
+<p>接下来我们进入到其关于构造函数的叙述当中：</p>
+<details class="info">
+<summary>构造函数的介绍 - 点击展开</summary>
+<p><code class="highlight"><span class="k">class</span><span class="w"> </span><span class="nc">str</span><span class="p">(</span><span class="nb">object</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span></code><br>
+<code class="highlight"><span class="k">class</span><span class="w"> </span><span class="nc">str</span><span class="p">(</span><span class="nb">object</span><span class="o">=</span><span class="sa">b</span><span class="s1">''</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">'strict'</span><span class="p">)</span></code></p>
+<blockquote>
+<p>Return a string version of object. If object is not provided, returns the empty string. Otherwise, the behavior of <code class="highlight"><span class="nb">str</span><span class="p">()</span></code> depends on whether <em>encoding</em> or <em>errors</em> is given, as follows.</p>
+<p>If neither <em>encoding</em> nor <em>errors</em> is given, <code class="highlight"><span class="nb">str</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span></code> returns <a href="https://docs.python.org/3/reference/datamodel.html#object.__str__"><code class="highlight"><span class="nb">type</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span></code></a>, which is the “informal” or nicely printable string representation of <em>object</em>. For string objects, this is the string itself. If object does not have a <a href="https://docs.python.org/3/reference/datamodel.html#object.__str__"><code class="highlight"><span class="fm">__str__</span><span class="p">()</span></code></a> method, then <a href="https://docs.python.org/3/library/stdtypes.html#str"><code class="highlight"><span class="nb">str</span><span class="p">()</span></code></a> falls back to returning <a href="https://docs.python.org/3/library/functions.html#repr"><code>repr(object)</code></a>.</p>
+<p>If at least one of <em>encoding</em> or <em>errors</em> is given, <em>object</em> should be a <a href="https://docs.python.org/3/glossary.html#term-bytes-like-object">bytes-like object</a> (e.g. <a href="https://docs.python.org/3/library/stdtypes.html#bytes"><code class="highlight"><span class="nb">bytes</span></code></a> or <a href="https://docs.python.org/3/library/stdtypes.html#bytearray"><code class="highlight"><span class="nb">bytearray</span></code></a>). In this case, if object is a <a href="https://docs.python.org/3/library/stdtypes.html#bytes"><code class="highlight"><span class="nb">bytes</span></code></a> (or <a href="https://docs.python.org/3/library/stdtypes.html#bytearray"><code class="highlight"><span class="nb">bytearray</span></code></a>) object, then <code class="highlight"><span class="nb">str</span><span class="p">(</span><span class="nb">bytes</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span></code> is equivalent to <a href="https://docs.python.org/3/library/stdtypes.html#bytes.decode"><code class="highlight"><span class="nb">bytes</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span></code></a>. Otherwise, the bytes object underlying the buffer object is obtained before calling <a href="https://docs.python.org/3/library/stdtypes.html#bytes.decode"><code class="highlight"><span class="nb">bytes</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span></code></a>. See <a href="https://docs.python.org/3/library/stdtypes.html#binaryseq">Binary Sequence Types — bytes, bytearray, memoryview</a> and <a href="https://docs.python.org/3/c-api/buffer.html#bufferobjects">Buffer Protocol</a> for information on buffer objects.</p>
+<p>Passing a <a href="https://docs.python.org/3/library/stdtypes.html#bytes"><code class="highlight"><span class="nb">bytes</span></code></a> object to <a href="https://docs.python.org/3/library/stdtypes.html#str"><code class="highlight"><span class="nb">str</span><span class="p">()</span></code></a> without the <em>encoding</em> or <em>errors</em> arguments falls under the first case of returning the informal string representation (see also the <a href="https://docs.python.org/3/using/cmdline.html#cmdoption-b"><code>-b</code></a> command-line option to Python). For example:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span><span class="p">(</span><span class="sa">b</span><span class="s1">'Zoot!'</span><span class="p">)</span>
+<span class="s2">"b'Zoot!'"</span>
+</code></pre></div>
+<p>For more information on the <code class="highlight"><span class="nb">str</span></code> class and its methods, see <a href="https://docs.python.org/3/library/stdtypes.html#textseq">Text Sequence Type — str</a> and the <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">String Methods</a> section below. To output formatted strings, see the <a href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings">f-strings</a> and <a href="https://docs.python.org/3/library/string.html#formatstrings">Format String Syntax</a> sections. In addition, see the <a href="https://docs.python.org/3/library/text.html#stringservices">Text Processing Services</a> section.</p>
+</blockquote>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">未完成</p>
+</div>
+<h2 id="random"><code class="highlight"><span class="n">random</span></code> 库和随机数生成</h2>
+<p>对于伪随机数生成器（pseudo-random number generator, PRNG）库的功能的详尽，参见<a href="https://docs.python.org/3/library/random.html">官方文档</a>. 在此，我们将首先介绍伪随机数生成的一些前置知识，以便读者在阅读官方文档时能够更加轻松，然后展示几个常用的函数的用法，作为官方文档的一个缩略的参考.</p>
+<p>首先，读者可能会考虑的第一个问题是，为什么叫“伪随机数”而不是“随机数”？这是一个非常好的问题，也直指核心. 为了回答这个问题，我们首先需要考虑我们如何看待“随机”. 通常地，我们把抛硬币时硬币正面朝上还是反面朝上称作一个随机事件. 但是，如果知道了抛出硬币的一切数据，我们也可以通过物理法则来预测它落地时是正面朝上的还是反面朝上的. 因此，我们理解随机事件实际上出于一种统计意义上：在无数次抛硬币的过程当中，我们得到的正反面朝上的次数服从某个统计分布. 而对于计算机来说，通常它就出于一种“知道一切”的窘境当中：我们知道内存中每个位置都放着一个确定的东西，也知道在 CPU 中执行一条指令会产生什么. 因此，并非出于统计意义的随机数生成，即真正的，因为未知全貌而产生的“真随机”是不可能达到的目标. 所以我们退而求其次，要求它产生的数据服从某个统计规律，虽然它实际上可以预测. 这种随机数就被称作伪随机数（pseudo-random number）.</p>
+<p>理解了伪随机数的概念，读者也就不难理解标准库文档给出的安全性说明. 实际上，<code class="highlight"><span class="n">random</span></code> 库应用的是梅森旋转素数（Mersenne Twister）算法来实现的伪随机数生成，它并不是密码学强（cryptographically strong）的，因此将其用作一些密码学用途是有安全隐患的. 读者可以搜索一系列关于 PRNG 攻击的资料来理解并佐证这一点.</p>
+<div class="admonition notes">
+<p class="admonition-title">安全随机数和系统的熵池（entropy pool）</p>
+<p>为了生成密码学强的随机数，实际上我们需要一些专有的硬件资源. 在 <a href="https://docs.python.org/3/library/secrets.html#module-secrets"><code class="highlight"><span class="n">secrets</span></code> 库</a>当中，Python 提供了一些对应的函数. 粗略地讲，这个硬件资源当中“充满噪声”，其中存储了一堆不知为何物的信息，在需要随机数的时候，系统会从中取一点信息. 并且，系统可以通过充放电重置里边的信息，以保证随机数是“足够随机的”. 这样的硬件资源就被称作熵池. 当然，在长期使用中，会出现熵池混乱度下降的情况，也有可能出现可预测的随机数，近年来也有一系列关于此种攻击的研究.</p>
+</div>
+<p>基于此，我们就知道了 <code class="highlight"><span class="n">random</span></code> 库的一些功能的意义了. 其中一部分的函数是用来设置伪随机数生成器的状态的，另一部分函数是用来使得伪随机数生成器可以生成一个随机数的. 前一部分被官方文档称作簿记函数（book-keeping function），注意，这里的 book 更好的理解方式是账本（作为一个英语笑话，有兴趣的读者可以自己查一下 cook the book 的意思，并非焚书），它相当于是记下了随机数生成器每次生成的过程.</p>
+<p>最常见的簿记函数是 <code class="highlight"><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></code>. 我们已经说过，在阅读标准库的时候，里边的函数写法就是函数定义的写法. 也就是说，这个函数在定义时就是有两个可选参数的. 其中 <em>version</em> 参数并不重要，仅仅是版本号，而参数 <em>a</em> 则是设置的随机数种子，也就是说，我们从哪个地方开始生成随机数，它会决定一系列随机数的生成. 如果它的值是默认值 <code>None</code>，那么它会以系统时间，或者在有随机源（即熵池）的情况下，以随机源生成的随机数为种子. 从相同的种子出发，用相同的方法总能生成一系列相同的随机数.</p>
+<p>此外，簿记函数还有 <code class="highlight"><span class="n">random</span><span class="o">.</span><span class="n">getstate</span><span class="p">()</span></code> 和 <code class="highlight"><span class="n">random</span><span class="o">.</span><span class="n">setstate</span><span class="p">(</span><span class="n">state</span><span class="p">)</span></code>，不太常用，有兴趣的读者可以参考标准库的叙述.</p>
+<p>生成随机数的过程通常有两类，一类是生成浮点数，一类是生成整数. 前者的代表性方法是 <code>random.random()</code>，它会生成一个 <span class="arithmatex">\([0.0, 1.0)\)</span> 内的<strong>均匀分布的</strong>浮点数. 而进一步的生成 <code>random.uniform(a, b)</code> 则相当于生成一个 <code>a + (b - a) * random()</code> 的随机数. 对概率论比较熟悉的读者应当知道，它就是生成一个在 <span class="arithmatex">\([a, b)\)</span> 之间的均匀分布的浮点数. 当然，在计算机中，因为进位的误差，它有可能取到 <em>b</em> 的值.</p>
+<p>另外，还有一些在不同的分布下（例如正态分布、指数分布等等）生成浮点数的方式，可以参照标准库的叙述.</p>
+<p>对于整数的生成，最具代表性的方法是</p>
+<p><code>random.randrange(stop)</code><br><code>random.randrange(start, stop[, step])</code></p>
+<p>还记得我们已经说过，在文档中方括号的含义是“可选”. 因此，这就意味着它有下面三种形式：</p>
+<ul>
+<li><code>random.randrange(stop)</code></li>
+<li><code>random.randrange(start, stop)</code></li>
+<li><code>random.randrange(start, stop, step)</code></li>
+</ul>
+<p>其中 <em>start</em>，<em>stop</em> 和 <em>step</em> 三个参数的值就相当于 <code class="highlight"><span class="nb">range</span></code> 类的三个参数. 它会从这个范围内机会均等地取出一个整数（依然是左闭右开）. 作为一个简写，我们也有 <code>random.randint(a, b)</code>，它相当于 <code>random.randrange(a, b + 1)</code>.</p>
+<div class="admonition 整数抽取的均等性问题">
+<p class="admonition-title">整数抽取的均等性问题</p>
+<p>一个比较有意思的点是，虽然看起来整数抽取相当简单，但是要保证均等性并不容易. 一个很直接的想法是，直接使用 <code>int(random() * n)</code>，借助浮点数的抽取来完成. 但是，这实际上会引入一种被称作模数偏差（modulo bias）的东西. 如果要做到真正意义上均等的抽取，那么必须引入更加精巧的算法.</p>
+</div>
+<p>与随机生成整数类似，我们也可以随机采用序列中的一个元素. <code>random.choice(seq)</code> 会机会均等地返回<strong>非空</strong>序列 <em>seq</em> 当中的一个元素. 如果想要为序列中的元素赋予不同的权重，可以使用 <code>random.choices</code> 函数，更详细的介绍参见标准库文档.</p>
+<p>我们也可以随机打乱一个序列. <code>random.shuffle(x)</code> 会使得<strong>可变</strong>序列 <code>x</code> 被修改成一个随机打乱的序列. 这实际上通过康托展开（Cantor expansion）来完成，在 <code class="highlight"><span class="n">itertools</span></code> 库中我们会对其进行更详尽的介绍. 较为重要的一点是，它只能正确处理比较短的序列. 梅森旋转素数的处理极限是长为 2080 的序列.</p>
+<div class="admonition warning">
+<p class="admonition-title">处理极限</p>
+<p>注意，在面对超出处理极限的序列时，<code>random.shuffle</code> 并不会报错，而是将不能保证各种打乱方式之间的机会均等性，有一部分打乱方式将永远不可能被产生. 因此，在实际工程中使用这类函数时，需要额外注意.</p>
+<p>为了处理这种问题，人们实际上做了非常多的尝试. 这一问题事实上是因为随机数生成器能生成的随机数范围还是太小. 有一个经典的问题被称为蓄水池采样（reservior sampling）问题，就是专门为了研究这种在较小的随机数范围内完成大范围采样的任务而生的. 当然，到目前为止，处理这个问题的算法效率依旧不高，这可能也是为什么 Python 没有内置它的实现的原因.</p>
+</div>
+<p>最后一个比较重要的函数是 <code>random.sample(population, k, *, counts=None)</code>. 这个函数将会<strong>返回</strong>（注意它与 <code>random.shuffle(x)</code> 中<strong>修改</strong>不同）一个从序列 <em>population</em>（不一定要可变）中随机抽样出来的长度为 <em>k</em> 的列表. 注意，这里的抽样是不放回的抽样，也就是说一个样本不会被抽到多次. 如果要使得它能被抽到指定次，可以设置 <em>counts</em> 参数；如果想要使得一个样本可以被抽到无限次，可以使用 <code>random.choices</code> 函数. 这个函数不会改变 <em>population</em> 中的内容，所以它当然不要求 <em>population</em> 可变.</p>
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js"
+        data-repo="FrightenedFoxCN/python2024aw"
+        data-repo-id="R_kgDOMv5ryg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMv5rys4CiXhG"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+var giscus = document.querySelector("script[src*=giscus]")
+
+// Set palette on initial load
+var palette = __md_get("__palette")
+if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate"
+    ? "transparent_dark"
+    : "light"
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme) 
+}
+
+// Register event handlers after documented loaded
+document.addEventListener("DOMContentLoaded", function() {
+    var ref = document.querySelector("[data-md-component=palette]")
+    ref.addEventListener("change", function() {
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame")
+        frame.contentWindow.postMessage(
+        { giscus: { setConfig: { theme } } },
+        "https://giscus.app"
+        )
+    }
+    })
+})
+</script>
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

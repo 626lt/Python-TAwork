@@ -1,0 +1,1493 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>基于 Monte Carlo 算法实现积分计算及其可视化 - 2026 年 Python 秋冬学习资料</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#monte-carlo" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="2026 年 Python 秋冬学习资料" class="md-header__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2026 年 Python 秋冬学习资料
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              基于 Monte Carlo 算法实现积分计算及其可视化
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../faq/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  常见问题
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  实验文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../interesting-addendum/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  一些有意思的补充资料
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="2026 年 Python 秋冬学习资料" class="md-nav__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    2026 年 Python 秋冬学习资料
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../faq/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    常见问题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/basic_io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/typing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    类型与值
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/control_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    程序的控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/complex_types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    复合类型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    map 函数与列表推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/stdlib/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    标准库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/exam_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于实验考试的提示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    理论考前常见问题总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验文档
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00env/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境配置指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../interesting-addendum/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一些有意思的补充资料
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    一些有意思的补充资料
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验目的
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验环境
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验步骤
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="实验步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        环境配置和安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用圆面积估计 \(\pi\) 值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用函数改写现在的代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matplotlib" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用 matplotlib 可视化采样的过程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        * 修改随机数生成器：一个额外练习
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        提交方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="monte-carlo">基于 Monte Carlo 算法实现积分计算及其可视化</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>此实验为以前的版本，现在放出供计算机科学基础课程作为拓展阅读，并非 Python 课程的正式实验，Python 课程的班级不需要完成这个实验.</p>
+</div>
+<h2 id="_1">实验目的</h2>
+<ol>
+<li>理解 random 库的用法以及 Monte Carlo 算法的基本思路。</li>
+<li>使用 Matplotlib 完成初步的可视化。</li>
+<li>* 对随机和伪随机的概念有初步的理解，</li>
+</ol>
+<h2 id="_2">实验环境</h2>
+<ul>
+<li>Python 3.x 环境</li>
+<li>MatplotLib 库</li>
+</ul>
+<h2 id="_3">实验步骤</h2>
+<h3 id="_4">环境配置和安装</h3>
+<p>参考<a href="../../00env/">环境配置指南</a>中的指导安装 Matplotlib 库.</p>
+<h3 id="pi">利用圆面积估计 <span class="arithmatex">\(\pi\)</span> 值</h3>
+<p>我们都已经熟知，积分本质上就是面积的计算. 我们首先考虑计算简单图形的面积：圆面积. 一个圆是由 <span class="arithmatex">\(x^2 + y^2 &lt;= 1\)</span> 所界定的一块面积. 而根据高中学过的关于几何概型的知识，一个图形的面积与总面积的比值就是在总面积上投点落入图形当中的概率. 也就是说，我们可以考虑以下图形：</p>
+<figure>
+<img alt="" src="../../../assets/bonus/monte-carlo-1.svg" width="200px" />
+</figure>
+<p>上面的图形中，只要取在阴影部分，我们就假定它在圆内. 因此，采用一个随机数生成器的手段，根据点落在圆内的频率估计总的概率，就能给出圆面积的估计. 为了方便起见，我们考虑第一象限的圆，即上图中粉色方框给出的部分.</p>
+<p>首先，我们需要引入随机数库并完成基本参数的设置：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="n">inside_circle</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10000000</span>
+</code></pre></div>
+<p>其中 <code>inside_circle</code> 为在圆圈内的取样点的个数，<code>num_samples</code> 为总的取样个数，下面我们将取样操作进行 <code>num_samples</code> 次，这使用 <code class="highlight"><span class="k">for</span></code> 循环来实现：</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>其中的 <code>_</code> 指的是循环变量可以被抛弃，这是一个通用的“垃圾桶”. 也就是说，你甚至可以写出这样的解包操作：</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</code></pre></div>
+<p>这样就令 <code>a</code> 为 <code>1</code>，<code>b</code> 为 <code>3</code>，而中间的值则被永久抛弃了.</p>
+</div>
+<p><code>random</code> 库中的 <code>random</code> 函数在 <code>(0, 1]</code> 区间内取到一个随机浮点数. 接下来判断它是否在圆内，对于每一次循环，都需要进行一次下面的判断：</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">inside_circle</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+<p>最后我们就能根据面积进行对 <span class="arithmatex">\(\pi\)</span> 的估算：</p>
+<div class="highlight"><pre><span></span><code><span class="n">pi_estimate</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">inside_circle</span> <span class="o">/</span> <span class="n">num_samples</span><span class="p">)</span>
+</code></pre></div>
+<p>思考，如何用这个方法计算更多的积分？你可以尝试计算一些简单的值，例如 <span class="arithmatex">\(y = x^2\)</span> 之类的函数在 <code>(0, 1)</code> 区间中曲线下的面积，这如我们所知就是其在它在 <code>(0, 1)</code> 上的积分.</p>
+<h3 id="_5">利用函数改写现在的代码</h3>
+<p>现在的代码如下：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="n">inside_circle</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10000000</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">inside_circle</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">pi_estimate</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">inside_circle</span> <span class="o">/</span> <span class="n">num_samples</span><span class="p">)</span>
+</code></pre></div>
+<p>思考，这样的过程是一个怎样的流程？首先，我们初始化了一堆变量；然后，我们频繁进行采样，判断采样的点是否满足要求；最后，根据采样得到的频率给出计算结果. 为了让这样的程序更加清晰，我们定义几个函数：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">sampling</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    @param       i: 第 i 次采样；</span>
+<span class="sd">    @return (x, y): 返回采样的结果.</span>
+<span class="sd">    """</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>一般地，我们用三引号来表示一个函数的文档. 读者可以尝试使用</p>
+<div class="highlight"><pre><span></span><code><span class="n">sampling</span><span class="o">.</span><span class="vm">__doc__</span>
+</code></pre></div>
+<p>来访问函数 <code>sampling</code> 的文档，即会作为一个字符串得到下面的注释.</p>
+<p>实际上，三引号的意味是一个保持内部格式的字符串. 这样的字符串在输出的时候能够保持代码中的回车等格式，读者可以阅读官方说明，进行更多的尝试.</p>
+</div>
+<p>这个函数主要做的事情是完成对结果的采样. 我们在后面会发现，这样的采样并非是真正的随机，而是具备自己的算法内核的. 这也就是为什么 Python 官方将 <code>random</code> 库描述为<strong>伪</strong>随机数生成器而非真正意义上的随机数生成器. 而第二个函数主要做的是返回点是否满足要求：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    @param (x, y): 采样所得的点</span>
+<span class="sd">    @return     b: True 或者 False，是否满足要求</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+</code></pre></div>
+<p>复盘整理一下，现在的主程序是</p>
+<div class="highlight"><pre><span></span><code><span class="n">inside_circle</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10000000</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sampling</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">inside_circle</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">pi_estimate</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">inside_circle</span> <span class="o">/</span> <span class="n">num_samples</span><span class="p">)</span>
+</code></pre></div>
+<p>函数的定义放在主函数的前面以使得其可以更好地被利用. 这使得我们：
+1. 可以更清楚地看到主程序执行的过程；
+2. 可以更容易地修改需要修改的部分，例如，只要修改 <code>check</code> 函数就能计算其它区域的积分（当然，最后计算的结果需要稍微做出一点修改）.</p>
+<p>这就是应用函数来厘清控制流的一个例证.</p>
+<h3 id="matplotlib">利用 matplotlib 可视化采样的过程</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>对于更加习惯 C 式的程序的读者，可以将主程序也包裹起来，下面是对上面的程序进行修改的结果：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="n">inside_circle</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10000000</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sampling</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    @param       i: 第 i 次采样；</span>
+<span class="sd">    @return (x, y): 返回采样的结果.</span>
+<span class="sd">    """</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    @param (x, y): 采样所得的点</span>
+<span class="sd">    @return     b: True 或者 False，是否满足要求</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sampling</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+            <span class="n">inside_circle</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">pi_estimate</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">inside_circle</span> <span class="o">/</span> <span class="n">num_samples</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">pi_estimate</span><span class="p">)</span>
+</code></pre></div>
+<p>下面因为程序太长的时候要保持清晰性，就延续这样的代码进行修改. 其中 <code>__name__</code> 实际上是一个内置变量，用于记录当前函数名，而 <code>__main__</code> 则是 Python 默认给主程序设置的名字. 其中，全局变量被放在了最外侧，这与 C 式的风格是一致的.</p>
+</div>
+<p>我们先在程序之前引入 matplotlib 库，如下所示：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">animation</span>
+</code></pre></div>
+<p>下面我们需要初始化更新步长. 即，每一步需要增加多少个采样点. 在最上面，我们补充：</p>
+<div class="highlight"><pre><span></span><code><span class="n">update_step</span> <span class="o">=</span> <span class="mi">100</span>
+</code></pre></div>
+<p>随后，在主程序中，我们增加代码：</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">"equal"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Estimating pi using Monte Carlo method: 0"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"y"</span><span class="p">)</span>
+</code></pre></div>
+<p>其中 <code>fig</code> 是最终的图像，<code>ax</code> 则是我们需要操作的图像. 上面三个调用 <code>ax</code> 的方法分别是设置 <code>x</code> 轴和 <code>y</code> 轴的范围，并且设置 <code>x</code> 和 <code>y</code> 具备相同的度量，即相同单位具备相同间隔. 下面三个 <code>plt</code> 的函数则分别设置了图像的标题、<code>x</code> 和 <code>y</code> 轴的文字.</p>
+<p>在进行动图生成的过程中，最关键的一步是定义更新函数. 代码如下：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">inside_circle</span>
+    <span class="n">x_inside</span><span class="p">,</span> <span class="n">y_inside</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="n">x_outside</span><span class="p">,</span> <span class="n">y_outside</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">update_step</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sampling</span><span class="p">(</span><span class="n">_</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+            <span class="n">inside_circle</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">x_inside</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">y_inside</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x_outside</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">y_outside</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_inside</span><span class="p">,</span> <span class="n">y_inside</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_outside</span><span class="p">,</span> <span class="n">y_outside</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+
+    <span class="n">x_inside</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">y_inside</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">x_outside</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">y_outside</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="n">pi_estimate</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">inside_circle</span> <span class="o">/</span> <span class="p">(</span><span class="n">frame</span> <span class="o">*</span> <span class="n">update_step</span><span class="p">))</span> <span class="k">if</span> <span class="n">frame</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Estimating pi using Monte Carlo method: </span><span class="si">{</span><span class="n">pi_estimate</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>对于每一帧，我们进行 100 个采样的循环，并且估计 <code>pi</code> 值. 其中比较难以理解的可能是 <code>ax</code> 的 <code>scatter</code> 方法. 它在这个图像上<strong>增加</strong>了一系列散点，其 <code>x</code> 和 <code>y</code> 的坐标分别是前面两个数组给出的对应数值. <code>color</code> 参数表征画点的颜色，而 <code>s</code> 表征画点的轮廓粗细. 然后，我们生成更新过程：</p>
+<div class="highlight"><pre><span></span><code><span class="n">ani</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="n">num_samples</span> <span class="o">//</span> <span class="n">update_step</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p>这个函数使用 <code>update</code> 作为一个回调函数（callback）来传入. 我们传入参数 <code>repeat=False</code>，其目的是使得帧达到最大值时不再反复执行并使得传入 <code>update</code> 参数的 <code>frame</code> 清零. 请读者思考，如果不做如此处理，会发生什么问题？另一种方式是传入 <code>init_func</code> 函数来清空画面. 有兴趣的读者也可以基于此进行修改，使得初始化过程更加清晰，主程序的流程更加简短.</p>
+<div class="admonition notes">
+<p class="admonition-title">回调函数</p>
+<p>在<a href="../../../faq/typing/">类型与值</a>一部分中，我们业已提及，在 Python 中万物皆类型. 实际上，函数也是一个特殊的类型. 如果执行</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">update</span><span class="p">))</span>
+</code></pre></div>
+<p>得到的输出结果是 <code>&lt;class 'function'&gt;</code>，也就是函数类. 它是一个可调用（callable）的类型，即可以在它后面跟上括号，表示用括号中的参数调用这个函数. 实际上，它有一个名为 <code>__call__</code> 的方法，在调用是会使用这个方法来进行处理. 在后面学习了关于类的知识之后，读者会对这种性质有更多的理解.</p>
+<p>作为一个例子，可以考虑下面的简单代码：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">apply</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">apply</span><span class="p">(</span><span class="n">mul</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+</code></pre></div>
+<p>它的执行结果就是</p>
+<div class="highlight"><pre><span></span><code>7
+12
+</code></pre></div>
+</div>
+<p>可以通过</p>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>来展示画图的结果，或者使用</p>
+<div class="highlight"><pre><span></span><code><span class="n">ani</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"monte_carlo_estimation.gif"</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="s2">"pillow"</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<p>来储存动图. 注意，这个计算过程可能会有点久，读者可以修改 <code>num_samples</code> 来改变运行的步数以缩短执行的时间.</p>
+<p>最终，代码如下：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">animation</span>
+
+<span class="n">inside_circle</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">update_step</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sampling</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    @param       i: 第 i 次采样；</span>
+<span class="sd">    @return (x, y): 返回采样的结果.</span>
+<span class="sd">    """</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    @param (x, y): 采样所得的点</span>
+<span class="sd">    @return     b: True 或者 False，是否满足要求</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">inside_circle</span>
+    <span class="n">x_inside</span><span class="p">,</span> <span class="n">y_inside</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="n">x_outside</span><span class="p">,</span> <span class="n">y_outside</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">update_step</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sampling</span><span class="p">(</span><span class="n">_</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+            <span class="n">inside_circle</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">x_inside</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">y_inside</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x_outside</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">y_outside</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_inside</span><span class="p">,</span> <span class="n">y_inside</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_outside</span><span class="p">,</span> <span class="n">y_outside</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+
+    <span class="n">x_inside</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">y_inside</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">x_outside</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">y_outside</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="n">pi_estimate</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">inside_circle</span> <span class="o">/</span> <span class="p">(</span><span class="n">frame</span> <span class="o">*</span> <span class="n">update_step</span><span class="p">))</span> <span class="k">if</span> <span class="n">frame</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Estimating pi using Monte Carlo method: </span><span class="si">{</span><span class="n">pi_estimate</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">"equal"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Estimating pi using Monte Carlo method: 0"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"x"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"y"</span><span class="p">)</span>
+    <span class="n">ani</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="n">num_samples</span> <span class="o">//</span> <span class="n">update_step</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># ani.save("monte_carlo_estimation.gif", writer="pillow", fps=10)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="_6">* 修改随机数生成器：一个额外练习</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>这一部分是一个额外的练习，不计入总分，供有兴趣的读者完成.</p>
+</div>
+<p>接下来，我们考虑采样的过程. 下面的代码修改基于第三步的结果，读者也可以在第四步的基础上完成修改. 现在的随机数生成器生成的结果（在表面上）是不可复现的，这是因为它的随机种子（seed）是与时间相关的. 而如果我们在初始化的时候新增一个种子的设置，那么采样的结果就可以复现. 在初始化的部分中加入：</p>
+<div class="highlight"><pre><span></span><code><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p>然后再执行几次程序观察结果. 不难发现，现在的执行结果就完全一致了. 也就是说，拿到了随机数生成种子，就能拿到一切可能的随机数. 这在一些密码学算法中会导致致命的漏洞.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>可以替换上面的种子为其它整数，观察执行的结果.</p>
+</div>
+<p>下面我们考虑自己实现一个形如此的结构. 首先，我们考虑实现一种完全均匀的采样方式，称作 Halton 序列. 读者可以搜索 Wikipedia 或参见下面的参考资料来理解其原理，下面给出一个算法描述，其输入为采样次数 <span class="arithmatex">\(k\)</span> 和基数 <span class="arithmatex">\(b\)</span>：</p>
+<ol>
+<li>对于第 <span class="arithmatex">\(k\)</span> 次采样，将 <span class="arithmatex">\(k\)</span> 转化为 <span class="arithmatex">\(b\)</span> 进制数 <span class="arithmatex">\(d_m d_{m - 1} \cdots d_2 d_1\)</span>；</li>
+<li>将这个数倒过来，作为 <span class="arithmatex">\(b\)</span> 进制小数 <span class="arithmatex">\(0.d_1 d_2 \cdots d_{m - 1} d_m\)</span>；</li>
+<li>将这个 <span class="arithmatex">\(b\)</span> 进制小数转化为一个 <span class="arithmatex">\((0, 1)\)</span> 之间的小数，这就是这个取样值.</li>
+</ol>
+<p>我们可以将这个算法实现成一个函数：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">halton_sequence</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    @param  k: 采样的次数</span>
+<span class="sd">    @param  b: 转化过程中引入的基数</span>
+<span class="sd">    @return x: 采样得到的结果</span>
+<span class="sd">    """</span>
+    <span class="c1">#######################</span>
+    <span class="c1"># 这里是你需要实现的代码 #</span>
+    <span class="c1">#######################</span>
+    <span class="k">return</span> <span class="n">x</span>
+</code></pre></div>
+<p>用于我们的目的，需要对 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 进行分别的采样. 出于无关性的目标，我们会考虑两者取样的基数互素，即没有除 <span class="arithmatex">\(1\)</span> 之外的公因数. 也就是说，修改之后的采样函数为：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">sampling</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    @param       k: 采样的次数</span>
+<span class="sd">    @param      b1: 采样 x 时用到的基数</span>
+<span class="sd">    @param      b2: 采样 y 时用到的基数</span>
+<span class="sd">    @return (x, y): 返回采样的结果</span>
+<span class="sd">    """</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">halton_sequence</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b1</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">halton_sequence</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<p>现在，整个程序形如：</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">halton_sequence</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    @param  k: 采样的次数</span>
+<span class="sd">    @param  b: 转化过程中引入的基数</span>
+<span class="sd">    @return x: 采样得到的结果</span>
+<span class="sd">    """</span>
+    <span class="c1">#######################</span>
+    <span class="c1"># 这里是你需要实现的代码 #</span>
+    <span class="c1">#######################</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sampling</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    @param       k: 采样的次数</span>
+<span class="sd">    @param      b1: 采样 x 时用到的基数</span>
+<span class="sd">    @param      b2: 采样 y 时用到的基数</span>
+<span class="sd">    @return (x, y): 返回采样的结果</span>
+<span class="sd">    """</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">halton_sequence</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b1</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">halton_sequence</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    @param (x, y): 采样所得的点</span>
+<span class="sd">    @return     b: True 或者 False，是否满足要求</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+
+<span class="n">inside_circle</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10000000</span>
+<span class="n">factor1</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="n">factor2</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sampling</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">factor1</span><span class="p">,</span> <span class="n">factor2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">inside_circle</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">pi_estimate</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">inside_circle</span> <span class="o">/</span> <span class="n">num_samples</span><span class="p">)</span>
+</code></pre></div>
+<p>接下来，我们引入随机数种子，我们取一个大整数，然后修改主程序如下：</p>
+<div class="highlight"><pre><span></span><code><span class="n">inside_circle</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10000000</span>
+<span class="n">factor1</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="n">factor2</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">19260817</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sampling</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">seed</span><span class="p">,</span> <span class="n">factor1</span><span class="p">,</span> <span class="n">factor2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">inside_circle</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">pi_estimate</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">inside_circle</span> <span class="o">/</span> <span class="n">num_samples</span><span class="p">)</span>
+</code></pre></div>
+<p>当然，这个大整数如果要做出和原来的 <code>random</code> 一样的结果，可以通过 <code>time</code> 库中的 <code>time_ns</code> 函数来完成取样：</p>
+<div class="highlight"><pre><span></span><code><span class="n">seed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time_ns</span><span class="p">()</span>
+</code></pre></div>
+<p>注意需要引入 <code>time</code> 模块. 此函数的行为可以参见官方说明，见参考资料.</p>
+<p>接下来，请读者自行完成实现，并且进行额外的尝试. 例如，可以使用 matplotlib 画出 Halton 序列取样的位置，或者使用置换之类的方式来完成随机数种子的设计，亦参见参考资料. 一个提示是，可以使用 <code>itertools</code> 库中的 <code>permutations</code> 来生成一系列置换. 同样，你也可以使用这种采样方式计算更多可能的面积，不妨自行尝试.</p>
+<h2 id="_7">提交方式</h2>
+<p>我们希望你提交以下内容：</p>
+<ol>
+<li>实验代码，<code>py</code> 类型的文件，可以有多个.</li>
+<li>实验结果，即运行之后的图像，以 <code>gif</code> 类型提交.</li>
+<li>实验报告，包含对自己的代码的解释、结果分析，以及<strong>过程中遇上的报错和任何遇到的好玩的问题，以及在查资料的时候发现的有趣的知识</strong>，以 <code>pdf</code> 类型文件提交.</li>
+</ol>
+<p>一般地，只需要提交一个 <code>zip</code> 文件即可. 你也可以尝试：</p>
+<ol>
+<li>修改代码中保存文件的路径，进而整理文件结构，代码、运行结果和文档分开.</li>
+<li>使用 Jupyter Notebook，提交整合的 <code>ipynb</code> 类型文件.</li>
+<li>你也可以将你的尝试写成博客，发布到网上，然后提交可公开访问的链接.</li>
+</ol>
+<p>作为一门编程语言类的课程，我们鼓励同学进行多种多样的尝试，因此，基于原始代码和功能之上的任何改动都是允许且被鼓励的. 但是，为了避免无意义的内卷，只需要完成基础功能、认真写完报告就能获得最高的分数，因此也不必勉强自己，尽情享受完成代码、修改代码的过程吧！</p>
+<h2 id="_8">参考资料</h2>
+<ul>
+<li><a href="https://docs.python.org/3/library/random.html">Python <code>random</code> 库的官方文档</a></li>
+<li><a href="https://matplotlib.org/">Matplotlib 的官网</a></li>
+<li><a href="https://www.pbr-book.org/3ed-2018/Sampling_and_Reconstruction/The_Halton_Sampler">Physically Based Rendering 一书中关于 Halton 序列的叙述</a></li>
+<li><a href="https://docs.python.org/3/library/time.html">Python <code>time</code> 库的官方文档</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js"
+        data-repo="FrightenedFoxCN/python2024aw"
+        data-repo-id="R_kgDOMv5ryg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMv5rys4CiXhG"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+var giscus = document.querySelector("script[src*=giscus]")
+
+// Set palette on initial load
+var palette = __md_get("__palette")
+if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate"
+    ? "transparent_dark"
+    : "light"
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme) 
+}
+
+// Register event handlers after documented loaded
+document.addEventListener("DOMContentLoaded", function() {
+    var ref = document.querySelector("[data-md-component=palette]")
+    ref.addEventListener("change", function() {
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame")
+        frame.contentWindow.postMessage(
+        { giscus: { setConfig: { theme } } },
+        "https://giscus.app"
+        )
+    }
+    })
+})
+</script>
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../assets/js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

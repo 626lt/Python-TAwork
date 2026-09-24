@@ -1,0 +1,1791 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../basic_io/">
+      
+      
+        <link rel="next" href="../control_flow/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>类型与值 - 2026 年 Python 秋冬学习资料</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="2026 年 Python 秋冬学习资料" class="md-header__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2026 年 Python 秋冬学习资料
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              类型与值
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  常见问题
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  实验文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../interesting-addendum/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  一些有意思的补充资料
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="2026 年 Python 秋冬学习资料" class="md-nav__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    2026 年 Python 秋冬学习资料
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    常见问题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    类型与值
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    类型与值
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        变量
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intinput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        int(input()) 做了什么？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        操作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#split" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        以 split() 为例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#str" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        str 的其他常用方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        再回到类型
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="再回到类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        任何值都有类型，而类型也是值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bool 类型与逻辑运算
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="bool 类型与逻辑运算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0-false" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0 不是 False
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bool_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bool 作为数字，以及逻辑运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#none" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        None
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    程序的控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../complex_types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    复合类型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    map 函数与列表推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdlib/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    标准库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exam_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于实验考试的提示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    理论考前常见问题总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../labs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验文档
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/00env/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境配置指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../interesting-addendum/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一些有意思的补充资料
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    一些有意思的补充资料
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        变量
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intinput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        int(input()) 做了什么？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        操作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#split" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        以 split() 为例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#str" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        str 的其他常用方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        再回到类型
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="再回到类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        任何值都有类型，而类型也是值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bool 类型与逻辑运算
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="bool 类型与逻辑运算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0-false" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0 不是 False
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bool_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bool 作为数字，以及逻辑运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#none" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        None
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">类型与值</h1>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>此处仅对一些易忽视的、容易出错的知识点和常用的知识点进行回顾，<strong>不能</strong>代替课本和课件的学习！同时，我们在这里会提及的东西可能会超出标题所框定的范围，但尽可能限制在课程范围之内，如果有超出范围的内容，将放在蓝色方框中以示提醒.</p>
+</div>
+<h2 id="_2">变量</h2>
+<p>读者应该已经非常熟悉 Python 中的变量了：</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1234</span>
+</code></pre></div>
+<p>与 C 等语言不同，Python 是一种<strong>动态强类型</strong>语言. 读者不必现在理解这个概念，但是应当已经知道，对于一些不同的值，我们能够进行不同的操作：例如，对整数能够进行加减乘除，对字符串能够进行拼接、重复等等. 尝试将整数和字符串做加法会产生错误，这也许意味着有一些操作是不被允许的.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"1"</span> <span class="o">+</span> <span class="s2">"2"</span>
+<span class="s1">'12'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="s2">"2"</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">+</span><span class="p">:</span> <span class="s1">'int'</span> <span class="ow">and</span> <span class="s1">'str'</span>
+</code></pre></div>
+<p>让我们首先回到<strong>类型</strong>的概念上. 我们知道，<code class="highlight"><span class="mi">1234</span></code> 是一个整数，其类型是 <code class="highlight"><span class="nb">int</span></code>；<code class="highlight"><span class="s2">"1234"</span></code> 是一个字符串，其类型是 <code class="highlight"><span class="nb">str</span></code>. <strong>类型是和值绑定的</strong>，也就是说，每个值都有其固定的类型. 我们不能将一个整数作为字符串来处理，反之亦然.</p>
+<p>那么变量呢？变量只是一个名字，它可以<strong>容纳</strong>任何类型的值. 我们可以将一个字符串赋给一个变量，然后再将一个整数赋给这个变量，这是完全合法的：</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="s1">'1234'</span>  <span class="c1"># 在这里，a 容纳字符串 "1234"</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1234</span>    <span class="c1"># 现在 a 容纳整数 1234</span>
+</code></pre></div>
+<p><code class="highlight"><span class="s2">"1234"</span></code> 和 <code class="highlight"><span class="mi">1234</span></code> 是两个截然不同的值，前者是字符串，后者是整数. 这非常重要.</p>
+<h2 id="intinput"><code class="highlight"><span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span></code> 做了什么？</h2>
+<p>在编程题中，我们经常会使用这样的代码. 也许读者仍然不太清楚这段代码的作用，或说，到底发生了什么：</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+</code></pre></div>
+<p>为方便起见，我们将这段代码拆分成两部分：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</code></pre></div>
+<p>我们应当已经非常熟悉 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 函数，它会从标准输入中读取一行字符串，在这里“标准输入”的意思就是你的键盘.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="mi">42</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="s1">'42'</span>
+</code></pre></div>
+<p>我们称 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> <strong>返回</strong>一个字符串. 通过使用 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 函数，我们得到了一个字符串 <code>s</code>，它的值是 <code class="highlight"><span class="s2">"42"</span></code>. 然而，我们绝不可将字符串作为整数来处理. 我们首先需要将字符串<strong>转换</strong>为整数：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="mi">42</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="mi">42</span>
+</code></pre></div>
+<p><code class="highlight"><span class="nb">int</span><span class="p">()</span></code> 函数将字符串转换为整数. 请注意，<code class="highlight"><span class="nb">int</span><span class="p">()</span></code> 函数<strong>不会</strong>改变原来的字符串，而是返回一个新的整数. 有同学写下过类似如下的代码：</p>
+<div class="highlight"><pre><span></span><code><span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<p>这段代码是逻辑上错误的，因为 <code class="highlight"><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code> 的返回值没有被保存（即，我们并没有将这个结果赋给任何变量），所以第二行实际上什么也没做，<code>b</code> 仍然是一个字符串. 读者应当注意这一点. 如果我们想要将 <code>b</code> 转换为整数，应当这样写：</p>
+<div class="highlight"><pre><span></span><code><span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<p>或者，更简洁的写法即：</p>
+<div class="highlight"><pre><span></span><code><span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+</code></pre></div>
+<p>同样的，我们可以用 <code class="highlight"><span class="nb">float</span><span class="p">()</span></code> 函数将字符串转换为浮点数，或是用 <code class="highlight"><span class="nb">str</span><span class="p">()</span></code> 函数将任意类型的值转换为字符串.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"3.14"</span><span class="p">)</span>
+<span class="mf">3.14</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span><span class="p">(</span><span class="mf">6.28</span><span class="p">)</span>
+<span class="s1">'6.28'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"3.14"</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">'3.14'</span>
+</code></pre></div>
+<p>我们无法将一个<strong>表示浮点数的字符串</strong>转换为整数，因为 <code class="highlight"><span class="nb">int</span><span class="p">()</span></code> 函数只能解析表示整数的字符串. 在涉及到浮点数的题目中，就应当使用 <code class="highlight"><span class="nb">float</span><span class="p">()</span></code> 函数来解析. 不过我们可以将一个<strong>浮点数</strong>转换为整数，这会将小数部分直接截断，注意这与向上取整、向下取整或四舍五入均不同.</p>
+<h2 id="_3">操作</h2>
+<h3 id="split">以 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 为例</h3>
+<p>对于不同的类型，我们能够进行不同的操作. 我们来看一个稍复杂一些的例子：</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</code></pre></div>
+<p>或者说，仍然拆作两部分：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</code></pre></div>
+<p>在此，我们需要再次强调：<strong>类型和值是绑定的</strong>. 我们已经知道 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 函数返回一个字符串，那么第一行代码执行结束后，<code>s</code> 无疑是一个字符串. 那么，从类型的角度来看，研究上面的代码和研究下面的代码是一样的：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="s2">"1 2 3"</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</code></pre></div>
+<p>别忘了，我们永远可以在交互式环境中查看一个操作的结果：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"1 2 3"</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="p">[</span><span class="s1">'1'</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">,</span> <span class="s1">'3'</span><span class="p">]</span>
+</code></pre></div>
+<p>术语上来讲，<code class="highlight"><span class="n">split</span><span class="p">()</span></code> 是 <code class="highlight"><span class="nb">str</span></code> 类型的一个<strong>方法</strong>，不过就目前来说，我们认为这就是我们对字符串能进行的一种<strong>操作</strong>. 再次强调，<strong>类型和值是绑定的</strong>. <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 是属于字符串的一个操作，那么，对于任何字符串，我们都可以使用 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 操作. 在上面的例子中，对于 <code class="highlight"><span class="s2">"1 2 3"</span></code> 这个字符串，在其上使用 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 操作，我们得到了一个列表 <code class="highlight"><span class="p">[</span><span class="s1">'1'</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">,</span> <span class="s1">'3'</span><span class="p">]</span></code>. 列表也是 Python 中的一种类型，我们在后面的课程中会学习到. 目前我们只需要知道列表可以容纳任意多个值. 那么 <code class="highlight"><span class="p">[</span><span class="s1">'1'</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">,</span> <span class="s1">'3'</span><span class="p">]</span></code> 即是容纳了 3 个字符串 <code class="highlight"><span class="s2">"1"</span></code>、<code class="highlight"><span class="s2">"2"</span></code> 和 <code class="highlight"><span class="s2">"3"</span></code> 的列表. <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 方法的作用即是将字符串按照空白符分割，它返回一个列表，列表中的元素是原字符串从左到右按照空格分割后的结果，它们也都是字符串.</p>
+<p>有一点非常重要：<code class="highlight"><span class="n">split</span><span class="p">()</span></code> 是<strong>属于字符串的</strong>方法，我们需要在一个字符串上调用它. 并没有一个叫做 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 的函数.</p>
+<div class="admonition warning">
+<p class="admonition-title">提示</p>
+<p><code>.</code> 和 <code>()</code> 都是很重要的部分，不可省略或更改. 有同学写下过类似如下的代码：</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="c1"># 或者</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span>
+<span class="c1"># 或者</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(),</span><span class="n">split</span><span class="p">()</span>  <span class="c1"># 注意这里用的是逗号</span>
+</code></pre></div>
+<p>这些代码都是错误的. <code class="highlight"><span class="nb">input</span></code> 是一个函数，我们需要调用它，所以应当写成 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code>；<code>split</code> 是一个方法，我们需要在一个字符串上实施这个操作，所以应当写成 <code class="highlight"><span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span></code>. 至于第三种，逗号 <code>,</code> 并不能用于调用方法，也并没有 <code>split()</code> 这个函数.</p>
+</div>
+<p>剩下的操作就与下面的代码无异了：</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'1'</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">,</span> <span class="s1">'3'</span><span class="p">]</span>
+</code></pre></div>
+<p>这会将列表中的 3 个字符串分别赋给变量 <code>a</code>、<code>b</code> 和 <code>c</code>，即 <code class="highlight"><span class="n">a</span> <span class="o">=</span> <span class="s2">"1"</span></code>、<code class="highlight"><span class="n">b</span> <span class="o">=</span> <span class="s2">"2"</span></code> 和 <code class="highlight"><span class="n">c</span> <span class="o">=</span> <span class="s2">"3"</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">提示</p>
+<p>实际上，这背后涉及到更复杂的知识：<strong>解包</strong>. 我们在这里不会详细讨论什么是解包. 不过读者在编程时，可能会遇到类似的报错：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="hll"><span class="ne">ValueError</span><span class="p">:</span> <span class="n">too</span> <span class="n">many</span> <span class="n">values</span> <span class="n">to</span> <span class="n">unpack</span> <span class="p">(</span><span class="n">expected</span> <span class="mi">3</span><span class="p">)</span>
+</span></code></pre></div>
+<p>这是因为 <code class="highlight"><span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span></code> 的结果列表中有 4 个元素，而左边的变量只有 3 个. Python 无法将 4 个值赋给 3 个变量，所以会报错. 注意到 <code>too many values to unpack</code> 这个错误信息，“unpack” 就是解包的意思. 在进行解包时，左边的变量个数必须和右边的值的个数相同.</p>
+</div>
+<p>我们也可以给 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 方法传递一个参数，指定应该在哪个字符处分割字符串：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"/2024/10//01/"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"//"</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">'/2024/10'</span><span class="p">,</span> <span class="s1">'01/'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"/2024/10//01/"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">''</span><span class="p">,</span> <span class="s1">'2024'</span><span class="p">,</span> <span class="s1">'10'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">'01'</span><span class="p">,</span> <span class="s1">''</span><span class="p">]</span>
+</code></pre></div>
+<p>朴素的想法告诉我们，如果一个字符串中有 <span class="arithmatex">\( n \)</span> 个分隔符，那么 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 方法返回的列表中应当会有 <span class="arithmatex">\( n+1 \)</span> 个元素. 事实也的确如此：在上面的例子中，<code class="highlight"><span class="s2">"/2024/10//01/"</span></code> 中有 5 个 <code>/</code>，所以 <code class="highlight"><span class="n">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span></code> 返回了 6 个元素，每个元素都是原字符串中两个 <code>/</code> 之间的内容，或是字符串开头和 <code>/</code> 之间的内容，或是 <code>/</code> 和字符串结尾之间的内容. 那么，为什么 <code class="highlight"><span class="s1">'A'</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'A'</span><span class="p">)</span></code> 返回 <code class="highlight"><span class="p">[</span><span class="s1">''</span><span class="p">,</span> <span class="s1">''</span><span class="p">]</span></code>，即含有两个空字符串的列表，也就不难理解了.</p>
+<p>最后还要注意，不带参数的 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 方法和带空格参数的 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 方法并不一样：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"1  2   3"</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="p">[</span><span class="s1">'1'</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">,</span> <span class="s1">'3'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"1  2   3"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">'1'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">'3'</span><span class="p">]</span>
+</code></pre></div>
+<p>注意这里的 <code>1</code> <code>2</code> <code>3</code> 之间分别有 2 个和 3 个空格. 若不带参数，<code class="highlight"><span class="n">split</span><span class="p">()</span></code> 方法会将连续的空白符都视作一个空白符处理，这里的空白符可以是空格、tab、换行符等等. 而 <code class="highlight"><span class="n">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">)</span></code> 方法则只是严格地将<strong>一个空格</strong>作为分隔符. 这在某些题目中是会考察的，例如第 3 周作业题：</p>
+<div class="admonition quote">
+<p class="admonition-title">7-6 计算立方体水箱的水重量</p>
+<p>计算立方体水箱的水重量.<br>
+某一水箱的外表是典型的立方体形状，请设计程序计算此水箱装满水后，其中水的重量是多少，要求：长，高，宽的单位是厘米，水的计量单位是吨.</p>
+<p><strong>输入格式：</strong><br>
+在一行中依次输入水箱的长，高，宽，各数据之间<strong>至少</strong>用一个空格隔开. 注意：长，高，宽的单位是厘米，可以是小数.</p>
+<p><strong>输出格式：</strong><br>
+对每一组输入，在一行中输出此水箱所装的水的重量. 注意：水的计量单位是吨，要保留 3 位小数（提示：用 <code class="highlight"><span class="nb">format</span></code> 函数）.</p>
+</div>
+<p>在此我们只需关注输入格式，即“各数据之间<strong>至少</strong>用一个空格隔开”. 这意味着输入的数据之间可能有多个空格，所以使用 <code class="highlight"><span class="n">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">)</span></code> 一定会出错，必须使用不带任何参数的 <code class="highlight"><span class="n">split</span><span class="p">()</span></code>.</p>
+<p>最后，请读者自行尝试将空字符串 <code class="highlight"><span class="s2">""</span></code> 作为参数传递给 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 方法，看看会发生什么.</p>
+<div class="admonition note">
+<p class="admonition-title">提示</p>
+<p>实际上我们还有一些有意思的写法：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"abacadabra"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">''</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">,</span> <span class="s1">'d'</span><span class="p">,</span> <span class="s1">'br'</span><span class="p">,</span> <span class="s1">''</span><span class="p">]</span>
+</code></pre></div>
+<p>这和 <code class="highlight"><span class="s2">"abacadabra"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span></code> 是完全等价的.</p>
+</div>
+<p>我们以一道题目结束这一节：</p>
+<div class="admonition quote">
+<p class="admonition-title">判断题</p>
+<p>当输入是：<code>45,8</code> 时，下面程序的输出结果是 37.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>这是错误的. 读者应当注意到，这里的陷阱在于第 3 行，<code class="highlight"><span class="nb">int</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code> 的意思是将字符串 <code class="highlight"><span class="s1">'a'</span></code> 转换为整数，这与变量 <code>a</code> 毫无关系. 第三行会因为 <code class="highlight"><span class="s1">'a'</span></code> 不能被解析为一个合法的八进制数而报错（回忆一下八进制数可以包含的内容）. 正确的代码应当是 <code class="highlight"><span class="n">c</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code>，这会正确地将变量 <code>a</code> 所容纳的字符串 <code class="highlight"><span class="s2">"45"</span></code> 解析为一个以 8 为基数的整数，即 37.</p>
+<h3 id="str"><code class="highlight"><span class="nb">str</span></code> 的其他常用方法</h3>
+<p><code class="highlight"><span class="nb">str</span></code> 类型还有很多其他的方法，例如 <code class="highlight"><span class="n">strip</span><span class="p">()</span></code>、<code class="highlight"><span class="n">find</span><span class="p">()</span></code>、<code class="highlight"><span class="n">replace</span><span class="p">()</span></code> 等等. 读者可以查阅 Python 官方文档中<a href="https://docs.python.org/zh-cn/3/library/stdtypes.html#string-methods">字符串的方法</a>一节，搭配交互式环境进行实验.</p>
+<p><code class="highlight"><span class="n">find</span><span class="p">()</span></code> 方法接收一个、两个或三个参数：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"programming"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"r"</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"programming"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"r"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"programming"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"r"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"programming"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"r"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"programming"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"r"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span>
+</code></pre></div>
+<p><code class="highlight"><span class="n">find</span><span class="p">()</span></code> 方法在字符串中寻找<strong>第一个</strong>出现的子串，并返回其索引，注意索引是从 0 开始的. 如果没有找到，返回 <code>-1</code>. 第二个参数是可选的，表示从哪个索引开始查找. 第三个参数也是可选的，表示到哪个索引结束查找. 这个范围是左闭右开的. 例如对于字符串 <code class="highlight"><span class="s2">"programming"</span></code>，每个字符的索引如下：</p>
+<div class="highlight"><pre><span></span><code>p  r  o  g  r  a  m  m  i  n  g
+0  1  2  3  4  5  6  7  8  9  10
+</code></pre></div>
+<p>所以对于上面的例子，<code class="highlight"><span class="s2">"programming"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"r"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span></code> 返回 <code>-1</code>，因为 <code class="highlight"><span class="s2">"r"</span></code> 在索引 2 和 4 之间是不存在的（左闭右开！位于索引 4 的 <code>r</code> 并不在查找范围内）. <code class="highlight"><span class="n">find</span><span class="p">()</span></code> 方法也有一个<strong>反向</strong>的版本 <code class="highlight"><span class="n">rfind</span><span class="p">()</span></code>，它会从字符串的末尾开始查找.</p>
+<p><code class="highlight"><span class="n">strip</span><span class="p">()</span></code> 方法会去掉字符串两端的空白符：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"  1,    5   "</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="s1">'1,    5'</span>
+</code></pre></div>
+<p>与 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 方法类似，<code class="highlight"><span class="n">strip</span><span class="p">()</span></code> 方法也可以接收一个参数，表示去掉哪些字符，并且无参数的 <code class="highlight"><span class="n">strip</span><span class="p">()</span></code> 方法和带空格参数的 <code class="highlight"><span class="n">strip</span><span class="p">()</span></code> 方法是不一样的：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"abacadabra"</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span>
+<span class="s1">'bacadabr'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"  </span><span class="se">\t</span><span class="s2">  abacadabra  </span><span class="se">\t</span><span class="s2">  "</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="s1">'abacadabra'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"  </span><span class="se">\t</span><span class="s2">  abacadabra  </span><span class="se">\t</span><span class="s2">  "</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">" "</span><span class="p">)</span>
+<span class="s1">'</span><span class="se">\t</span><span class="s1">  abacadabra  </span><span class="se">\t</span><span class="s1">'</span>
+</code></pre></div>
+<div class="admonition quote">
+<p class="admonition-title">7-1 产生每位数字相同的 n 位数</p>
+<p>读入 2 个正整数 A 和 B，1&lt;=A&lt;=9，1&lt;=B&lt;=10，产生数字 AA...A，一共 B 个 A.</p>
+<p><strong>输入样例 1：</strong>
+<div class="highlight"><pre><span></span><code>  1,  5
+</code></pre></div>
+<strong>输出样例 1：</strong>
+<div class="highlight"><pre><span></span><code>11111
+</code></pre></div>
+<strong>输入样例 2：</strong>
+<div class="highlight"><pre><span></span><code>        3  ,4
+</code></pre></div>
+<strong>输出样例 2：</strong>
+<div class="highlight"><pre><span></span><code>3333
+</code></pre></div></p>
+</div>
+<p>一种（错误的）解是：</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<p>请读者思考为什么这段代码是错误的？应当如何修改？提示：注意输入中可能有多余的空格.</p>
+<div class="admonition note">
+<p class="admonition-title">提示</p>
+<p>我们可以用 <code class="highlight"><span class="nb">dir</span><span class="p">()</span></code> 函数查看一个类型或对象的所有方法：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">'__add__'</span><span class="p">,</span> <span class="s1">'__class__'</span><span class="p">,</span> <span class="s1">'__contains__'</span><span class="p">,</span> <span class="s1">'__delattr__'</span><span class="p">,</span> <span class="s1">'__dir__'</span><span class="p">,</span> <span class="s1">'__doc__'</span><span class="p">,</span> <span class="s1">'__eq__'</span><span class="p">,</span> <span class="s1">'__format__'</span><span class="p">,</span> <span class="s1">'__ge__'</span><span class="p">,</span> <span class="s1">'__getattribute__'</span><span class="p">,</span> <span class="s1">'__getitem__'</span><span class="p">,</span> <span class="s1">'__getnewargs__'</span><span class="p">,</span> <span class="s1">'__getstate__'</span><span class="p">,</span> <span class="s1">'__gt__'</span><span class="p">,</span> <span class="s1">'__hash__'</span><span class="p">,</span> <span class="s1">'__init__'</span><span class="p">,</span> <span class="s1">'__init_subclass__'</span><span class="p">,</span> <span class="s1">'__iter__'</span><span class="p">,</span> <span class="s1">'__le__'</span><span class="p">,</span> <span class="s1">'__len__'</span><span class="p">,</span> <span class="s1">'__lt__'</span><span class="p">,</span> <span class="s1">'__mod__'</span><span class="p">,</span> <span class="s1">'__mul__'</span><span class="p">,</span> <span class="s1">'__ne__'</span><span class="p">,</span> <span class="s1">'__new__'</span><span class="p">,</span> <span class="s1">'__reduce__'</span><span class="p">,</span> <span class="s1">'__reduce_ex__'</span><span class="p">,</span> <span class="s1">'__repr__'</span><span class="p">,</span> <span class="s1">'__rmod__'</span><span class="p">,</span> <span class="s1">'__rmul__'</span><span class="p">,</span> <span class="s1">'__setattr__'</span><span class="p">,</span> <span class="s1">'__sizeof__'</span><span class="p">,</span> <span class="s1">'__str__'</span><span class="p">,</span> <span class="s1">'__subclasshook__'</span><span class="p">,</span> <span class="s1">'capitalize'</span><span class="p">,</span> <span class="s1">'casefold'</span><span class="p">,</span> <span class="s1">'center'</span><span class="p">,</span> <span class="s1">'count'</span><span class="p">,</span> <span class="s1">'encode'</span><span class="p">,</span> <span class="s1">'endswith'</span><span class="p">,</span> <span class="s1">'expandtabs'</span><span class="p">,</span> <span class="s1">'find'</span><span class="p">,</span> <span class="s1">'format'</span><span class="p">,</span> <span class="s1">'format_map'</span><span class="p">,</span> <span class="s1">'index'</span><span class="p">,</span> <span class="s1">'isalnum'</span><span class="p">,</span> <span class="s1">'isalpha'</span><span class="p">,</span> <span class="s1">'isascii'</span><span class="p">,</span> <span class="s1">'isdecimal'</span><span class="p">,</span> <span class="s1">'isdigit'</span><span class="p">,</span> <span class="s1">'isidentifier'</span><span class="p">,</span> <span class="s1">'islower'</span><span class="p">,</span> <span class="s1">'isnumeric'</span><span class="p">,</span> <span class="s1">'isprintable'</span><span class="p">,</span> <span class="s1">'isspace'</span><span class="p">,</span> <span class="s1">'istitle'</span><span class="p">,</span> <span class="s1">'isupper'</span><span class="p">,</span> <span class="s1">'join'</span><span class="p">,</span> <span class="s1">'ljust'</span><span class="p">,</span> <span class="s1">'lower'</span><span class="p">,</span> <span class="s1">'lstrip'</span><span class="p">,</span> <span class="s1">'maketrans'</span><span class="p">,</span> <span class="s1">'partition'</span><span class="p">,</span> <span class="s1">'removeprefix'</span><span class="p">,</span> <span class="s1">'removesuffix'</span><span class="p">,</span> <span class="s1">'replace'</span><span class="p">,</span> <span class="s1">'rfind'</span><span class="p">,</span> <span class="s1">'rindex'</span><span class="p">,</span> <span class="s1">'rjust'</span><span class="p">,</span> <span class="s1">'rpartition'</span><span class="p">,</span> <span class="s1">'rsplit'</span><span class="p">,</span> <span class="s1">'rstrip'</span><span class="p">,</span> <span class="s1">'split'</span><span class="p">,</span> <span class="s1">'splitlines'</span><span class="p">,</span> <span class="s1">'startswith'</span><span class="p">,</span> <span class="s1">'strip'</span><span class="p">,</span> <span class="s1">'swapcase'</span><span class="p">,</span> <span class="s1">'title'</span><span class="p">,</span> <span class="s1">'translate'</span><span class="p">,</span> <span class="s1">'upper'</span><span class="p">,</span> <span class="s1">'zfill'</span><span class="p">]</span>
+</code></pre></div>
+<p><code class="highlight"><span class="nb">str</span></code> 类型有很多方法！当然，这里的绝大多数方法我们都是不会用到的. 如果感兴趣，你可以查看上面给出的官方文档链接，了解每个方法的具体作用.</p>
+</div>
+<h2 id="_4">再回到类型</h2>
+<p>我们可以使用 <code class="highlight"><span class="nb">type</span><span class="p">()</span></code> 函数查看一个值的类型：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">int</span><span class="s1">'&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="s2">"1234"</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">str</span><span class="s1">'&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">float</span><span class="s1">'&gt;</span>
+</code></pre></div>
+<p>从上面的输出粗略来看，<code class="highlight"><span class="nb">type</span><span class="p">()</span></code> 函数告诉我们一个值的类型是什么. 有趣的是，如果我们直接查看 <code class="highlight"><span class="nb">int</span></code>、<code class="highlight"><span class="nb">str</span></code>、<code class="highlight"><span class="nb">float</span></code> 等类型：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">int</span><span class="s1">'&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">str</span><span class="s1">'&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">float</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">float</span><span class="s1">'&gt;</span>
+</code></pre></div>
+<p>这是否说明 <code class="highlight"><span class="nb">type</span></code> 函数返回的东西和 <code class="highlight"><span class="nb">int</span></code>、<code class="highlight"><span class="nb">str</span></code>、<code class="highlight"><span class="nb">float</span></code> 这些类型是一样的呢？实际上，是的，我们可以用 <code class="highlight"><span class="o">==</span></code> 运算符来比较它们：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="s2">"1234"</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">)</span> <span class="o">==</span> <span class="nb">float</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span> <span class="o">==</span> <span class="nb">float</span>
+<span class="kc">False</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">关于 <code class="highlight"><span class="nb">type</span></code></p>
+<p>思考一下这一行代码是如何运作的！</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="s2">"1234"</span><span class="p">)</span>
+<span class="mi">1234</span>
+</code></pre></div>
+<details class="info">
+<summary>答案</summary>
+<p><code class="highlight"><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code> 的结果是 <code class="highlight"><span class="nb">int</span></code>，所以 <code class="highlight"><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="s2">"1234"</span><span class="p">)</span></code> 实际上就是 <code class="highlight"><span class="nb">int</span><span class="p">(</span><span class="s2">"1234"</span><span class="p">)</span></code>.</p>
+</details>
+</div>
+<p>从现在开始，我们要改口了！我们不再使用 <code class="highlight"><span class="nb">int</span></code> 函数、<code class="highlight"><span class="nb">str</span></code> 函数等说法；现在我们称之为 <code class="highlight"><span class="nb">int</span></code> 类型、<code class="highlight"><span class="nb">str</span></code> 类型，等等.</p>
+<p><code class="highlight"><span class="s2">"1234"</span></code> 是一个字符串，它的类型是 <code class="highlight"><span class="nb">str</span></code>，这应当毫无疑问. 我们称 <code class="highlight"><span class="s2">"1234"</span></code> 是一个<strong>对象</strong>，它的<strong>类型</strong>是 <code class="highlight"><span class="nb">str</span></code>——这照应了我们在第一节中提到的说法：Python 是一种<strong>面向对象</strong>的语言. 当我们使用下面的代码：</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="s2">"1234"</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div>
+<p>我们实际上在做的事情，是使用 <code class="highlight"><span class="s2">"1234"</span></code> 这个 <code class="highlight"><span class="nb">str</span></code> 对象，创建了一个新的 <code class="highlight"><span class="nb">int</span></code> 对象 <code class="highlight"><span class="mi">1234</span></code>，并将其赋给了变量 <code class="highlight"><span class="n">b</span></code>. 这就是<strong>类型转换</strong>的过程，在这里，我们将一个 <code class="highlight"><span class="nb">str</span></code> 转换为了一个 <code class="highlight"><span class="nb">int</span></code>. 读者应当注意，<code class="highlight"><span class="s2">"1234"</span></code> 这个 <code class="highlight"><span class="nb">str</span></code> 对象并没有被改变，它仍然是一个 <code class="highlight"><span class="nb">str</span></code>. 我们只是使用它创建了一个新的 <code class="highlight"><span class="nb">int</span></code> 对象 <code class="highlight"><span class="mi">1234</span></code>. 即使无法完全理解这个过程也无所谓，只需知道这个过程是存在的.</p>
+<h3 id="_5">任何值都有类型，而类型也是值</h3>
+<p>我们以一个有趣的例子结束本节：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">builtin_function_or_method</span><span class="s1">'&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">builtin_function_or_method</span><span class="s1">'&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">type</span><span class="s1">'&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">type</span><span class="s1">'&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span> <span class="o">==</span> <span class="nb">type</span>
+<span class="kc">True</span>
+</code></pre></div>
+<p>无需理解这些东西. 重要的是，通过使用 <code class="highlight"><span class="nb">type</span><span class="p">()</span></code>，我们可以查看<strong>任何值</strong>的类型，包括函数、类，甚至是 <code class="highlight"><span class="nb">type</span></code> 类型本身. 类型本身也是一个值，这正是 Python 中<strong>一切皆对象</strong>的体现.</p>
+<p>我们可以这样：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">()</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span><span class="p">()</span>
+<span class="s1">''</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">float</span><span class="p">()</span>
+<span class="mf">0.0</span>
+</code></pre></div>
+<p>当我们像这样使用 <code class="highlight"><span class="nb">int</span></code>、<code class="highlight"><span class="nb">str</span></code>、<code class="highlight"><span class="nb">float</span></code> 等类型时，我们实际上就是在创建一个新的 <code class="highlight"><span class="nb">int</span></code>、<code class="highlight"><span class="nb">str</span></code>、<code class="highlight"><span class="nb">float</span></code> 对象. 创建一个新的数值的默认值是 0，创建一个新的字符串的默认值是空字符串.</p>
+<p>当然，并不是所有的类型都可以这样使用：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">()</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="nb">type</span><span class="p">()</span> <span class="n">takes</span> <span class="mi">1</span> <span class="ow">or</span> <span class="mi">3</span> <span class="n">arguments</span>
+</code></pre></div>
+<p>这已经远远超出了我们的课程范围.</p>
+<div class="admonition tip">
+<p class="admonition-title">提示</p>
+<p>现在我们应当可以理解下面的代码为什么是错误的：</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</code></pre></div>
+<p>因为 <code class="highlight"><span class="nb">input</span></code> 函数是一个 <code class="highlight"><span class="n">builtin_function_or_method</span></code> 类型的值，而不是一个字符串. 它没有 <code class="highlight"><span class="n">split</span></code> 方法. 只有使用 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code>，我们才能得到一个 <code class="highlight"><span class="nb">str</span></code> 类型的值，并在其上调用 <code class="highlight"><span class="n">split</span></code> 方法.</p>
+</div>
+<h2 id="bool"><code class="highlight"><span class="nb">bool</span></code> 类型与逻辑运算</h2>
+<p>在 Python 中，<code class="highlight"><span class="nb">bool</span></code> 表示<strong>布尔值</strong>. <code class="highlight"><span class="nb">bool</span></code> 类型只有两个值：<code>True</code> 和 <code>False</code>. 同 <code class="highlight"><span class="nb">int</span></code>、<code class="highlight"><span class="nb">str</span></code> 等类型一样，<code class="highlight"><span class="nb">bool</span></code> 也是 Python 中的一个<strong>内置类型</strong>. 它被广泛地运用在各种控制结构中，例如 <code class="highlight"><span class="k">if</span></code> 语句、<code class="highlight"><span class="k">while</span></code> 循环等等.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">type</span><span class="s1">'&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">bool</span><span class="s1">'&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">bool</span><span class="s1">'&gt;</span>
+</code></pre></div>
+<p>而提到布尔值，我们就不得不提到另一对极其重要的概念：<strong>真值</strong>（truthy）和<strong>假值</strong>（falsy），我们现在可以理解为，能使得控制结构中的条件成立的值是真值，反之则是假值. 在这里非常非常非常重要的一点是，真值和假值只是一个<strong>概念</strong>，它们并不指代一个具体的值.</p>
+<div class="admonition quote">
+<p class="admonition-title"><a href="https://docs.python.org/zh-cn/3/library/stdtypes.html#truth-value-testing">逻辑值检测</a></p>
+<p>...以下基本完整地列出了具有假值的内置对象：</p>
+<ul>
+<li>被定义为假值的常量: <code>None</code> 和 <code>False</code></li>
+<li>任何数值类型的零: <code class="highlight"><span class="mi">0</span></code>, <code class="highlight"><span class="mf">0.0</span></code>, <code class="highlight"><span class="mi">0</span><span class="n">j</span></code>, <code class="highlight"><span class="n">Decimal</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></code>, <code class="highlight"><span class="n">Fraction</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></code></li>
+<li>空的序列和多项集: <code class="highlight"><span class="s1">''</span></code>, <code class="highlight"><span class="p">()</span></code>, <code class="highlight"><span class="p">[]</span></code>, <code class="highlight"><span class="p">{}</span></code>, <code class="highlight"><span class="nb">set</span><span class="p">()</span></code>, <code class="highlight"><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></code></li>
+</ul>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># 把这里的 0 换成上面的任何一个假值，效果都是一样的</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"这一句永远不会打印"</span><span class="p">)</span>
+</code></pre></div>
+<p>如果将任何假值转换为 <code class="highlight"><span class="nb">bool</span></code> 类型，就会得到一个 <code>False</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">([])</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="kc">False</span>
+</code></pre></div>
+<p>而真值则是除了假值之外的所有值. 任何非零的数，非空的字符串、列表、元组、字典、集合，甚至是函数、类型等等，都是真值. 例如：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="mf">4.9406565e-324</span><span class="p">)</span>  <span class="c1"># 最接近 0 的正浮点数</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">" "</span><span class="p">)</span>     <span class="c1"># 一个空格</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+<span class="kc">True</span>
+</code></pre></div>
+<p>同样的，这些对变量也是适用的：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="kc">True</span>
+</code></pre></div>
+<div class="admonition quote">
+<p class="admonition-title">判断题</p>
+<p>在 Python 中，<code class="highlight"><span class="k">if</span></code> 语句的条件必须是一个布尔值.</p>
+</div>
+<p>当然，我们知道这是错误的. 条件可以是任何值，只要它能被转换为布尔值即可.</p>
+<div class="admonition quote">
+<p class="admonition-title">判断题</p>
+<p><code class="highlight"><span class="nb">bool</span><span class="p">(</span><span class="n">FALSE</span><span class="p">)</span></code> 的返回值是 <code>True</code>.</p>
+</div>
+<p>这是一道错题，即题目本身是错误的. 它既不是 <code class="highlight"><span class="nb">bool</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span></code>（注意大小写！），也不是 <code class="highlight"><span class="nb">bool</span><span class="p">(</span><span class="s2">"FALSE"</span><span class="p">)</span></code>. 在这里 <code>FALSE</code> 只会被作为一个变量名来解释，所以结果完全取决于 <code>FALSE</code> 这个变量的值：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">FALSE</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="n">FALSE</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">FALSE</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="n">FALSE</span><span class="p">)</span>
+<span class="kc">True</span>
+</code></pre></div>
+<p>当然，如果 <code>FALSE</code> 没有被定义，那么会产生一个 <code class="highlight"><span class="ne">NameError</span></code> 错误.</p>
+<hr />
+<p>我们举个例子：如何将字符串 <code class="highlight"><span class="s2">"True"</span></code> 和 <code class="highlight"><span class="s2">"False"</span></code> 转换为布尔值？直接使用 <code class="highlight"><span class="nb">bool</span></code> 作转换是行不通的：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">"True"</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">"False"</span><span class="p">)</span>
+<span class="kc">True</span>
+</code></pre></div>
+<p>这是因为任何非空的字符串都是真值，当然包括 <code class="highlight"><span class="s2">"False"</span></code> 这个字符串. 对于这种情况，简单地使用 <code class="highlight"><span class="k">if</span></code> 语句来判断即可：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"True"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">"True"</span><span class="p">:</span>
+<span class="o">...</span>     <span class="n">b</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="o">...</span> <span class="k">elif</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">"False"</span><span class="p">:</span>
+<span class="o">...</span>     <span class="n">b</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">"Invalid input"</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="kc">True</span>
+</code></pre></div>
+<h3 id="0-false"><code class="highlight"><span class="mi">0</span></code> 不是 <code>False</code></h3>
+<p>这个小节标题称作 <code class="highlight"><span class="nb">int</span></code> 不是 <code class="highlight"><span class="nb">bool</span></code> 也许会更恰当一些. 我们已经知道 <code class="highlight"><span class="mi">0</span></code> 是一个假值，但它<strong>不是</strong> <code class="highlight"><span class="kc">False</span></code>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">0</span> <span class="o">==</span> <span class="kc">False</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">0</span> <span class="ow">is</span> <span class="kc">False</span>
+<span class="kc">False</span>
+</code></pre></div>
+<p><code class="highlight"><span class="o">==</span></code> 运算符是<strong>值比较</strong>，它会比较两个值是否相等. 而 <code class="highlight"><span class="ow">is</span></code> 运算符是<strong>身份比较</strong>，它会比较两个值是否是同一个对象. 当然，我们无需理解 <code class="highlight"><span class="ow">is</span></code> 运算符的具体细节，只需知道，在这里我们强调的是：<code class="highlight"><span class="mi">0</span></code> 是一个 <code class="highlight"><span class="nb">int</span></code> 类型的值，而 <code class="highlight"><span class="kc">False</span></code> 是一个 <code class="highlight"><span class="nb">bool</span></code> 类型的值. 它们是不同的类型. 我们很快会看到这意味着什么.</p>
+<h3 id="bool_1"><code class="highlight"><span class="nb">bool</span></code> 作为数字，以及逻辑运算</h3>
+<p>在 Python 中，<code class="highlight"><span class="nb">bool</span></code> 类型的值也可以被<strong>当作</strong>数字来使用. <code>True</code> 被当作 <code class="highlight"><span class="mi">1</span></code>，<code>False</code> 被当作 <code class="highlight"><span class="mi">0</span></code>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kc">True</span> <span class="o">+</span> <span class="kc">True</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kc">True</span> <span class="o">+</span> <span class="kc">False</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kc">False</span> <span class="o">+</span> <span class="kc">False</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kc">True</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kc">True</span> <span class="o">*</span> <span class="kc">False</span>
+<span class="mi">0</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">关于 <code class="highlight"><span class="nb">bool</span></code></p>
+<p>实际上 <code class="highlight"><span class="nb">bool</span></code> 类型的值是 <code class="highlight"><span class="nb">int</span></code> 类型的子类，但这并不是我们需要关心的事情.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+<span class="kc">True</span>
+</code></pre></div>
+</div>
+<p>逻辑运算符 <code class="highlight"><span class="ow">not</span></code>、<code class="highlight"><span class="ow">and</span></code>、<code class="highlight"><span class="ow">or</span></code> 是 Python 中表示逻辑运算的关键字，优先级按这个顺序递减.</p>
+<p><code class="highlight"><span class="ow">not</span></code> 计算一个值的<strong>逻辑非</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="ow">not</span> <span class="kc">True</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="ow">not</span> <span class="kc">False</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="ow">not</span> <span class="o">-</span><span class="mi">1</span>
+<span class="kc">False</span>
+</code></pre></div>
+<p>它会将一个真值转换为 <code>False</code>，将一个假值转换为 <code>True</code>，所以 <code class="highlight"><span class="ow">not</span></code> 运算符的结果永远是一个 <code class="highlight"><span class="nb">bool</span></code> 类型的值.</p>
+<p>当然，这没什么意思. 真正有意思的是 <code class="highlight"><span class="ow">and</span></code> 和 <code class="highlight"><span class="ow">or</span></code> 运算符，它们分别计算<strong>逻辑与</strong>和<strong>逻辑或</strong>. 我们应当已经知道逻辑与和逻辑或是如何工作的，不过也许，实际上，它们真正的工作方式并不是我们想象的那样——不妨来看看 Python 文档中的<a href="https://docs.python.org/zh-cn/3/library/stdtypes.html#boolean-operations-and-or-not">布尔运算</a>一节：</p>
+<div class="admonition quote">
+<p class="admonition-title"><a href="https://docs.python.org/zh-cn/3/library/stdtypes.html#boolean-operations-and-or-not">布尔运算 --- <code>and</code>, <code>or</code>, <code>not</code></a></p>
+<p>这些属于布尔运算，按优先级升序排列：</p>
+<table>
+<thead>
+<tr>
+<th><strong>运算</strong></th>
+<th><strong>结果：</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="highlight"><span class="n">x</span> <span class="ow">or</span> <span class="n">y</span></code></td>
+<td>如果 <em>x</em> 为真值，则 <em>x</em>，否则 <em>y</em></td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="n">x</span> <span class="ow">and</span> <span class="n">y</span></code></td>
+<td>如果 <em>x</em> 为假值，则 <em>x</em>，否则 <em>y</em></td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="ow">not</span> <span class="n">x</span></code></td>
+<td>如果 <em>x</em> 为假值，则 <code>True</code>，否则 <code>False</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 同时，就在这一节的下面，[比较运算](https://docs.python.org/zh-cn/3/library/stdtypes.html#comparisons)一节中，我们可以看到：
+
+!!! quote "[比较运算](https://docs.python.org/zh-cn/3/library/stdtypes.html#comparisons)"
+
+    在 Python 中有八种比较运算符。 它们的优先级相同（比布尔运算的优先级高）。 比较运算可以任意串连；例如，`#!python x < y <= z` 等价于 `#!python x < y and y <= z`，前者的不同之处在于 *y* 只被求值一次（但在两种情况下当 `#!python x < y` 结果为假值时 *z* 都不会被求值）。
+-->
+
+<p>我们来看一个例子：</p>
+<div class="admonition quote">
+<p class="admonition-title">判断题</p>
+<p>表达式 <code class="highlight"><span class="mi">3</span> <span class="ow">and</span> <span class="mi">0</span> <span class="ow">and</span> <span class="s2">"hello"</span></code> 的值是 <code>False</code>.</p>
+</div>
+<p>我们来分析这个表达式：</p>
+<ol>
+<li>逻辑与运算是从左到右进行的，所以上面的表达式等价于 <code class="highlight"><span class="p">(</span><span class="mi">3</span> <span class="ow">and</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"hello"</span></code>.</li>
+<li>首先来看 <code class="highlight"><span class="mi">3</span> <span class="ow">and</span> <span class="mi">0</span></code>. 由于 <code class="highlight"><span class="mi">3</span></code> 是真值，所以根据上面的表格，它的结果是 <code class="highlight"><span class="mi">0</span></code>.</li>
+<li>然后再看 <code class="highlight"><span class="mi">0</span> <span class="ow">and</span> <span class="s2">"hello"</span></code>. 由于 <code class="highlight"><span class="mi">0</span></code> 是假值，所以根据上面的表格，它的结果是 <code class="highlight"><span class="mi">0</span></code>.</li>
+<li>最后，表达式的值是 <code class="highlight"><span class="mi">0</span></code>，而不是 <code>False</code>. 所以这道题是错误的.</li>
+</ol>
+<p>注意到这里体现了 <code class="highlight"><span class="mi">0</span></code> 不是 <code>False</code> 的概念. 在这里最为重要的一点是，尽管这些值在许多方面都可能表现得很相似，但归根结底，它们仍然是不同的类型，不可混为一谈. 这也是我们在本节中反复强调的：<strong>类型和值是绑定的</strong>.</p>
+<h2 id="none"><code>None</code></h2>
+<p><code>None</code> 是 Python 中的一个特殊值，表示<strong>空值</strong>. 它是 <code>NoneType</code> 类型的唯一一个值. <code>None</code> 通常用于表示一个函数没有返回值，或者一个变量存在但没有被赋值. 例如：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="hll"><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+</span><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="kc">None</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">NoneType</span><span class="s1">'&gt;</span>
+</code></pre></div>
+<p>注意这里的第二行，交互式环境中没有任何输出. 这是因为交互式环境不会<strong>显示</strong> <code class="highlight"><span class="kc">None</span></code> 的值. 但这里又没有报错——表明 <code>a</code> 这个变量是确实存在的. <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 函数会正常<strong>输出</strong> <code class="highlight"><span class="kc">None</span></code>.</p>
+<p>同时，<code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 函数的返回值就是 <code class="highlight"><span class="kc">None</span></code>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, world!"</span><span class="p">)</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">world</span><span class="err">!</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="kc">None</span>
+</code></pre></div>
+<p>或者，一个更有意思的写法是：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span>
+<span class="kc">None</span>
+<span class="kc">None</span>
+</code></pre></div>
+<p>读者应该可以理解这段代码为什么会输出两个 <code class="highlight"><span class="kc">None</span></code> 了.</p>
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js"
+        data-repo="FrightenedFoxCN/python2024aw"
+        data-repo-id="R_kgDOMv5ryg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMv5rys4CiXhG"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+var giscus = document.querySelector("script[src*=giscus]")
+
+// Set palette on initial load
+var palette = __md_get("__palette")
+if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate"
+    ? "transparent_dark"
+    : "light"
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme) 
+}
+
+// Register event handlers after documented loaded
+document.addEventListener("DOMContentLoaded", function() {
+    var ref = document.querySelector("[data-md-component=palette]")
+    ref.addEventListener("change", function() {
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame")
+        frame.contentWindow.postMessage(
+        { giscus: { setConfig: { theme } } },
+        "https://giscus.app"
+        )
+    }
+    })
+})
+</script>
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

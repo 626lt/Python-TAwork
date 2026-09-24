@@ -1,0 +1,1441 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../typing/">
+      
+      
+        <link rel="next" href="../complex_types/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>程序的控制流 - 2026 年 Python 秋冬学习资料</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="2026 年 Python 秋冬学习资料" class="md-header__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2026 年 Python 秋冬学习资料
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              程序的控制流
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  常见问题
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  实验文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../interesting-addendum/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  一些有意思的补充资料
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="2026 年 Python 秋冬学习资料" class="md-nav__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    2026 年 Python 秋冬学习资料
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    常见问题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    类型与值
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    程序的控制流
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    程序的控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        知识点回顾
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="知识点回顾">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分支语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        循环语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        函数定义及其调用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        变量的作用域
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        函数也是一种变量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        迭代器和惰性求值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../complex_types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    复合类型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    map 函数与列表推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdlib/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    标准库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exam_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于实验考试的提示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    理论考前常见问题总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../labs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验文档
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/00env/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境配置指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../interesting-addendum/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一些有意思的补充资料
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    一些有意思的补充资料
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        知识点回顾
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="知识点回顾">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分支语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        循环语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        函数定义及其调用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        变量的作用域
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        函数也是一种变量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        迭代器和惰性求值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">程序的控制流</h1>
+<h2 id="_2">知识点回顾</h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>此处仅对一些易忽视的、容易出错的知识点和常用的知识点进行回顾，<strong>不能</strong>代替课本和课件的学习！同时，我们在这里会提及的东西可能会超出标题所框定的范围，但尽可能限制在课程范围之内，如果有超出范围的内容，将放在蓝色方框中以示提醒.</p>
+</div>
+<p>所谓程序的控制流（control flow），就是程序按照何种方式和顺序执行. Python 的执行是“一行一行”完成的. 也就是说，当你写下代码时，应当也能够想象出程序按照怎么样的方法进行执行. 在计算机的世界中没有魔法，所以程序的执行是可靠的、可以解释的，这是我们希望读者记住的一点.</p>
+<div class="admonition note">
+<p class="admonition-title">表达式、语句、子句</p>
+<p>在这里，为了描述的清晰性，我们会引入几个术语. 表达式（expression）是我们通常说的一个“算式”，它能够给出一个值. 语句（statement）是程序执行过程中会遇到的每一行内容，它会一行一行地被执行. 子句（substatement）是一类在某个语句内部的语句，它们往往依赖于最外层的语句存在，如果独立存在则没有明确的语义. 我们会提到 <code class="highlight"><span class="k">else</span></code> “子句”和 <code class="highlight"><span class="k">if</span></code> “语句”，就是出于这样的考量.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">空语句</p>
+<p>在 Python 中，有一个表示“什么也不做”的语句，叫做 <code class="highlight"><span class="k">pass</span></code>. 当我们直接写下这个语句时，什么也不会发生. 它只是一个占位符，用来保证在应该有语句的地方确实有语句存在而已.</p>
+</div>
+<h3 id="_3">分支语句</h3>
+<p>有一个非常经典的笑话：</p>
+<blockquote>
+<ul>
+<li>甲：“回来的时候帮我带四个包子，如果看到了卖西瓜的，就买一个。”</li>
+<li>乙：“好的。”</li>
+<li>……</li>
+<li>甲：“为什么你只买了一个包子？”</li>
+<li>乙：“因为我看到了卖西瓜的。”</li>
+</ul>
+</blockquote>
+<p>这时甲和乙对这几句话的理解出现了分歧. 但无论分歧是什么，这里都出现了一个判断：是否出现卖西瓜的人会影响买回来的东西是什么. 在程序编写的过程中，我们也会遇到类似的问题. 而 <code class="highlight"><span class="k">if</span></code> 语句就是用来查看是否遇到这种条件的：</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Zero!"</span><span class="p">)</span>
+</code></pre></div>
+<p>在出现 <code class="highlight"><span class="k">if</span></code> 语句的地方，我们注意到后面出现了一个冒号，后面的语句则带有一些缩进. 这是语句块（block）的指示：同一级缩进中的语句会被理解成一整块语句，而冒号指示一个语句块的开始. 我们可以将 <code class="highlight"><span class="k">if</span></code> 语句的执行拆解成以下几个部分：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">statement1</span><span class="o">&gt;</span>
+<span class="hll"><span class="k">if</span> <span class="o">&lt;</span><span class="n">cond_expr</span><span class="o">&gt;</span><span class="p">:</span>
+</span>    <span class="o">&lt;</span><span class="n">statement2</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">statement3</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>其中的 <code>&lt;statement&gt;</code> 表示任意语句序列. 这个程序会按顺序执行，在执行完 <code>&lt;statement1&gt;</code> 之后，因为出现了 <code class="highlight"><span class="k">if</span></code> 语句，它会计算 <code>&lt;cond_expr&gt;</code> 的值，并且将其理解成布尔值，如果它的值为真，则执行 <code>&lt;statement2&gt;</code>，否则将其视作已经完成. 最后，它会回归原本线性的控制流，进入 <code>&lt;statement3&gt;</code> 执行.</p>
+<p>注意到，<code>&lt;statement2&gt;</code> 的执行是根据 <code>&lt;cond_expr&gt;</code> 的值的真假性决定的. 在这里，根据它的真假性，程序的执行流发生了分叉，这就是为什么我们称之为分支语句. 而实际上，如果 <code>&lt;cond_expr&gt;</code> 的值为假，我们也可以使用 <code class="highlight"><span class="k">else</span></code> 子句来使得程序做一些事情：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">statement1</span><span class="o">&gt;</span>
+<span class="k">if</span> <span class="o">&lt;</span><span class="n">cond_expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement2</span><span class="o">&gt;</span>
+<span class="hll"><span class="k">else</span><span class="p">:</span>
+</span>    <span class="o">&lt;</span><span class="n">statement3</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">statement4</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>在执行完 <code>&lt;statement1&gt;</code> 之后，程序进入 <code class="highlight"><span class="k">if</span></code> 语句的执行. 如果 <code>&lt;cond_expr&gt;</code> 为真，那么它会执行 <code>&lt;statement2&gt;</code>，这与我们前面的叙述是一致的；而如果 <code>&lt;cond_expr&gt;</code> 为假，那么它会执行 <code>&lt;statement3&gt;</code>，这是我们新增的 <code class="highlight"><span class="k">else</span></code> 子句表达的. 然后，在执行了 <code>&lt;statement2&gt;</code> <strong>或者</strong> <code>&lt;statement3&gt;</code> 之后，它会回归正常的控制流，执行 <code>&lt;statement4&gt;</code>.</p>
+<p>敏锐的读者可能会注意到，只用 <code class="highlight"><span class="k">if</span></code> 语句就完全可以实现上面的语句的效果，我们可以这样来改写上面的程序：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">statement1</span><span class="o">&gt;</span>
+<span class="k">if</span> <span class="o">&lt;</span><span class="n">cond_expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement2</span><span class="o">&gt;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="o">&lt;</span><span class="n">cond_expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement3</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">statement4</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>这样的程序在实际执行的时候结果与上面的代码等价. 但是，两者的控制流并不相同——如果画出其执行流程图的话，会发现它进行了两次对 <code>&lt;cond_expr&gt;</code> 的计算和分支，而非像上面的代码那样只执行了一次计算和分支. 类似地，我们也可以用 <code class="highlight"><span class="k">if</span> <span class="o">...</span> <span class="k">else</span> <span class="o">...</span></code> 来改写最开始的 <code class="highlight"><span class="k">if</span></code> 语句：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">statement1</span><span class="o">&gt;</span>
+<span class="k">if</span> <span class="o">&lt;</span><span class="n">cond_expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement2</span><span class="o">&gt;</span>
+<span class="hll"><span class="k">else</span><span class="p">:</span>
+</span><span class="hll">    <span class="k">pass</span>
+</span><span class="o">&lt;</span><span class="n">statement3</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>也就是说，默认地，没有 <code>else</code> 语句就意味着在这种情况下什么也不做. 那么，如果有多个条件呢？我们通常会需要在 <code class="highlight"><span class="k">else</span></code> 子句当中嵌套地使用 <code class="highlight"><span class="k">if</span> <span class="o">...</span> <span class="k">else</span> <span class="o">...</span></code> 语句，比方说：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">statement1</span><span class="o">&gt;</span>
+<span class="k">if</span> <span class="o">&lt;</span><span class="n">cond_expr1</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement2</span><span class="o">&gt;</span>
+<span class="k">else</span><span class="p">:</span>
+<span class="hll">    <span class="k">if</span> <span class="o">&lt;</span><span class="n">cond_expr2</span><span class="o">&gt;</span><span class="p">:</span>
+</span><span class="hll">        <span class="o">&lt;</span><span class="n">statement3</span><span class="o">&gt;</span>
+</span><span class="hll">    <span class="k">else</span><span class="p">:</span>
+</span><span class="hll">        <span class="o">&lt;</span><span class="n">statement4</span><span class="o">&gt;</span>
+</span><span class="o">&lt;</span><span class="n">statement5</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>这样的嵌套当然也是可以的. 但是，对于以缩进分隔语句块的方式来说，这样的写法也是并不美观的. 因此，Python 的设计者发明了 <code class="highlight"><span class="k">elif</span></code>，它是 else if 的缩写：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">statement1</span><span class="o">&gt;</span>
+<span class="k">if</span> <span class="o">&lt;</span><span class="n">cond_expr1</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement2</span><span class="o">&gt;</span>
+<span class="k">elif</span> <span class="o">&lt;</span><span class="n">cond_expr2</span><span class="o">&gt;</span><span class="p">:</span>
+<span class="hll">    <span class="o">&lt;</span><span class="n">statement3</span><span class="o">&gt;</span>
+</span><span class="hll"><span class="k">else</span><span class="p">:</span>
+</span><span class="hll">    <span class="o">&lt;</span><span class="n">statement4</span><span class="o">&gt;</span>
+</span><span class="hll"><span class="o">&lt;</span><span class="n">statement5</span><span class="o">&gt;</span>
+</span></code></pre></div>
+<p>当然，同样可以省略掉 <code class="highlight"><span class="k">else</span></code> 语句，这和将 <code>&lt;statement4&gt;</code> 替换成 <code class="highlight"><span class="k">pass</span></code> 是完全等价的. 这个语句会首先判断 <code>&lt;cond_expr1&gt;</code> 是否为真，如果为真，则执行 <code>&lt;statement2&gt;</code>. 然后，在 <code>&lt;cond_expr1&gt;</code> 为假的情况下，它会对 <code>&lt;cond_expr2&gt;</code> 进行判断. 如果为真，则执行 <code>&lt;statement3&gt;</code>，否则执行 <code>&lt;statement4&gt;</code>. 在完成这一切操作之后，它会回归 <code>&lt;statement5&gt;</code> 的执行.</p>
+<div class="admonition note">
+<p class="admonition-title">一点说明</p>
+<p>此后我们将省略上面代码中的 <code>&lt;statement1&gt;</code> 和 <code>&lt;statement5&gt;</code>，将 <code>&lt;statement1&gt;</code> 执行完毕称作<strong>进入语句的执行</strong>，将进入 <code>&lt;statement5&gt;</code> 执行称作<strong>完成语句的执行</strong>或者<strong>终止语句的执行</strong>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><code class="highlight"><span class="k">match</span></code> 语句</p>
+<p><code class="highlight"><span class="k">match</span></code> 语句是 Python 3.10 版本新增的一种语句，它的功能被称为“模式匹配”（pattern matching）. 实际上，它也可以被视作是一种分支语句，而且是一种更紧凑，更强大的分支语句. 它的语法结构如下：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">statement1</span><span class="o">&gt;</span>
+<span class="k">match</span> <span class="o">&lt;</span><span class="n">subject_expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="k">case</span> <span class="o">&lt;</span><span class="n">patterns</span><span class="o">&gt;</span> <span class="p">[</span><span class="k">if</span> <span class="o">&lt;</span><span class="n">cond_expr</span><span class="o">&gt;</span><span class="p">]:</span>
+        <span class="o">&lt;</span><span class="n">statement2</span><span class="o">&gt;</span>
+    <span class="k">case</span> <span class="o">...</span>
+<span class="o">&lt;</span><span class="n">statement3</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>其中中括号表示这一部分是可选的. 在一个 <code class="highlight"><span class="k">match</span></code> 语句中，可以插入多个 <code class="highlight"><span class="k">case</span></code> 子句. 它会根据 <code>&lt;subject_expr&gt;</code> 的值找到第一个满足 <code>&lt;patterns&gt;</code> 且 <code>&lt;cond_expr&gt;</code> 为真的 <code class="highlight"><span class="k">case</span></code> 子句并执行其下的语句块. 而 <code>&lt;pattern&gt;</code> 则有许多种，其中可以实现赋值操作等操作. 有兴趣的读者可以阅读<a href="https://docs.python.org/3/reference/compound_stmts.html#patterns">官方描述</a>以获得进一步的理解.</p>
+</div>
+<p><code class="highlight"><span class="k">if</span></code> 语句的另一种用法是用在一个表达式中. 一个表达式可以形如：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">expr1</span><span class="o">&gt;</span> <span class="k">if</span> <span class="o">&lt;</span><span class="n">cond_expr</span><span class="o">&gt;</span> <span class="k">else</span> <span class="o">&lt;</span><span class="n">expr2</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>这个表达式的值在 <code>&lt;cond_expr&gt;</code> 为真时会被计算成 <code>&lt;expr1&gt;</code>，反之则会被计算成 <code>&lt;expr2&gt;</code>.</p>
+<h3 id="_4">循环语句</h3>
+<p>循环语句有两种类型，<code class="highlight"><span class="k">for</span></code> 语句和 <code class="highlight"><span class="k">while</span></code> 语句. <code class="highlight"><span class="k">while</span></code> 语句对于编程新手来说比较好理解，它的基本语法如下：</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="o">&lt;</span><span class="n">cond_expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>当 <code>&lt;cond_expr&gt;</code> 为真时，它会执行 <code>&lt;statements&gt;</code>. 在执行结束之后，它会再次判断 <code>&lt;cond_expr&gt;</code> 是否为真，如果为真，则再次执行 <code>&lt;statements&gt;</code>，直到 <code>&lt;cond_expr&gt;</code> 为假为止.</p>
+<p>另外，我们还有两个作用在控制流上的执行，称作 <code class="highlight"><span class="k">break</span></code> 语句和 <code class="highlight"><span class="k">continue</span></code> 语句. 这两个语句分别会终止循环语句的执行和终止当前 <code>&lt;statements&gt;</code> 中的剩余部分，直接进入下一次 <code>&lt;cond_expr&gt;</code> 的判断流程. 实际上，可以使用 <code class="highlight"><span class="k">break</span></code> 语句和 <code class="highlight"><span class="k">if</span></code> 语句的组合来实现循环，这往往对新手来说是比较清晰的：</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement1</span><span class="o">&gt;</span>    <span class="c1"># 我们需要循环执行的是哪些东西？</span>
+    <span class="k">if</span> <span class="o">&lt;</span><span class="n">cond_expr</span><span class="o">&gt;</span><span class="p">:</span> <span class="c1"># 何时应该终止循环？</span>
+        <span class="k">break</span>
+    <span class="o">&lt;</span><span class="n">statement2</span><span class="o">&gt;</span>    <span class="c1"># 如果还没有终止循环，那么还需要进行哪些处理？</span>
+</code></pre></div>
+<p>不够熟悉的读者可以尝试用这种形式和想法先尝试写一些代码，这往往是比较牢靠的.</p>
+<div class="admonition warning">
+<p class="admonition-title">循环变量的初始化</p>
+<p>通常，我们需要在一个循环中记录某些东西. 这些东西有时应该在循环开始时清空，有时则不应该清空，这是一个非常常见的问题，需要仔细思考.</p>
+</div>
+<p>另外，和 <code class="highlight"><span class="k">if</span></code> 语句类似，可以在 <code class="highlight"><span class="k">while</span></code> 语句后边加上 <code class="highlight"><span class="k">else</span></code> 子句：</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="o">&lt;</span><span class="n">cond_expr</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement1</span><span class="o">&gt;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement2</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>如果<strong>循环正常结束</strong>，则 <code>&lt;statement2&gt;</code> 会在循环结束后被执行一次. 所谓的循环正常结束，指的就是 <code>&lt;cond_expr&gt;</code> 为假结束循环的情况. 通过 <code class="highlight"><span class="k">break</span></code> 语句跳出循环时不会执行 <code>&lt;statement2&gt;</code>，而 <code class="highlight"><span class="k">continue</span></code> 不会直接终止循环，自然不会引发循环的非正常结束.</p>
+<div class="admonition notes">
+<p class="admonition-title">对 C 语言基础者的提示</p>
+<p>学过 C 语言的读者可能会想，在 Python 中是否存在 <code class="highlight"><span class="k">do</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">...</span></code> 语句这样的东西呢. 答案是否定的. 但所幸，使用上面 <code class="highlight"><span class="k">while</span> <span class="kc">True</span></code> 的范式完全可以实现一个自己的 <code class="highlight"><span class="k">do</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">...</span></code> 形式的循环，读者可以自行思考其实现.</p>
+</div>
+<p><code class="highlight"><span class="k">for</span></code> 语句的功能相较 <code class="highlight"><span class="k">while</span></code> 语句更为强大，我们接下来解释它的含义. 它的基本语法如下：</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="o">&lt;</span><span class="n">varname</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">iter_obj</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>同样注意这里的缩进. 在这里，我们会碰到一个新的概念，称作迭代（iteration）. 上边的 <code>&lt;iter_obj&gt;</code> 就是一个可迭代的对象. </p>
+<div class="admonition notes">
+<p class="admonition-title">关于迭代器</p>
+<p>所谓迭代，顾名思义，就是“反复代入”. 而可迭代也就是说，我们可以“从中”拿到一些东西：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">iter</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="o">&lt;</span><span class="n">list_iterator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x0000018840F12F20</span><span class="o">&gt;</span>
+</code></pre></div>
+<p><code>at</code> 后边的东西是内存地址，每次执行都会有差异，无需在意. 需要注意的是，我们得到了一个 <code>list_iterator</code> 类的对象. 所谓的迭代器（iterator）是 Python 用来遍历一组数据的工具. 我们可以在上面调用 <code class="highlight"><span class="nb">next</span></code> 函数来访问其中的下一个对象：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="hll"><span class="o">&gt;&gt;&gt;</span> <span class="n">a_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</span><span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">a_iter</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">a_iter</span><span class="p">)</span>
+<span class="mi">2</span>
+</code></pre></div>
+<p>注意其中的第二行，我们为这个列表创建了一个迭代器. 在迭代器中记录了两个信息，一是迭代目前所在的位置，而是所需迭代的所有内容的位置. 在两次调用 <code class="highlight"><span class="nb">next</span></code> 函数时，调用的结果不同，这是因为迭代器内部记录的信息在 <code class="highlight"><span class="nb">next</span></code> 函数的调用过程中发生了改变.</p>
+</div>
+<p>那么，一个问题是，哪些东西是可迭代的，哪些东西是不可迭代的？就我们已经学过和将要学到的类型而言，<code class="highlight"><span class="nb">str</span></code>，<code class="highlight"><span class="nb">list</span></code>，<code class="highlight"><span class="nb">tuple</span></code>，<code class="highlight"><span class="nb">set</span></code>，<code class="highlight"><span class="nb">dict</span></code> 是所有我们需要掌握的可迭代的类型. 这些类型从形式上看自然就有“可迭代”的特征：里边有元素，可以一个一个取出来访问. 另一种特殊的可迭代类型是 <code class="highlight"><span class="nb">range</span></code> 类型：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">range</span><span class="s1">'&gt;</span>
+</code></pre></div>
+<p>它最多可以有三个参数：</p>
+<ul>
+<li>一个参数的情况，<code class="highlight"><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></code> 会遍历从 <code>0</code> 到 <code>n - 1</code> 的整数；</li>
+<li>两个参数的情况，<code class="highlight"><span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span></code> 会遍历从 <code>m</code> 到 <code>n - 1</code> 的整数；</li>
+<li>三个参数的情况，<code class="highlight"><span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span></code> 会以 <code>k</code> 为步长遍历 <code>m</code> 到最大的<strong>小于</strong> <code>n</code> 的整数.</li>
+</ul>
+<p>例如，<code>range(0, 12, 2)</code> 会返回六个元素，分别为 <code>0, 2, 4, 6, 8, 10</code>.</p>
+<div class="admonition notes">
+<p class="admonition-title">解包</p>
+<p><code>range</code> 类型的对象和迭代器也可以被 <code>*</code> 解包，例如：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="mi">0</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">8</span> <span class="mi">10</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="mi">0</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">8</span> <span class="mi">10</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="nb">iter</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span>
+</code></pre></div>
+</div>
+<p>在有了上面这些关于迭代器的介绍之后，<code class="highlight"><span class="k">for</span></code> 循环的语义就不难理解了，它首先会在 <code>&lt;iter_obj&gt;</code> 上调用 <code class="highlight"><span class="nb">iter</span></code> 函数，得到一个对应的迭代器；然后，将 <code>&lt;var_name&gt;</code> 赋值成在这个迭代器上调用 <code class="highlight"><span class="nb">next</span></code> 函数的结果，执行 <code>&lt;statements&gt;</code>. 在执行完之后，如果迭代器中还有剩余的内容，那么它继续调用 <code class="highlight"><span class="nb">next</span></code> 函数，直到执行结束.</p>
+<div class="admonition notes">
+<p class="admonition-title">关于迭代器的更多补充</p>
+<p>在一个迭代器上调用 <code class="highlight"><span class="nb">iter</span></code> 函数仍然会得到一个迭代器类型的对象：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">iter</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="o">&lt;</span><span class="n">list_iterator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x0000018840F110F0</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="nb">iter</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])))</span>
+<span class="o">&lt;</span><span class="n">list_iterator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x0000018840F12080</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>在迭代器中不再有更多元素的时候，它会抛出一个 <code class="highlight"><span class="ne">StopIteration</span></code> 类型的异常（或者用通俗的说法，就是报错），告诉程序现在已经没有东西可迭代了. 关于异常的更多信息，可以参见关于错误处理和恢复的补充材料（暂无）.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">StopIteration</span>
+</code></pre></div>
+<p>因此，<code>for</code> 循环实际上相当于执行下面的代码：</p>
+<div class="highlight"><pre><span></span><code><span class="n">_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="o">&lt;</span><span class="n">iter_obj</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">_flag</span><span class="p">:</span>
+<span class="hll">    <span class="k">try</span><span class="p">:</span>
+</span>        <span class="o">&lt;</span><span class="n">var_name</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">_iterator</span><span class="p">)</span>
+<span class="hll">    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+</span>        <span class="n">_flag</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="hll">        <span class="k">continue</span>
+</span>    <span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>其中第 3 和第 5 行是检查是否存在异常，读者可以忽略. 第 7 行之所以使用 <code class="highlight"><span class="k">continue</span></code> 来结束循环而非使用 <code class="highlight"><span class="k">break</span></code> 直接终止循环是为了使得 <code class="highlight"><span class="k">while</span> <span class="o">...</span> <span class="k">else</span> <span class="o">...</span></code> 语句的语义和 <code class="highlight"><span class="k">for</span> <span class="o">...</span> <span class="k">else</span> <span class="o">...</span></code> 的语义一致，读者可以自己思考原因.</p>
+</div>
+<p>同样的，在 <code class="highlight"><span class="k">for</span></code> 语句中，也可以使用 <code class="highlight"><span class="k">break</span></code> 和 <code class="highlight"><span class="k">continue</span></code> 语句来终止循环或者进入下一个迭代. <code class="highlight"><span class="k">for</span> <span class="o">...</span> <span class="k">else</span> <span class="o">...</span></code> 语句也将在循环正常终止的时候执行 <code class="highlight"><span class="k">else</span></code> 后的语句，循环正常终止的条件和 <code class="highlight"><span class="k">while</span> <span class="o">...</span> <span class="k">else</span> <span class="o">...</span></code> 语句一致，就是迭代器抵达终点而非以 <code class="highlight"><span class="k">break</span></code> 终止.</p>
+<div class="admonition notes">
+<p class="admonition-title">一点编程提示</p>
+<p>读者可能已经发现了，在所有的表述中，所有的执行都可以用 <code class="highlight"><span class="k">while</span> <span class="kc">True</span></code> 的范式实现，除了 <code class="highlight"><span class="k">else</span></code> 子句会出现语义问题之外. 那么，为什么要设计这么多种不同的循环语句呢？而且，在许多别的语言中，并没有 <code class="highlight"><span class="k">else</span></code> 子句出现在循环语句之后的语法，实际上这通常并非必须的. 但是，对于程序员来说，虽然新手会认为 <code class="highlight"><span class="k">while</span> <span class="kc">True</span></code> 的范式心智负担最小，但当经验逐渐丰富之后，对于迭代将会有一些不同的、更为自然的认知. 实际上，<code class="highlight"><span class="k">for</span></code> 语句适用于访问有固定数目的迭代对象的情况下更加自然.</p>
+</div>
+<p>最后，我们介绍一点比较有用，但是课堂上或许没提的小知识. <code>enumerate</code> 函数可以从任意可迭代对象（或迭代器）构造一个 <code>enumerate</code> 类型的对象，它也是一个迭代器：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">l</span> <span class="o">=</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l</span>
+<span class="o">&lt;</span><span class="nb">enumerate</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x0000018840EE7560</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>它迭代返回的对象是 <code>(index, value)</code> 类型的元组. 也就是说，上边的迭代器中有 <code>(0, 1), (1, 2), (2, 3)</code> 三个元素. 这使得我们有一个非常方便的手段来完成一些操作：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"python"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="mi">0</span> <span class="n">p</span>
+<span class="mi">1</span> <span class="n">y</span>
+<span class="mi">2</span> <span class="n">t</span>
+<span class="mi">3</span> <span class="n">h</span>
+<span class="mi">4</span> <span class="n">o</span>
+<span class="mi">5</span> <span class="n">n</span>
+</code></pre></div>
+<div class="admonition notes">
+<p class="admonition-title">在交互式环境下输入语句块</p>
+<p>在交互式环境下，如果输入的语句后边带有冒号，那么它就会提示 <code>...</code>，这是告诉你应该继续输入的意思. 自己调整缩进并完成整个语句块的书写之后，通过一个空行退出输入，就可以执行一整个语句块.</p>
+</div>
+<p>同时，这个例子也表明，在 <code class="highlight"><span class="k">for</span></code> 语句中就可以完成解包操作.</p>
+<h3 id="_5">函数定义及其调用</h3>
+<h3 id="_6">变量的作用域</h3>
+<h3 id="_7">函数也是一种变量</h3>
+<h3 id="_8">迭代器和惰性求值</h3>
+<h2 id="_9">常见问题</h2>
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js"
+        data-repo="FrightenedFoxCN/python2024aw"
+        data-repo-id="R_kgDOMv5ryg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMv5rys4CiXhG"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+var giscus = document.querySelector("script[src*=giscus]")
+
+// Set palette on initial load
+var palette = __md_get("__palette")
+if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate"
+    ? "transparent_dark"
+    : "light"
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme) 
+}
+
+// Register event handlers after documented loaded
+document.addEventListener("DOMContentLoaded", function() {
+    var ref = document.querySelector("[data-md-component=palette]")
+    ref.addEventListener("change", function() {
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame")
+        frame.contentWindow.postMessage(
+        { giscus: { setConfig: { theme } } },
+        "https://giscus.app"
+        )
+    }
+    })
+})
+</script>
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1379 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../complex_types/">
+      
+      
+        <link rel="next" href="../stdlib/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>map 函数与列表推导式 - 2026 年 Python 秋冬学习资料</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#map" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="2026 年 Python 秋冬学习资料" class="md-header__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2026 年 Python 秋冬学习资料
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              map 函数与列表推导式
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  常见问题
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  实验文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../interesting-addendum/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  一些有意思的补充资料
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="2026 年 Python 秋冬学习资料" class="md-nav__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    2026 年 Python 秋冬学习资料
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    常见问题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基本输入输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    类型与值
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    程序的控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../complex_types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    复合类型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    map 函数与列表推导式
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    map 函数与列表推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#map_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        map 函数
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        列表推导式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="列表推导式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一个实际的例子
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdlib/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    标准库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exam_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于实验考试的提示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    理论考前常见问题总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../labs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验文档
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/00env/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境配置指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../interesting-addendum/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一些有意思的补充资料
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    一些有意思的补充资料
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#map_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        map 函数
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        列表推导式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="列表推导式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一个实际的例子
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="map"><code class="highlight"><span class="nb">map</span></code> 函数与列表推导式</h1>
+<div class="admonition note">
+<p class="admonition-title">关于 <code class="highlight"><span class="nb">map</span></code></p>
+<p><code class="highlight"><span class="nb">map</span></code> 函数是 Python 提供的一种非常强大的内置函数——它和 Python 语言的其他特性，例如 <code class="highlight"><span class="nb">filter</span></code> 函数、lambda 表达式等，共同赋予了 Python 进行基本的<strong>函数式编程</strong>的能力. 尽管我们不会涉及到关于函数式编程的内容，不过应该知道，<code class="highlight"><span class="nb">map</span></code> 要比我们在课堂中学到或用到的能力要强大得多.</p>
+</div>
+<h2 id="map_1"><code class="highlight"><span class="nb">map</span></code> 函数</h2>
+<p>目前我们在课堂上学到或用到的 <code class="highlight"><span class="nb">map</span></code> 函数的唯一用途是将一行中的多个输入转换为数字：</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</code></pre></div>
+<p>那么我们就从这里开始. 在阅读了<a href="../typing/">类型与值</a>一节后，我们应当知道，对于一个复杂的 Python 语句，我们总是可以借助中间变量，将它拆分为多个简单的语句以便理解. <code class="highlight"><span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span></code> 的作用已经不必多说，它产生输入字符串按连续空白符分割的列表. 那么，要研究这个 <code class="highlight"><span class="nb">map</span></code> 调用，我们仍然可以通过研究下面这样等价的片段来理解：</p>
+<div class="highlight"><pre><span></span><code><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"6"</span><span class="p">,</span> <span class="s2">"28"</span><span class="p">,</span> <span class="s2">"496"</span><span class="p">,</span> <span class="s2">"8128"</span><span class="p">]</span>
+<span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">m</span>
+</code></pre></div>
+<p>当然，执行完这三行后，变量 <code>a</code> <code>b</code> <code>c</code> <code>d</code> 就分别成为整数 <code class="highlight"><span class="mi">6</span></code> <code class="highlight"><span class="mi">28</span></code> <code class="highlight"><span class="mi">496</span></code> <code class="highlight"><span class="mi">8128</span></code>，这应当是我们已经知道的结果，但也许还不知道发生了什么. 最重要的第一步是搞清楚 <code>L</code> 是什么？它是一个包含 4 个字符串的列表；用官话来说，就是一个长度为 4，包含 4 个 <code class="highlight"><span class="nb">str</span></code> 的  <code class="highlight"><span class="nb">list</span></code>.</p>
+<p>现在我们可以这么粗略地说：<code class="highlight"><span class="nb">map</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span></code> 函数返回的是一个 <strong><code class="highlight"><span class="nb">map</span></code> 对象</strong>，当我们使用这个对象时，它产生的结果是 <code>f</code> <strong>应用</strong>在 <code>L</code> 中的每一个元素的结果集合.</p>
+<p>稍微等等，这里还是很难理解，并且突然多出好几个概念！暂时不用去理解上面这段在说什么，我们可以启动我们最趁手的武器——交互式环境：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"6"</span><span class="p">,</span> <span class="s2">"28"</span><span class="p">,</span> <span class="s2">"496"</span><span class="p">,</span> <span class="s2">"8128"</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span>
+<span class="o">&lt;</span><span class="nb">map</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x153267220</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">496</span><span class="p">,</span> <span class="mi">8128</span><span class="p">]</span>
+</code></pre></div>
+<p>首先来试试将这个结果套用到上面的说法上吧：</p>
+<ul>
+<li><code class="highlight"><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span></code> 返回了一个 <code class="highlight"><span class="nb">map</span></code> 对象，我们在交互式环境中看到它被显示为 <code>&lt;map object at 0x153267220&gt;</code>. 最后的十六进制串的含义是这个对象在计算机中所处的内存地址，所以每次运行都是不一样的，这不重要.</li>
+<li>
+<p>我们用 <code class="highlight"><span class="nb">list</span><span class="p">(</span><span class="n">m</span><span class="p">)</span></code> 来将 <code>m</code> 转换为了列表，其结果是将 <code class="highlight"><span class="nb">int</span></code> 应用在列表 <code>L</code> 中的每个元素上，它们是 <code class="highlight"><span class="s2">"6"</span></code> <code class="highlight"><span class="s2">"28"</span></code> <code class="highlight"><span class="s2">"496"</span></code> <code class="highlight"><span class="s2">"8128"</span></code>. 在这里“应用”就是说，<code class="highlight"><span class="nb">map</span></code> 函数做了这些调用：</p>
+<ul>
+<li><code class="highlight"><span class="nb">int</span><span class="p">(</span><span class="s2">"6"</span><span class="p">)</span></code></li>
+<li><code class="highlight"><span class="nb">int</span><span class="p">(</span><span class="s2">"28"</span><span class="p">)</span></code></li>
+<li><code class="highlight"><span class="nb">int</span><span class="p">(</span><span class="s2">"496"</span><span class="p">)</span></code></li>
+<li><code class="highlight"><span class="nb">int</span><span class="p">(</span><span class="s2">"8128"</span><span class="p">)</span></code></li>
+</ul>
+<p>所以我们可以说，这在效果上就是将 4 个字符串依次用 <code class="highlight"><span class="nb">int</span></code> 来将其转换为了整数. 我们称 <code class="highlight"><span class="nb">list</span><span class="p">(</span><span class="n">m</span><span class="p">)</span></code> 这一步<strong>使用</strong>了 <code>m</code> 这个 <code class="highlight"><span class="nb">map</span></code> 对象.</p>
+</li>
+</ul>
+<p>上面的交互式环境中没有演示的就是最后的 <code>a, b, c, d = m</code> 了；这是我们在<a href="../typing/">类型与值</a>中提到过的<strong>解包</strong>.</p>
+<p>我们再举一个例子：这次要用到我们自己写的函数了！</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">my_fun</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"I see you: </span><span class="si">{</span><span class="n">var</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">var</span>
+</code></pre></div>
+<p>然后我们有一个列表，有 4 个元素，分别为 <code class="highlight"><span class="nb">int</span></code> <code class="highlight"><span class="mi">1</span></code>、<code class="highlight"><span class="nb">str</span></code> <code class="highlight"><span class="s2">"abc"</span></code>、<code class="highlight"><span class="nb">list</span></code> <code class="highlight"><span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">]</span></code>、<code class="highlight"><span class="nb">float</span></code> <code class="highlight"><span class="mf">9.5</span></code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"abc"</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">],</span> <span class="mf">9.5</span><span class="p">]</span>
+</code></pre></div>
+<p>我们接下来研究的是下面的结果：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">my_fun</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span>
+<span class="o">&lt;</span><span class="nb">map</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x153587cd0</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">L2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="s1">'abc'</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="mf">9.5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">L2</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'abcabcabc'</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">],</span> <span class="mf">28.5</span><span class="p">]</span>
+</code></pre></div>
+<p>注意到了吗！这里实际发生了这些调用：</p>
+<ul>
+<li><code class="highlight"><span class="n">my_fun</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span></code></li>
+<li><code class="highlight"><span class="n">my_fun</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">)</span></code></li>
+<li><code class="highlight"><span class="n">my_fun</span><span class="p">([</span><span class="o">-</span><span class="mi">8</span><span class="p">])</span></code></li>
+<li><code class="highlight"><span class="n">my_fun</span><span class="p">(</span><span class="mf">9.5</span><span class="p">)</span></code></li>
+</ul>
+<p>并且 <code class="highlight"><span class="nb">list</span><span class="p">(</span><span class="n">m</span><span class="p">)</span></code> 的结果就是上面这些调用的结果组成的列表. 很神奇吧？</p>
+<p>从上面我们可以观察到 <code class="highlight"><span class="nb">map</span></code> 另一个非常有意思的特性. 发现了吗？当我们创建 <code class="highlight"><span class="nb">map</span></code> 对象时，并没有调用 <code>my_fun</code>；真正的转换过程是在我们<strong>使用</strong> <code>m</code> 时才发生的. 我们也可以通过使用内置的 <code class="highlight"><span class="nb">next</span></code> 函数，来逐个进行转换：</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">my_fun</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="s1">'abc'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="mf">9.5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">StopIteration</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'abcabcabc'</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">],</span> <span class="mf">28.5</span><span class="p">)</span>
+</code></pre></div>
+<p>注意到在这里，每次调用 <code class="highlight"><span class="nb">next</span></code> 都会转换一个值，并且由于只有 4 个值，在尝试进行第 5 次转换时，Python 会抛出一个 <code class="highlight"><span class="ne">StopIteration</span></code>，这表示已经没有更多值可以转换了. 这个特性叫做<strong>惰性求值</strong>：顾名思义，只有在需要用到值的时候，才做转换. 也因此，<code class="highlight"><span class="nb">map</span></code> 对象是不能被索引的：如果想要访问结果中的任意一个值，就必须首先把 <code class="highlight"><span class="nb">map</span></code> 对象中的全部结果收集在列表中.</p>
+<p>在这里，我们也可以换个视角，用 <code class="highlight"><span class="k">for</span></code> 结构来研究它同样是可以的：</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">my_fun</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">m</span><span class="p">:</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'for-loop sees a </span><span class="si">{</span><span class="n">item</span><span class="si">!r}</span><span class="s1">'</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="mi">1</span>
+<span class="k">for</span><span class="o">-</span><span class="n">loop</span> <span class="n">sees</span> <span class="n">a</span> <span class="mi">3</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="s1">'abc'</span>
+<span class="k">for</span><span class="o">-</span><span class="n">loop</span> <span class="n">sees</span> <span class="n">a</span> <span class="s1">'abcabcabc'</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">]</span>
+<span class="k">for</span><span class="o">-</span><span class="n">loop</span> <span class="n">sees</span> <span class="n">a</span> <span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="mf">9.5</span>
+<span class="k">for</span><span class="o">-</span><span class="n">loop</span> <span class="n">sees</span> <span class="n">a</span> <span class="mf">28.5</span>
+</code></pre></div>
+<p>每次循环中，<code>item</code> 都表示 <code>m</code> 中的一个转换结果. 并且在所有的值都转换完后，<code class="highlight"><span class="k">for</span></code> 也会自然结束.</p>
+<p>最后要说明的一点是，每个 <code class="highlight"><span class="nb">map</span></code> 对象仅能被<strong>使用</strong>一次：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">print</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="mi">0</span>
+<span class="kc">None</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="mi">3</span>
+<span class="mi">6</span>
+<span class="mi">9</span>
+<span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">m</span><span class="p">:</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'uwu? </span><span class="si">{</span><span class="n">item</span><span class="si">!r}</span><span class="s1">'</span><span class="p">)</span>
+<span class="o">...</span>
+</code></pre></div>
+<p>在这里要分清 <code class="highlight"><span class="mi">0</span></code> <code class="highlight"><span class="mi">3</span></code> <code class="highlight"><span class="mi">6</span></code> <code class="highlight"><span class="mi">9</span></code> 是 <code class="highlight"><span class="nb">print</span></code> 的输出，而那个 <code>None</code> 和 <code class="highlight"><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span></code> 分别是 <code class="highlight"><span class="nb">next</span><span class="p">(</span><span class="n">m</span><span class="p">)</span></code> 和 <code class="highlight"><span class="nb">list</span><span class="p">(</span><span class="n">m</span><span class="p">)</span></code> 的结果，因为我们已经知道 <code class="highlight"><span class="nb">print</span></code> 就是返回 <code>None</code> 的. 在第二次调用 <code class="highlight"><span class="nb">list</span><span class="p">(</span><span class="n">m</span><span class="p">)</span></code> 时，并没有调用 <code class="highlight"><span class="nb">print</span></code> 输出任何东西，并且结果是一个空列表. 在用尽的 <code class="highlight"><span class="nb">map</span></code> 对象上使用 <code class="highlight"><span class="k">for</span></code> 循环，也不会有任何结果. 注意到在上面的几个例子中，我们都在第 1 行重新创建了 <code>m</code>，就是这个原因.</p>
+<div class="admonition note">
+<p class="admonition-title">迭代器</p>
+<p>这背后涉及更通用的概念：<strong>迭代器</strong>. <code class="highlight"><span class="nb">map</span></code> 实际上能同时操作任意数量的迭代器：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">print</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="s1">'abcd'</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="p">[</span><span class="s2">"w"</span><span class="p">,</span> <span class="s2">"q"</span><span class="p">]</span> <span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">]))</span>
+<span class="mi">0</span> <span class="n">a</span> <span class="mi">4</span>
+<span class="mi">1</span> <span class="n">b</span> <span class="p">[</span><span class="s1">'w'</span><span class="p">,</span> <span class="s1">'q'</span><span class="p">]</span>
+<span class="mi">2</span> <span class="n">c</span> <span class="o">-</span><span class="mi">8</span>
+<span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+</code></pre></div>
+</div>
+<h2 id="_1">列表推导式</h2>
+<p>列表推导式（list comprehension）是一种能够快速生成特定值的列表的语法：</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">expression</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">]</span>
+</code></pre></div>
+<p>其中 <code>expression</code> 是要生成的项的表达式，<code>iterable</code> 是任何可以迭代的对象，例如 <code class="highlight"><span class="nb">map</span></code> 对象、列表、字符串等等，任何能放在 <code class="highlight"><span class="k">for</span> <span class="o">...</span> <span class="ow">in</span> <span class="o">...</span></code> 结构中的东西. 它和下面的写法在效果上是等同的，其中 <code>L</code> 就是结果的列表：</p>
+<div class="highlight"><pre><span></span><code><span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
+    <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+</code></pre></div>
+<p>用 <code class="highlight"><span class="nb">map</span></code> 的例子来看看吧. 我们之前做过这种事：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"6"</span><span class="p">,</span> <span class="s2">"28"</span><span class="p">,</span> <span class="s2">"496"</span><span class="p">,</span> <span class="s2">"8128"</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">L</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">496</span><span class="p">,</span> <span class="mi">8128</span><span class="p">]</span>
+</code></pre></div>
+<p>这也可以用列表推导式来写，就是这样：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">L</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">496</span><span class="p">,</span> <span class="mi">8128</span><span class="p">]</span>
+</code></pre></div>
+<p>如果这个语法还是看起来很怪的话，可以这么理解：</p>
+<ul>
+<li>生成一个新列表：对于 <code>L</code> 中的每一项 <code>v</code>...</li>
+<li>...计算 <code class="highlight"><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span></code>，将结果添加到新列表中.</li>
+</ul>
+<p>那么 <code class="highlight"><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">my_fun</span><span class="p">,</span> <span class="n">L</span><span class="p">))</span></code> 对应的列表推导式写法就是下面这样：“对于 <code>L</code> 中的每一项 <code>u</code>，计算 <code class="highlight"><span class="n">my_fun</span><span class="p">(</span><span class="n">u</span><span class="p">)</span></code>”：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"abc"</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">],</span> <span class="mf">9.5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">my_fun</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">L</span><span class="p">]</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="s1">'abc'</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">I</span> <span class="n">see</span> <span class="n">you</span><span class="p">:</span> <span class="mf">9.5</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'abcabcabc'</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">],</span> <span class="mf">28.5</span><span class="p">]</span>
+</code></pre></div>
+<p>而我们的 <code class="highlight"><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span></code> 也就可以写成：“对于 <code class="highlight"><span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span></code> 中的每一项 <code>b</code>，计算 <code class="highlight"><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code>”：</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+</code></pre></div>
+<p>总体来说，列表推导式的表现力要比 <code class="highlight"><span class="nb">map</span></code> 更强，而要比明确地写 <code class="highlight"><span class="k">for</span></code> 循环更简洁. 例如下面的这四种写法都生成同样的列表 <code>L</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 列表推导式写法</span>
+<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+
+<span class="c1"># map 写法</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_square_fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">L</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">my_square_fun</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+
+<span class="c1"># map + lambda 写法</span>
+<span class="n">L</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+
+<span class="c1"># for 循环写法</span>
+<span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">生成器表达式</p>
+<p>写列表推导式的时候，用方括号 <code class="highlight"><span class="p">[]</span></code> 是必须的，这样才会生成一个列表. 在 Python 中还有一种叫做<strong>生成器表达式</strong>（generator expression）的东西，它的语法和列表推导式相同，除了把方括号 <code class="highlight"><span class="p">[]</span></code> 换成圆括号 <code class="highlight"><span class="p">()</span></code>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">L</span>
+<span class="p">[</span><span class="mi">81</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">324</span><span class="p">,</span> <span class="mi">441</span><span class="p">,</span> <span class="mi">576</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">g</span>
+<span class="o">&lt;</span><span class="n">generator</span> <span class="nb">object</span> <span class="o">&lt;</span><span class="n">genexpr</span><span class="o">&gt;</span> <span class="n">at</span> <span class="mh">0x1024a18a0</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">81</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">324</span><span class="p">,</span> <span class="mi">441</span><span class="p">,</span> <span class="mi">576</span><span class="p">]</span>
+</code></pre></div>
+<p>生成器与 <code class="highlight"><span class="nb">map</span></code> 对象实际上表现得几乎一模一样；最重要的一点是，它们都是惰性求值的. 而列表推导式不是惰性求值的；在我们回车的那一刻，所有的值就全部被计算出来了.</p>
+</div>
+<p>列表推导式还有其他写法；可以有任意数量的 <code class="highlight"><span class="k">for</span></code> 语句：</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">expression</span> <span class="k">for</span> <span class="n">item1</span> <span class="ow">in</span> <span class="n">iterable1</span> <span class="k">for</span> <span class="n">item2</span> <span class="ow">in</span> <span class="n">iterable2</span><span class="p">]</span>
+<span class="c1"># 和下面一样</span>
+<span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item1</span> <span class="ow">in</span> <span class="n">iterable1</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">item2</span> <span class="ow">in</span> <span class="n">iterable2</span><span class="p">:</span>
+        <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+</code></pre></div>
+<p>也可以在其后进行筛选操作：</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">expression</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span> <span class="k">if</span> <span class="n">condition</span><span class="p">]</span>
+<span class="c1"># 和下面一样</span>
+<span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+        <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>生成一个新列表：对于 <code>iterable</code> 中的每一项 <code>item</code>...</li>
+<li>...如果 <code>condition</code> 是真值，则计算 <code>expression</code>，将结果添加到新列表中；...</li>
+<li>...否则，跳过这个元素.</li>
+</ul>
+<p>例如在上面 <code class="highlight"><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span></code> 的例子中，如果我们只想筛选其平方后个位为 4 的结果：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">144</span><span class="p">,</span> <span class="mi">324</span><span class="p">]</span>
+</code></pre></div>
+<p>或者是，例如对于一个列表的字符串，筛掉空串：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">L</span> <span class="o">=</span> <span class="s2">"/2024/10//01/"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">L</span>
+<span class="p">[</span><span class="s1">''</span><span class="p">,</span> <span class="s1">'2024'</span><span class="p">,</span> <span class="s1">'10'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">'01'</span><span class="p">,</span> <span class="s1">''</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">L</span> <span class="k">if</span> <span class="n">t</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">'2024'</span><span class="p">,</span> <span class="s1">'10'</span><span class="p">,</span> <span class="s1">'01'</span><span class="p">]</span>
+</code></pre></div>
+<p>再或者，生成 <code class="highlight"><span class="s2">"123"</span></code> 和 <code class="highlight"><span class="s2">"xyz"</span></code> 中每个字符的所有组合：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="s2">"123"</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="s2">"xyz"</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">'1x'</span><span class="p">,</span> <span class="s1">'1y'</span><span class="p">,</span> <span class="s1">'1z'</span><span class="p">,</span> <span class="s1">'2x'</span><span class="p">,</span> <span class="s1">'2y'</span><span class="p">,</span> <span class="s1">'2z'</span><span class="p">,</span> <span class="s1">'3x'</span><span class="p">,</span> <span class="s1">'3y'</span><span class="p">,</span> <span class="s1">'3z'</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="_2">一个实际的例子</h3>
+<div class="admonition note">
+<p class="admonition-title">提示</p>
+<p>这部分不需要掌握，只是作为一个例子来演示在 Python 中，我们可以以很优雅的方式用很少的几行代码就实现相当复杂的操作. 从中可以看到一些函数式编程思想的影子.</p>
+</div>
+<p>我们来研究一个比较实际的例子：有一个文件，其中包含了很多同学的姓名、学号和成绩数据. 为了方便起见，我们直接把这个文件作为字符串来提供：</p>
+<div class="highlight"><pre><span></span><code><span class="n">lstr</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">张三, 3240102001, 91</span>
+<span class="s2">李空, 3230100721, 76.8</span>
+<span class="s2">王五, 3240300112, 59</span>
+<span class="s2">小明, 3210106042, 83.3</span>
+<span class="s2">...</span>
+<span class="s2">"""</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">多行字符串</p>
+<p>三对引号 <code class="highlight"><span class="sd">"""..."""</span></code> 是 Python 中的<strong>多行字符串</strong>的写法：在其中可以任意换行，这些全都算作字符串的内容.</p>
+</div>
+<p>我们想做的事情有两件：</p>
+<ol>
+<li>计算所有同学成绩的平均值；</li>
+<li>计算有多少同学没有达到及格线（60 分）.</li>
+</ol>
+<p>那么首先，观察到每一行都是一位同学的数据，我们可以在字符串上使用 <code class="highlight"><span class="n">splitlines</span><span class="p">()</span></code> 方法将字符串从换行的地方分割开来，变成包含字符串的列表.</p>
+<div class="highlight"><pre><span></span><code><span class="n">lines</span> <span class="o">=</span> <span class="n">lstr</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+</code></pre></div>
+<p>然后，注意到每一行都包含由逗号分隔的 3 项；我们在这里只需要第 3 项，即成绩.</p>
+<div class="highlight"><pre><span></span><code><span class="n">split_items</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">]</span>
+<span class="n">scores_str</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">split_items</span><span class="p">]</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">scores_str</span><span class="p">]</span>
+</code></pre></div>
+<p>至此，<code>scores</code> 列表已经保存了所有同学的成绩项，现在只需求平均值和统计不及格人数：</p>
+<div class="highlight"><pre><span></span><code><span class="n">average_score</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">fail_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">60</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">])</span>
+</code></pre></div>
+<p>就是这样！注意在计算不及格人数时我们的做法：首先将 <code>scores</code> 转换为一个表示对应成绩是否及格的布尔值列表. 通过利用 <code>True</code> 和 <code>False</code> 参与运算时分别有 <code class="highlight"><span class="mi">1</span></code> 和 <code class="highlight"><span class="mi">0</span></code> 的值这一特性，我们可以很容易地用求和操作实现数量的统计.</p>
+<p>综合起来，我们可以写成下面这样：</p>
+<div class="highlight"><pre><span></span><code><span class="n">lstr</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">张三, 3240102001, 91</span>
+<span class="s2">李空, 3230100721, 76.8</span>
+<span class="s2">王五, 3240300112, 59</span>
+<span class="s2">小明, 3210106042, 83.3</span>
+<span class="s2">...</span>
+<span class="s2">"""</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="c1"># 这一行应该这样读：</span>
+<span class="c1"># - 对于 lstr.splitlines() 结果中的每一个值 l...</span>
+<span class="c1"># - 计算 float(l.split(',')[2]) 的值：</span>
+<span class="c1">#   - 首先，进行 l.split(',')，将一行分割为 3 项...</span>
+<span class="c1">#   - 然后，取 3 项中的第 3 项...</span>
+<span class="c1">#   - 最后，将其转换为 float</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lstr</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()]</span>
+
+<span class="n">average_score</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">fail_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">60</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">])</span>
+</code></pre></div>
+<p>想象一下，如果不用列表推导式来写的话，我们要写成什么样啊！</p>
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js"
+        data-repo="FrightenedFoxCN/python2024aw"
+        data-repo-id="R_kgDOMv5ryg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMv5rys4CiXhG"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+var giscus = document.querySelector("script[src*=giscus]")
+
+// Set palette on initial load
+var palette = __md_get("__palette")
+if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate"
+    ? "transparent_dark"
+    : "light"
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme) 
+}
+
+// Register event handlers after documented loaded
+document.addEventListener("DOMContentLoaded", function() {
+    var ref = document.querySelector("[data-md-component=palette]")
+    ref.addEventListener("change", function() {
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame")
+        frame.contentWindow.postMessage(
+        { giscus: { setConfig: { theme } } },
+        "https://giscus.app"
+        )
+    }
+    })
+})
+</script>
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
