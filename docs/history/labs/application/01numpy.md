@@ -64,7 +64,7 @@ img.show()
 
 你会发现，弹出了一个图片浏览器窗口，并且其中出现了一个很小的白框框. 查看文件属性发现，它确实是一个 8*8 大小的图片：
 
-![white-result](../../assets/lab1/white-result.png)
+![white-result](../../../assets/history/lab1/white-result.png)
 
 再执行：
 
@@ -74,7 +74,7 @@ img.save('all_white.png')
 
 你会发现在**代码的同级目录**下出现了一个图片文件，如下图：
 
-![code-dir](../../assets/lab1/code-dir.png)
+![code-dir](../../../assets/history/lab1/code-dir.png)
 
 !!! note "关于保存路径和文件名"
 

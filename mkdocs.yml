@@ -23,41 +23,44 @@ markdown_extensions:
       generic: true
 nav:
   - 主页: index.md
+  - 基础知识:
+    - basics/index.md
   - 常见问题:
     - faq/index.md
     # - 程序安装及使用的问题: faq/installation.md
     - 基本输入输出: faq/basic_io.md
     - 类型与值: faq/typing.md
     - 程序的控制流: faq/control_flow.md
-    - 复合类型: faq/complex_types.md
+    # - 复合类型: faq/complex_types.md
     - map 函数与列表推导式: faq/map.md
     - 标准库: faq/stdlib.md
     - 关于实验考试的提示: faq/exam_tips.md
     - 理论考前常见问题总结: faq/final.md
-  - 实验文档:
-    - labs/index.md
-    - 环境配置指南: labs/00env.md
-    # - 字符串替换系统: labs/01string.md
-    # - 循环和执行流控制: labs/02loop.md
-    # - 基于 NumPy 与 Pillow 的图像创建与基本变换: bonus/application/01numpy.md
-    # - 基于 Monte-Carlo 算法实现积分计算及其可视化: labs/application/02monte-carlo.md
-    # - 连接和使用 OpenAI 给出的 API: bonus/application/03openai.md
-    # - 面向应用的实验组:
-    #   - bonus/application/index.md
-    #   - 基于 NumPy 与 Pillow 的图像创建与基本变换: bonus/application/01numpy.md
-    #   - 基于 Monte-Carlo 算法实现积分计算及其可视化: bonus/application/02monte-carlo.md
-    # - 面向计算机基础知识的实验组:
-    #   - bonus/internal/index.md
-    #   - 简单的语句解析和基本输入输出: bonus/internal/01basic-io.md
-    # - 面向应用开发的实验组:
-    #   - bonus/developer/index.md
-    # - 脑力风暴实验组:
-    #   - Quine!: bonus/brainstorming/01quine.md
-  - 一些有意思的补充资料:
-    - interesting-addendum/index.md
-    # - 语言参考文档阅读入门: interesting-addendum/lang_ref.md
-    # - Python 虚拟环境管理: interesting-addendum/environment.md
-    # - 运用 Python 学习大学数学: interesting-addendum/sympy.md
+  - 历史资料:
+    - history/index.md
+    - 往年实验文档:
+      - history/labs/index.md
+      - 环境配置指南: history/labs/00env.md
+      - 字符串替换系统: history/labs/01string.md
+      - 循环和执行流控制: history/labs/02loop.md
+      - 面向应用的实验组:
+        - history/labs/application/index.md
+        - 基于 NumPy 与 Pillow 的图像创建与基本变换: history/labs/application/01numpy.md
+        - 基于 Monte-Carlo 算法实现积分计算及其可视化: history/labs/application/02monte-carlo.md
+        - 连接和使用 OpenAI 给出的 API: history/labs/application/03openai.md
+      # - 面向计算机基础知识的实验组:
+      #   - history/labs/internal/index.md
+      #   - 简单的语句解析和基本输入输出: history/labs/internal/01basic-io.md
+      # - 面向应用开发的实验组:
+      #   - history/labs/developer/index.md
+      - 脑力风暴实验组:
+        - history/labs/brainstorming/index.md
+        - Quine!: history/labs/brainstorming/01quine.md
+    - 补充资料:
+      - history/interesting-addendum/index.md
+      - Python 虚拟环境管理: history/interesting-addendum/environment.md
+      # - 语言参考文档阅读入门: history/interesting-addendum/lang_ref.md
+      # - 运用 Python 学习大学数学: history/interesting-addendum/sympy.md
 extra_javascript:
   - assets/js/katex.js
   - https://unpkg.com/katex@0/dist/katex.min.js

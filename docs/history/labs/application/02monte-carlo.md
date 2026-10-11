@@ -26,7 +26,7 @@
 我们都已经熟知，积分本质上就是面积的计算. 我们首先考虑计算简单图形的面积：圆面积. 一个圆是由 $x^2 + y^2 <= 1$ 所界定的一块面积. 而根据高中学过的关于几何概型的知识，一个图形的面积与总面积的比值就是在总面积上投点落入图形当中的概率. 也就是说，我们可以考虑以下图形：
 
 <figure markdown="span">
-![](../../assets/bonus/monte-carlo-1.svg){ width=200px }
+![](../../../assets/history/bonus/monte-carlo-1.svg){ width=200px }
 </figure>
 
 上面的图形中，只要取在阴影部分，我们就假定它在圆内. 因此，采用一个随机数生成器的手段，根据点落在圆内的频率估计总的概率，就能给出圆面积的估计. 为了方便起见，我们考虑第一象限的圆，即上图中粉色方框给出的部分.
@@ -262,7 +262,7 @@ ani = animation.FuncAnimation(fig, update, frames=num_samples // update_step, re
 
 !!! notes "回调函数"
 
-    在[类型与值](../../faq/typing.md)一部分中，我们业已提及，在 Python 中万物皆类型. 实际上，函数也是一个特殊的类型. 如果执行
+    在[类型与值](../../../faq/typing.md)一部分中，我们业已提及，在 Python 中万物皆类型. 实际上，函数也是一个特殊的类型. 如果执行
 
     ```python
     print(type(update))
