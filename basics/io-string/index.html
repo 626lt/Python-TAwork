@@ -1,0 +1,3144 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../faq/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>输入、输出与字符串 - 2026 年 Python 秋冬学习资料</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="2026 年 Python 秋冬学习资料" class="md-header__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2026 年 Python 秋冬学习资料
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              输入、输出与字符串
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  基础知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../faq/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  常见问题
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../history/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  历史资料
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="2026 年 Python 秋冬学习资料" class="md-nav__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    2026 年 Python 秋冬学习资料
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基础知识
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    基础知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    输入、输出与字符串
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    输入、输出与字符串
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 字符串
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 字符串">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        字符串字面量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        字符与编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        转义字符与 print() 的显示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拼接、重复与长度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        索引与切片
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        字符串的不可变性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 常用字符串方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 常用字符串方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大小写
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判断、查找与统计子串
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        替换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        去除空白
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拆分与合并
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判断开头、结尾与内容
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-print" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 输出：print()
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 输出：print()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多个参数与分隔符 sep
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        结尾 end
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 输入：input()
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 输入：input()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input() 返回字符串
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        转换成数字
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一行中有多个值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        读多行，还是读一行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 格式化输出
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 格式化输出">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#f-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        f-字符串
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        格式说明符
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见错误：忘记转换类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#round" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        保留小数用格式化，不用 round()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 在 PTA 上做题时的输入输出
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../faq/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    常见问题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/typing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    类型与值
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/control_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    程序的控制流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    map 函数与列表推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/stdlib/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    标准库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/exam_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于实验考试的提示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    理论考前常见问题总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../history/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    历史资料
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    历史资料
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../history/labs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    往年实验文档
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    往年实验文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/labs/00env/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境配置指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/labs/01string/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    字符串替换系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/labs/02loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    循环和执行流控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../history/labs/application/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    面向应用的实验组
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_5" id="__nav_4_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    面向应用的实验组
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/labs/application/01numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基于 NumPy 与 Pillow 的图像创建与基本变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/labs/application/02monte-carlo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基于 Monte-Carlo 算法实现积分计算及其可视化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/labs/application/03openai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    连接和使用 OpenAI 给出的 API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../history/labs/brainstorming/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脑力风暴实验组
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_6" id="__nav_4_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    脑力风暴实验组
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/labs/brainstorming/01quine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quine!
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../history/interesting-addendum/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    补充资料
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    补充资料
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/interesting-addendum/environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 虚拟环境管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 字符串
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 字符串">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        字符串字面量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        字符与编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        转义字符与 print() 的显示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拼接、重复与长度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        索引与切片
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        字符串的不可变性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 常用字符串方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 常用字符串方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大小写
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判断、查找与统计子串
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        替换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        去除空白
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拆分与合并
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判断开头、结尾与内容
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-print" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 输出：print()
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 输出：print()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多个参数与分隔符 sep
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        结尾 end
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 输入：input()
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 输入：input()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input() 返回字符串
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        转换成数字
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一行中有多个值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        读多行，还是读一行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 格式化输出
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 格式化输出">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#f-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        f-字符串
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        格式说明符
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见错误：忘记转换类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#round" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        保留小数用格式化，不用 round()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 在 PTA 上做题时的输入输出
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">输入、输出与字符串</h1>
+<p>课程第 1 章把程序概括为“输入—处理—输出”（IPO）：读入数据，加以处理，再把结果输出. 我们在 PTA 上做作业、考试时写的程序是这样，实际应用中的程序大体上也是这样.</p>
+<p>PTA 上的编程题，输入和输出都很简单：程序从标准输入读取测试数据，处理之后把结果打印到标准输出. 做这两件事，只需要两个函数：<code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 负责读入，<code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 负责输出. 对做作业以及考试来说，掌握这两个函数就已足够.</p>
+<p>输入和输出之间是处理. 处理到最后，往往要把手里的数据整理成题目要求的输出格式，这时常常要用到字符串的方法. 字符串方法再配合 f-字符串（格式化字符串），能更简单、清晰、快捷地把数据转化成题目要求的输出格式.</p>
+<p>建议读者打开 Thonny，在 Shell 中把下面的例子逐个输入一遍. 以 <code>&gt;&gt;&gt;</code> 开头的行是我们输入的代码，没有 <code>&gt;&gt;&gt;</code> 的行是 Python 给出的结果，个别例外会在第一次出现时说明.</p>
+<h2 id="1">1. 字符串</h2>
+<h3 id="_2">字符串字面量</h3>
+<p>用一对引号括起来的文本就是一个字符串（string），类型是 <code class="highlight"><span class="nb">str</span></code>. 单引号和双引号的效果完全相同. 像 <code class="highlight"><span class="s2">"Hello"</span></code> 这样直接写在代码里的值称为字面量（literal），官方中文文档译作“字面值”，说的是同一个东西.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"Hello"</span>
+<span class="s1">'Hello'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">'浙江大学'</span>
+<span class="s1">'浙江大学'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"2026"</span>
+<span class="s1">'2026'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="s2">"2026"</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">str</span><span class="s1">'&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="mi">2026</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">int</span><span class="s1">'&gt;</span>
+</code></pre></div>
+<p><code class="highlight"><span class="s2">"2026"</span></code> 和 <code class="highlight"><span class="mi">2026</span></code> 看起来很像，却是不同类型的值：前者是由四个字符组成的文本，后者是一个整数：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"1 + 2"</span><span class="p">)</span>
+<span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mi">3</span>
+</code></pre></div>
+<p>第一行的 <code>1 + 2</code> 在引号里，Python 把它当作普通文字原样显示；第二行没有引号，Python 先计算这个表达式，再显示结果.</p>
+<p>如果文本本身含有引号，可以换用另一种引号把它括起来，也可以在引号前加反斜杠 <code>\</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"It's Python"</span>
+<span class="s2">"It's Python"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">'He said "hi"'</span>
+<span class="s1">'He said "hi"'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">'It</span><span class="se">\'</span><span class="s1">s Python'</span>
+<span class="s2">"It's Python"</span>
+</code></pre></div>
+<p>最后一个例子中，<code>\'</code> 表示一个单引号字符，而不是字符串的结束. Python 显示结果时自己选择了双引号，这只是显示方式不同，字符串的内容是一样的.</p>
+<div class="admonition warning">
+<p class="admonition-title">注意中英文符号</p>
+<p>代码中的引号、括号、逗号、冒号都必须是英文（半角）符号. 在中文输入法下打出的 <code>“”</code>、<code>（）</code> 不是 Python 能识别的符号：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="err">“</span><span class="n">你好</span><span class="err">”</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="err">“</span><span class="n">你好</span><span class="err">”</span><span class="p">)</span>
+          <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">character</span> <span class="s1">'“'</span> <span class="p">(</span><span class="n">U</span><span class="o">+</span><span class="mi">201</span><span class="n">C</span><span class="p">)</span>
+</code></pre></div>
+<p>按照我们讲过的读报错方法，先看最后一行：<code class="highlight"><span class="ne">SyntaxError</span></code> 表示语法错误，<code>invalid character '“'</code> 指出了是哪个字符出了问题. 字符串<strong>内部</strong>的文字不受这个限制，<code class="highlight"><span class="s2">"你好，世界！"</span></code> 里的中文标点完全合法.</p>
+</div>
+<h3 id="_3">字符与编码</h3>
+<p>计算机内部只能存储数字，所以每个字符都对应一个编号，称为这个字符的编码. Python 使用的是 Unicode 编码，它给世界上几乎所有文字中的字符都分配了编号. 内置函数 <code class="highlight"><span class="nb">ord</span><span class="p">()</span></code> 给出单个字符的编码，<code class="highlight"><span class="nb">chr</span><span class="p">()</span></code> 反过来由编码得到字符：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"A"</span><span class="p">)</span>
+<span class="mi">65</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">97</span><span class="p">)</span>
+<span class="s1">'a'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"浙"</span><span class="p">)</span>
+<span class="mi">27993</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">27993</span><span class="p">)</span>
+<span class="s1">'浙'</span>
+</code></pre></div>
+<p>编码习惯上写成十六进制. 用内置函数 <code class="highlight"><span class="nb">hex</span><span class="p">()</span></code> 把编码换成十六进制，排列的规律就清楚多了：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">hex</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s2">"0"</span><span class="p">))</span>
+<span class="s1">'0x30'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">hex</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s2">"7"</span><span class="p">))</span>
+<span class="s1">'0x37'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">hex</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s2">"A"</span><span class="p">))</span>
+<span class="s1">'0x41'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">hex</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s2">"a"</span><span class="p">))</span>
+<span class="s1">'0x61'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">hex</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s2">"一"</span><span class="p">))</span>
+<span class="s1">'0x4e00'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">hex</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s2">"浙"</span><span class="p">))</span>
+<span class="s1">'0x6d59'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">chr</span><span class="p">(</span><span class="mh">0x6d59</span><span class="p">)</span>
+<span class="s1">'浙'</span>
+</code></pre></div>
+<p>数字字符 <code class="highlight"><span class="s1">'0'</span></code> 到 <code class="highlight"><span class="s1">'9'</span></code> 的编码是 <code class="highlight"><span class="mh">0x30</span></code> 到 <code class="highlight"><span class="mh">0x39</span></code>，最后一位正好就是这个数字；大写字母 <code class="highlight"><span class="s1">'A'</span></code> 是 <code class="highlight"><span class="mh">0x41</span></code>，小写字母 <code class="highlight"><span class="s1">'a'</span></code> 是 <code class="highlight"><span class="mh">0x61</span></code>，大小写只差一位；Unicode 中的基本汉字从 <code class="highlight"><span class="mh">0x4e00</span></code> 开始排列，第一个字恰好是“一”. 换成十进制的 48、65、97，这些规律就看不出来了.</p>
+<p>前面报错信息里的 <code>U+201C</code>，也是这种写法：<code>U+</code> 表示 Unicode 编码，后面的 <code>201C</code> 是十六进制数，对应的正是中文左引号：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">hex</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s2">"“"</span><span class="p">))</span>
+<span class="s1">'0x201c'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">chr</span><span class="p">(</span><span class="mh">0x201c</span><span class="p">)</span>
+<span class="s1">'“'</span>
+</code></pre></div>
+<h3 id="print">转义字符与 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 的显示</h3>
+<p>反斜杠 <code>\</code> 在字符串中有特殊作用：它和后面的字符一起表示一个不方便直接写出的字符，这种写法称为转义序列（escape sequence）. 常用的有：</p>
+<table>
+<thead>
+<tr>
+<th>转义序列</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\n</code></td>
+<td>换行</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>制表符（Tab）</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>反斜杠本身</td>
+</tr>
+<tr>
+<td><code>\'</code>、<code>\"</code></td>
+<td>单引号、双引号</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"第一行</span><span class="se">\n</span><span class="s2">第二行"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="s1">'第一行</span><span class="se">\n</span><span class="s1">第二行'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">第一行</span>
+<span class="n">第二行</span>
+</code></pre></div>
+<p>同一个字符串，在这里显示成了两种样子：直接输入 <code>s</code> 时，显示的结果带着引号，<code>\n</code> 也原样写出；<code class="highlight"><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code> 显示的结果没有引号，<code>\n</code> 真的变成了换行. 为什么会这样？</p>
+<div class="admonition warning">
+<p class="admonition-title">Shell 里看到的，不一定是程序输出的</p>
+<p>Python 有两种运行方式：</p>
+<ul>
+<li>交互式模式像“对话”：在 Shell 里输入一行，Python 立即回应；</li>
+<li>脚本模式像“写信”：在编辑区写好整个程序，再一次运行；PTA 运行我们提交的程序，用的就是这种方式.</li>
+</ul>
+<p>把上面的例子写成一个脚本：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="s2">"第一行</span><span class="se">\n</span><span class="s2">第二行"</span>
+<span class="n">s</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</code></pre></div>
+<p>运行后的输出是：</p>
+<div class="highlight"><pre><span></span><code>第一行
+第二行
+</code></pre></div>
+<p>第二行的 <code>s</code> 在 Shell 里会显示 <code class="highlight"><span class="s1">'第一行</span><span class="se">\n</span><span class="s1">第二行'</span></code>，在脚本里却没有任何输出，脚本只输出了 <code class="highlight"><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code> 的结果. 只有在 Shell 里，单独输入的表达式才会被自动显示出来. 这些自动显示的值就像草稿纸上的演算，方便我们自己检查；PTA 阅卷只看答题卡，也就是程序用 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 输出的内容.</p>
+<p>Shell 自动显示一个字符串时，显示的是<strong>它在代码里怎么写</strong>：带着引号，换行写成 <code>\n</code>. <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 输出的则是字符串的<strong>内容</strong>本身. 用过 Word 或 WPS 的读者，可以联想“显示编辑标记”这个功能：打开它，文档里会出现 ¶ 这样的符号，标出每一处换行；关掉它，看到的才是打印出来的样子. Shell 显示字符串，就像打开了编辑标记：引号标出字符串从哪里开始、到哪里结束，<code>\n</code>、<code>\t</code> 标出看不见的换行和制表符. <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 则像打印到纸上，只留下内容本身.</p>
+<p>所以，本页例子中 Shell 显示的引号不属于字符串的内容. 程序真正输出的、PTA 拿去比较的，都是 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 显示的样子.</p>
+<div class="admonition note">
+<p class="admonition-title">两种显示背后的函数</p>
+<p>Shell 自动显示一个值时，用的是内置函数 <code class="highlight"><span class="nb">repr</span><span class="p">()</span></code> 的结果；<code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 则先像 <code class="highlight"><span class="nb">str</span><span class="p">()</span></code> 那样把参数转换成字符串. 对字符串来说，两者差别很大：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"第一行</span><span class="se">\n</span><span class="s2">第二行"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+<span class="s1">'第一行</span><span class="se">\n</span><span class="s1">第二行'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+<span class="n">第一行</span>
+<span class="n">第二行</span>
+</code></pre></div>
+<p>对整数和浮点数，两者的结果相同，所以 <code class="highlight"><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span></code> 无论在 Shell 里直接显示，还是用 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 输出，都是 <code class="highlight"><span class="mi">3</span></code>. 这两个函数分别调用对象的 <code class="highlight"><span class="fm">__repr__</span><span class="p">()</span></code> 和 <code class="highlight"><span class="fm">__str__</span><span class="p">()</span></code> 方法，详见官方文档：</p>
+<ul>
+<li><code class="highlight"><span class="nb">repr</span><span class="p">()</span></code>：<a href="https://docs.python.org/zh-cn/3/builtins/functions.html#repr">https://docs.python.org/zh-cn/3/builtins/functions.html#repr</a></li>
+<li><code class="highlight"><span class="nb">str</span><span class="p">()</span></code>：<a href="https://docs.python.org/zh-cn/3/builtins/stdtypes.html#str">https://docs.python.org/zh-cn/3/builtins/stdtypes.html#str</a></li>
+</ul>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"姓名</span><span class="se">\t</span><span class="s2">成绩"</span><span class="p">)</span>
+<span class="n">姓名</span>  <span class="n">成绩</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"反斜杠：</span><span class="se">\\</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">反斜杠</span><span class="err">：</span>\
+</code></pre></div>
+<p>制表符显示出来是一段空白，它会把后面的文字推到下一个对齐位置，所以空白的宽度不固定.</p>
+<p>转义有时会带来意外，最常见的是 Windows 路径. 下面第一行里的 <code>\n</code> 和 <code>\t</code> 被当成了换行和制表符：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"D:</span><span class="se">\n</span><span class="s2">ew</span><span class="se">\t</span><span class="s2">able.txt"</span><span class="p">)</span>
+<span class="n">D</span><span class="p">:</span>
+<span class="n">ew</span>  <span class="n">able</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">"D:\new\table.txt"</span><span class="p">)</span>
+<span class="n">D</span><span class="p">:</span>\<span class="n">new</span>\<span class="n">table</span><span class="o">.</span><span class="n">txt</span>
+</code></pre></div>
+<p>在引号前加 <code>r</code> 得到原始字符串（raw string），其中的反斜杠不再有特殊含义.</p>
+<p>用三个引号 <code>"""</code> 或 <code>'''</code> 括起来的字符串可以跨越多行，其中的换行会成为字符串内容的一部分：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"""第一行</span>
+<span class="s2">... 第二行"""</span><span class="p">)</span>
+<span class="n">第一行</span>
+<span class="n">第二行</span>
+</code></pre></div>
+<p>在 Shell 中输入多行时，第二行开头的 <code>...</code> 是 Python 给出的提示，表示上一行还没有结束，它不属于字符串.</p>
+<h3 id="_4">拼接、重复与长度</h3>
+<p><code>+</code> 把两个字符串首尾相接，<code>*</code> 把字符串重复若干次，内置函数 <code class="highlight"><span class="nb">len</span><span class="p">()</span></code> 返回字符串中的字符个数. 一个汉字也只算一个字符：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"Py"</span> <span class="o">+</span> <span class="s2">"thon"</span>
+<span class="s1">'Python'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"="</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="s1">'=========='</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"ab"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="s2">"c"</span>
+<span class="s1">'ababc'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="s2">"Python"</span><span class="p">)</span>
+<span class="mi">6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="s2">"浙江大学"</span><span class="p">)</span>
+<span class="mi">4</span>
+</code></pre></div>
+<p><code class="highlight"><span class="n">s</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="s2">"c"</span></code> 和算术一样先算乘法：<code class="highlight"><span class="n">s</span> <span class="o">*</span> <span class="mi">2</span></code> 得到 <code class="highlight"><span class="s1">'abab'</span></code>，再与 <code class="highlight"><span class="s1">'c'</span></code> 拼接.</p>
+<p><code>+</code> 两边必须都是字符串，字符串和数字不能直接相加：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"年龄："</span> <span class="o">+</span> <span class="mi">18</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="s2">"年龄："</span> <span class="o">+</span> <span class="mi">18</span>
+    <span class="o">~~~~~~~~~^~~~</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">can</span> <span class="n">only</span> <span class="n">concatenate</span> <span class="nb">str</span> <span class="p">(</span><span class="ow">not</span> <span class="s2">"int"</span><span class="p">)</span> <span class="n">to</span> <span class="nb">str</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"年龄："</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
+<span class="s1">'年龄：18'</span>
+</code></pre></div>
+<p>报错的最后一行说，只能把 <code class="highlight"><span class="nb">str</span></code>（而不是 <code class="highlight"><span class="nb">int</span></code>）拼接到 <code class="highlight"><span class="nb">str</span></code> 上. 用 <code class="highlight"><span class="nb">str</span><span class="p">()</span></code> 把数字转换成字符串之后就可以拼接了. 不过这种文字和数字混排的输出，用后面介绍的 <a href="#f-string">f-字符串</a> 会方便得多.</p>
+<h3 id="_5">索引与切片</h3>
+<p>字符串中的每个字符都有一个编号，称为索引（index），用方括号可以取出对应位置的字符. 和尺子上的刻度一样，索引从 0 开始. 不妨把字符串 <code class="highlight"><span class="s2">"string"</span></code> 画在一把尺子上：</p>
+<div class="highlight"><pre><span></span><code> +---+---+---+---+---+---+
+ | s | t | r | i | n | g |
+ +---+---+---+---+---+---+
+ 0   1   2   3   4   5   6
+-6  -5  -4  -3  -2  -1
+</code></pre></div>
+<p>尺子上的第 1 厘米，是从刻度 0 到刻度 1 的那一格. 同样，<code class="highlight"><span class="n">word</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code> 取的是从刻度 <code>i</code> <strong>开始</strong>的那一格里的字符：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span> <span class="o">=</span> <span class="s2">"string"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="s1">'s'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="s1">'g'</span>
+</code></pre></div>
+<p>换句话说，索引就是“这个字符前面有几个字符”：<code class="highlight"><span class="s1">'s'</span></code> 前面没有字符，索引是 0；<code class="highlight"><span class="s1">'g'</span></code> 前面有 5 个字符，索引是 5.</p>
+<p>尺子下面还有一行负数刻度. 负数索引表示“倒数第几个”，<code class="highlight"><span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code> 就是倒数第 1 个字符. 根据<a href="https://docs.python.org/zh-cn/3/builtins/stdtypes.html#common-sequence-operations">官方文档</a>，Python 遇到负数索引时，会先把它加上字符串的长度，换算成正数索引再去取：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span> <span class="o">=</span> <span class="s2">"string"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+<span class="mi">6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="s1">'g'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+<span class="s1">'g'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
+<span class="s1">'s'</span>
+</code></pre></div>
+<p><code class="highlight"><span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code> 就是 <code class="highlight"><span class="n">word</span><span class="p">[</span><span class="mi">6</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span></code>，也就是 <code class="highlight"><span class="n">word</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span></code>；<code class="highlight"><span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span></code> 换算成 <code class="highlight"><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code>，是第一个字符. 因为 <code class="highlight"><span class="o">-</span><span class="mi">0</span></code> 就是 <code class="highlight"><span class="mi">0</span></code>，倒数只能从 <code class="highlight"><span class="o">-</span><span class="mi">1</span></code> 数起.</p>
+<p>刻度 6 在尺子的最右端，它后面已经没有格子了，所以 <code class="highlight"><span class="n">word</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span></code> 取不到任何字符：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span> <span class="o">=</span> <span class="s2">"string"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">word</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+    <span class="o">~~~~^^^</span>
+<span class="ne">IndexError</span><span class="p">:</span> <span class="n">string</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="nb">range</span>
+</code></pre></div>
+<p><code>word</code> 有 6 个字符，合法的索引是 0 到 5，或者 -6 到 -1. 超出这个范围，Python 就报告 <code class="highlight"><span class="ne">IndexError</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Python 怎样找到第 i 个字符</p>
+<p>在 CPython（官方的 Python 解释器）中，一个字符串的所有字符一个挨一个地存放在内存里，同一个字符串中每个字符占的空间一样大. 要找 <code class="highlight"><span class="n">word</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code>，不必从头一个个数，只要从开头跳过 <code>i</code> 个字符的位置就到了. 索引就是要跳过的字符个数，所以第一个字符的索引是 0；取长字符串中的字符，也和取短字符串一样快. 这是 CPython 的实现细节，详见 <a href="https://peps.python.org/pep-0393/">PEP 393</a>.</p>
+</div>
+<p>索引一次只能取出一个字符. 要取出连续的一段，就要用切片（slice）. 还是用上面那把尺子，<code class="highlight"><span class="n">word</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">j</span><span class="p">]</span></code> 取出的是刻度 <code>i</code> 和刻度 <code>j</code> 之间的部分：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span> <span class="o">=</span> <span class="s2">"string"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="s1">'tri'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="s1">'str'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+<span class="s1">'ing'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+<span class="s1">'ing'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>
+<span class="s1">'ing'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+<span class="s1">'string'</span>
+</code></pre></div>
+<p><code class="highlight"><span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span></code> 是刻度 1 到刻度 4 之间的三格，即 <code class="highlight"><span class="s1">'tri'</span></code>. 换成索引来说，切片包含索引 <code>i</code> 的字符，但<strong>不包含</strong>索引 <code>j</code> 的字符，也就是<strong>“左闭右开”</strong>.</p>
+<p>省略开头表示从最左端的刻度 0 开始，省略结尾表示一直切到最右端（这里是刻度 6），所以 <code class="highlight"><span class="n">word</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span></code> 和 <code class="highlight"><span class="n">word</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span></code> 的结果相同. 刻度 6 不能用作索引，却可以作为切片的终点.</p>
+<p>因为是左闭右开，<code class="highlight"><span class="n">word</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span></code> 和 <code class="highlight"><span class="n">word</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span></code> 在刻度 3 处切开，既不重复也不遗漏，拼起来正好是原字符串.</p>
+<p>这也是索引从 0 开始的一个好处：刻度 <code>k</code> 的左边正好有 <code>k</code> 个字符，所以 <code class="highlight"><span class="n">word</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span></code> 就是前 <code>k</code> 个字符，<code class="highlight"><span class="n">word</span><span class="p">[</span><span class="n">k</span><span class="p">:]</span></code> 就是剩下的部分，不需要再加 1 或减 1. 比如要把字符串从中间分成两半，只要用 <code>//</code> 把长度整除 2，得到中间的刻度：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span> <span class="o">=</span> <span class="s2">"string"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mid</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mid</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[:</span><span class="n">mid</span><span class="p">]</span>
+<span class="s1">'str'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="n">mid</span><span class="p">:]</span>
+<span class="s1">'ing'</span>
+</code></pre></div>
+<p>长度为奇数时，整除会舍去余数，前一半比后一半少一个字符；这时 <code class="highlight"><span class="n">t</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span></code> 恰好是正中间的那个字符：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="s2">"abcde"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mid</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mid</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="p">[:</span><span class="n">mid</span><span class="p">]</span>
+<span class="s1">'ab'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="p">[</span><span class="n">mid</span><span class="p">:]</span>
+<span class="s1">'cde'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span>
+<span class="s1">'c'</span>
+</code></pre></div>
+<p>切片的范围超出字符串时不会报错，只取实际存在的部分；完全超出时得到空字符串 <code class="highlight"><span class="s1">''</span></code>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span> <span class="o">=</span> <span class="s2">"string"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span>
+<span class="s1">'tring'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">10</span><span class="p">:]</span>
+<span class="s1">''</span>
+</code></pre></div>
+<p>这一点和索引不同：前面的 <code class="highlight"><span class="n">word</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span></code> 超出范围，直接报了 <code class="highlight"><span class="ne">IndexError</span></code>.</p>
+<p>切片还可以写第三个数 <code class="highlight"><span class="n">word</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">j</span><span class="p">:</span><span class="n">k</span><span class="p">]</span></code>，称为步长（step），表示每隔几个位置取一个字符. 步长为负数时，切片从右往左取：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span> <span class="o">=</span> <span class="s2">"string"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
+<span class="s1">'srn'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="s1">'gnirts'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[::</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="s1">'git'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="s1">'nir'</span>
+</code></pre></div>
+<p><code class="highlight"><span class="n">word</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span></code> 从头开始每两个取一个，即索引 0、2、4 的字符.</p>
+<p>步长为负时方向反了过来：省略的开头表示从<strong>最后一个</strong>字符开始，省略的结尾表示一直取到<strong>第一个</strong>字符为止. 所以 <code class="highlight"><span class="n">word</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code> 把整个字符串倒了过来，<code class="highlight"><span class="n">word</span><span class="p">[::</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span></code> 取的是索引 5、3、1（-1、-3、-5）. <code class="highlight"><span class="n">word</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code> 从索引 4 开始向左走，到索引 1 之前停下，取到索引 4、3、2.</p>
+<p>无论步长正负，开头的位置总是包含在内，结尾的位置总是不包含.</p>
+<h3 id="_6">字符串的不可变性</h3>
+<p>既然能用索引取出某个位置的字符，能不能给这个位置赋一个新字符呢？不能. <strong>字符串一旦创建，内容就不能改变</strong>，即字符串是不可变的（immutable）. 给某个位置赋值会报错：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span> <span class="o">=</span> <span class="s2">"string"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"S"</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"S"</span>
+    <span class="o">~~~~^^^</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="s1">'str'</span> <span class="nb">object</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">item</span> <span class="n">assignment</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"S"</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="s1">'String'</span>
+</code></pre></div>
+<p>要得到不同的字符串，只能用已有的部分拼出一个<strong>新</strong>字符串. 下一节的字符串方法也遵循这个规则.</p>
+<h2 id="2">2. 常用字符串方法</h2>
+<p>除了运算符，字符串还自带许多处理文本的工具，称为方法（method）. 方法是属于某种类型的函数，调用时写成 <strong>“值.方法名(参数)”</strong>，例如 <code class="highlight"><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span></code>. 它和 <code class="highlight"><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code> 这样的普通函数调用写法不同：<code class="highlight"><span class="n">upper</span><span class="p">()</span></code> 是字符串的方法，只能写成 <code class="highlight"><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span></code>，不能写成 <code class="highlight"><span class="n">upper</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code>. 严格来说，也可以在前面加上类型名，写成 <code class="highlight"><span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code>，但这就说来话长了，这里不展开.</p>
+<p>上一节说过字符串不可修改，所以<strong>字符串方法从不改变原字符串，而是返回一个新字符串</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"hello world"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="s1">'HELLO WORLD'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+<span class="s1">'Hello World'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="s1">'hello world'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="s1">'Hello World'</span>
+</code></pre></div>
+<p>调用 <code class="highlight"><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span></code> 和 <code class="highlight"><span class="n">s</span><span class="o">.</span><span class="n">title</span><span class="p">()</span></code> 之后，<code>s</code> 仍然是 <code class="highlight"><span class="s1">'hello world'</span></code>. 想保留结果，就要把返回的新字符串重新赋给一个名字，比如 <code class="highlight"><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">title</span><span class="p">()</span></code>.</p>
+<p>课程中常用的方法如下，后面逐组说明：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="highlight"><span class="n">upper</span><span class="p">()</span></code>、<code class="highlight"><span class="n">lower</span><span class="p">()</span></code>、<code class="highlight"><span class="n">title</span><span class="p">()</span></code></td>
+<td>全部变大写、全部变小写、每个单词首字母大写</td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="n">find</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span></code>、<code class="highlight"><span class="n">count</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span></code></td>
+<td>查找子串第一次出现的位置（找不到返回 <code class="highlight"><span class="o">-</span><span class="mi">1</span></code>）、统计子串出现的次数</td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="n">replace</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span></code></td>
+<td>把子串 <code>old</code> 替换成 <code>new</code></td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="n">translate</span><span class="p">(</span><span class="n">table</span><span class="p">)</span></code></td>
+<td>按对照表逐个替换字符，对照表用 <code class="highlight"><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">()</span></code> 生成</td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="n">strip</span><span class="p">()</span></code>、<code class="highlight"><span class="n">lstrip</span><span class="p">()</span></code>、<code class="highlight"><span class="n">rstrip</span><span class="p">()</span></code></td>
+<td>去掉两端、左端、右端的空白字符</td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="n">split</span><span class="p">(</span><span class="n">sep</span><span class="p">)</span></code>、<code class="highlight"><span class="n">join</span><span class="p">(</span><span class="o">...</span><span class="p">)</span></code></td>
+<td>按分隔符拆成列表、把列表中的字符串连接起来</td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="n">startswith</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code>、<code class="highlight"><span class="n">endswith</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></td>
+<td>是否以 <code>p</code> 开头、结尾</td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="n">isdigit</span><span class="p">()</span></code>、<code class="highlight"><span class="n">isalpha</span><span class="p">()</span></code></td>
+<td>是否全部由数字、字母组成</td>
+</tr>
+</tbody>
+</table>
+<p>字符串的方法远不止这些. 完整的列表见官方文档的<a href="https://docs.python.org/zh-cn/3/builtins/stdtypes.html#string-methods">字符串的方法</a>；也可以像实验 2 那样，在 Shell 中用 <code class="highlight"><span class="nb">dir</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span></code> 列出所有方法，用 <code class="highlight"><span class="n">help</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">find</span><span class="p">)</span></code> 查看某个方法的说明.</p>
+<h3 id="_7">大小写</h3>
+<p><code class="highlight"><span class="n">upper</span><span class="p">()</span></code> 把所有字母变成大写，<code class="highlight"><span class="n">lower</span><span class="p">()</span></code> 变成小写，<code class="highlight"><span class="n">title</span><span class="p">()</span></code> 只把每个单词的首字母变成大写、其余字母变成小写. 比较两个字符串时如果不想区分大小写，可以先把两边都转成小写：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"Python"</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"PYTHON"</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="kc">True</span>
+</code></pre></div>
+<h3 id="_8">判断、查找与统计子串</h3>
+<p>最简单的问题是：一个字符串是否出现在另一个字符串中. 这用运算符 <code class="highlight"><span class="ow">in</span></code> 来判断，结果是 <code class="highlight"><span class="kc">True</span></code> 或 <code class="highlight"><span class="kc">False</span></code>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span> <span class="o">=</span> <span class="s2">"string"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"ing"</span> <span class="ow">in</span> <span class="n">word</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"abc"</span> <span class="ow">in</span> <span class="n">word</span>
+<span class="kc">False</span>
+</code></pre></div>
+<p><strong><code class="highlight"><span class="ow">in</span></code> 是运算符</strong>而不是方法，和 <code>+</code> 一样写在两个值中间. 它只回答“在不在”；想知道子串在哪里、出现了几次，就要用下面的方法.</p>
+<p><code class="highlight"><span class="n">find</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span></code> 返回子串 <code>sub</code> <strong>第一次</strong>出现的位置；第二个参数可以指定从哪个位置开始找；找不到时返回 <code class="highlight"><span class="o">-</span><span class="mi">1</span></code>. <code class="highlight"><span class="n">count</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span></code> 返回子串出现的次数：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"banana"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"an"</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"an"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"x"</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"an"</span><span class="p">)</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"aaaa"</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"aa"</span><span class="p">)</span>
+<span class="mi">2</span>
+</code></pre></div>
+<p><code class="highlight"><span class="s2">"aaaa"</span></code> 中的 <code class="highlight"><span class="s2">"aa"</span></code> 只算 2 次，因为 <code class="highlight"><span class="n">count</span><span class="p">()</span></code> 统计的是<strong>互不重叠</strong>的出现次数.</p>
+<p>使用 <code class="highlight"><span class="n">find</span><span class="p">()</span></code> 的结果之前，要先判断它是不是 <code class="highlight"><span class="o">-</span><span class="mi">1</span></code>. 对非空字符串来说，<code class="highlight"><span class="o">-</span><span class="mi">1</span></code> 本身就是一个合法的索引（最后一个字符），直接拿去取字符不会报错，只会悄悄地得到错误的结果. 如果只想知道子串在不在，用前面的 <code class="highlight"><span class="ow">in</span></code> 更直接.</p>
+<p>字符串还有一个 <code class="highlight"><span class="n">index</span><span class="p">()</span></code> 方法，找到时和 <code class="highlight"><span class="n">find</span><span class="p">()</span></code> 一样返回位置，找不到时则直接报错：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"banana"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">"x"</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">"x"</span><span class="p">)</span>
+    <span class="o">~~~~~~~^^^^^</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">substring</span> <span class="ow">not</span> <span class="n">found</span>
+</code></pre></div>
+<h3 id="_9">替换</h3>
+<p><code class="highlight"><span class="n">replace</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span></code> 把所有的 <code>old</code> 都替换成 <code>new</code>；第三个参数可以限制最多替换几处. <strong>替换是区分大小写的</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"cats like cats"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"cats"</span><span class="p">,</span> <span class="s2">"dogs"</span><span class="p">)</span>
+<span class="s1">'dogs like dogs'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"cats"</span><span class="p">,</span> <span class="s2">"dogs"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="s1">'dogs like cats'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="s1">'cats like cats'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"Python"</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"python"</span><span class="p">,</span> <span class="s2">"Java"</span><span class="p">)</span>
+<span class="s1">'Python'</span>
+</code></pre></div>
+<p>最后一个例子中，<code class="highlight"><span class="s2">"Python"</span></code> 里没有小写的 <code class="highlight"><span class="s2">"python"</span></code>，所以什么也没有替换，原样返回.</p>
+<p><code class="highlight"><span class="n">replace</span><span class="p">()</span></code> 一次只处理一种替换. 如果想让几个字符各自换成别的字符，连着调用 <code class="highlight"><span class="n">replace</span><span class="p">()</span></code> 可能出问题. 比如把“左”和“右”互换：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"先左转再右转"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"左"</span><span class="p">,</span> <span class="s2">"右"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span>
+<span class="s1">'先右转再右转'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"右"</span><span class="p">,</span> <span class="s2">"左"</span><span class="p">)</span>
+<span class="s1">'先左转再左转'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"左"</span><span class="p">,</span> <span class="s2">"右"</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"右"</span><span class="p">,</span> <span class="s2">"左"</span><span class="p">)</span>
+<span class="s1">'先左转再左转'</span>
+</code></pre></div>
+<p>最后一行把两步写在了一起. <code class="highlight"><span class="n">replace</span><span class="p">()</span></code> 返回的是一个新字符串，所以可以紧接着在这个新字符串上再调用方法，这种写法常被称为链式调用. 它从左往右执行：先算 <code class="highlight"><span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"左"</span><span class="p">,</span> <span class="s2">"右"</span><span class="p">)</span></code>，得到 <code class="highlight"><span class="s1">'先右转再右转'</span></code>，也就是上面的 <code>t</code>；再在这个结果上调用 <code class="highlight"><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"右"</span><span class="p">,</span> <span class="s2">"左"</span><span class="p">)</span></code>. 所以它和分两步写的结果完全相同，只是没有给中间结果起名字.</p>
+<p>无论哪种写法，第一次 <code class="highlight"><span class="n">replace</span><span class="p">()</span></code> 都把“左”换成了“右”，这时字符串里已经分不清哪个“右”是原来的、哪个是刚换过来的；第二次又把所有的“右”都换成了“左”.</p>
+<p>这时可以用实验 2 中的 <code class="highlight"><span class="n">translate</span><span class="p">()</span></code>. 它按一张对照表替换字符，对照表用 <code class="highlight"><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">()</span></code> 生成：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">table</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">"左右"</span><span class="p">,</span> <span class="s2">"右左"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">table</span>
+<span class="p">{</span><span class="mi">24038</span><span class="p">:</span> <span class="mi">21491</span><span class="p">,</span> <span class="mi">21491</span><span class="p">:</span> <span class="mi">24038</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"先左转再右转"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+<span class="s1">'先右转再左转'</span>
+</code></pre></div>
+<p><code class="highlight"><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">()</span></code> 的两个参数必须一样长，按位置一一对应：第一个字符串中的第 1 个字符，对应第二个字符串中的第 1 个字符，以此类推. 所以这张表里“左”对应“右”，“右”对应“左”.</p>
+<p>直接查看 <code>table</code>，显示的是 <code class="highlight"><span class="p">{</span><span class="mi">24038</span><span class="p">:</span> <span class="mi">21491</span><span class="p">,</span> <span class="mi">21491</span><span class="p">:</span> <span class="mi">24038</span><span class="p">}</span></code>. 其中 24038 和 21491 正是“左”和“右”的编码，可以用前面讲过的 <code class="highlight"><span class="nb">ord</span><span class="p">()</span></code> 验证：对照表里记的不是字符本身，而是编码之间的对应. 这种用花括号写成的值叫作字典，后面的章节会讲到.</p>
+<p><code class="highlight"><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">()</span></code> 只负责生成对照表，不处理某个具体的字符串，所以写成 <code class="highlight"><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="o">...</span><span class="p">)</span></code>，通过类型名 <code class="highlight"><span class="nb">str</span></code> 来调用.</p>
+<p><code class="highlight"><span class="n">translate</span><span class="p">()</span></code> 拿着这张表，逐个查看原字符串中的每个字符：表里有的，换成对应的字符；表里没有的，原样保留. 每个字符只查一次表，换过的字符不会再被换第二次，所以“左”和“右”能正确地互换. 两个方法的详细说明见官方文档：</p>
+<ul>
+<li><code class="highlight"><span class="nb">str</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span></code>：<a href="https://docs.python.org/zh-cn/3/builtins/stdtypes.html#str.translate">https://docs.python.org/zh-cn/3/builtins/stdtypes.html#str.translate</a></li>
+<li><code class="highlight"><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">()</span></code>：<a href="https://docs.python.org/zh-cn/3/builtins/stdtypes.html#str.maketrans">https://docs.python.org/zh-cn/3/builtins/stdtypes.html#str.maketrans</a></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title"><code class="highlight"><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">()</span></code> 的第三个参数</p>
+<p><code class="highlight"><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">()</span></code> 还可以传第三个参数. 它也是一个字符串，其中的每个字符都会被删除：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">table</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">table</span>
+<span class="p">{</span><span class="mi">45</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"138-0000-1234"</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+<span class="s1">'13800001234'</span>
+</code></pre></div>
+<p>这里前两个参数都是空字符串，表示不做任何替换. 对照表里，<code>-</code> 的编码 45 对应 <code class="highlight"><span class="kc">None</span></code>，意思是“换成空，也就是删掉”.</p>
+</div>
+<h3 id="_10">去除空白</h3>
+<p><code class="highlight"><span class="n">strip</span><span class="p">()</span></code> 去掉字符串<strong>两端</strong>的空白字符，包括空格、<code>\n</code>、<code>\t</code> 等；<code class="highlight"><span class="n">lstrip</span><span class="p">()</span></code> 只去左端，<code class="highlight"><span class="n">rstrip</span><span class="p">()</span></code> 只去右端. 字符串中间的空白不受影响：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"  hello  </span><span class="se">\n</span><span class="s2">"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="s1">'hello'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span>
+<span class="s1">'hello  </span><span class="se">\n</span><span class="s1">'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
+<span class="s1">'  hello'</span>
+</code></pre></div>
+<p>给 <code class="highlight"><span class="n">strip</span><span class="p">()</span></code> 传入一个字符串作为参数时，它去掉的就不再是空白，而是两端出现在这个参数中的字符：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"**重要**"</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"*"</span><span class="p">)</span>
+<span class="s1">'重要'</span>
+</code></pre></div>
+<p>如果字符串两端既有空白、又有要去掉的字符，就要小心了：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"  **重要**  "</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"*"</span><span class="p">)</span>
+<span class="s1">'  **重要**  '</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"* "</span><span class="p">)</span>
+<span class="s1">'重要'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"*"</span><span class="p">)</span>
+<span class="s1">'重要'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"*重*要*"</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"*"</span><span class="p">)</span>
+<span class="s1">'重*要'</span>
+</code></pre></div>
+<p><code class="highlight"><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"*"</span><span class="p">)</span></code> 什么也没有去掉. 传入参数之后，<code class="highlight"><span class="n">strip</span><span class="p">()</span></code> 只去掉参数里的字符：它<strong>从两端往中间看</strong>，遇到第一个不在参数里的字符就停下. <code>s</code> 的两端都是空格，不在 <code class="highlight"><span class="s2">"*"</span></code> 里，所以一开始就停下了.</p>
+<p>要连空格一起去掉，可以把空格也写进参数：<code class="highlight"><span class="s2">"* "</span></code> 表示空格和星号都要去掉. 参数只说明要去掉哪些字符，与字符的顺序无关，写成 <code class="highlight"><span class="s2">" *"</span></code> 效果相同（见<a href="https://docs.python.org/zh-cn/3/builtins/stdtypes.html#str.strip">官方文档</a>）. 也可以用前面讲过的链式调用，先用 <code class="highlight"><span class="n">strip</span><span class="p">()</span></code> 去掉空白，再用 <code class="highlight"><span class="n">strip</span><span class="p">(</span><span class="s2">"*"</span><span class="p">)</span></code> 去掉星号. 最后一个例子说明，和不带参数时一样，夹在中间的字符不受影响.</p>
+<h3 id="_11">拆分与合并</h3>
+<p><code class="highlight"><span class="n">split</span><span class="p">()</span></code> 把字符串拆成若干段，得到一个列表（list）. 列表在后面的章节会详细讲，现在只需要知道它是按顺序排好的一组值，写成 <code class="highlight"><span class="p">[</span><span class="s1">'2026'</span><span class="p">,</span> <span class="s1">'10'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">]</span></code> 的样子，并且可以用 <code class="highlight"><span class="nb">len</span><span class="p">()</span></code> 数出其中有几个元素.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"2026-10-11"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">'2026'</span><span class="p">,</span> <span class="s1">'10'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">parts</span> <span class="o">=</span> <span class="s2">"2026-10-11"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+<span class="mi">3</span>
+</code></pre></div>
+<p><code class="highlight"><span class="n">split</span><span class="p">(</span><span class="n">sep</span><span class="p">)</span></code> 在<strong>每一个</strong> <code>sep</code> 处切开. 如果两个分隔符连在一起，中间就会切出一个空字符串 <code class="highlight"><span class="s1">''</span></code>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"1,2,,3"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">'1'</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">'3'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"a  b   c"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">)</span>    <span class="c1"># 仔细查一下有几个空格</span>
+<span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">]</span>
+</code></pre></div>
+<p>开头和结尾也是一样. 分隔符出现在开头或结尾时，它外侧也会切出一个空字符串；两端的空白也不会被忽略，而是原样留在切出来的段里：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">",1,2,"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">''</span><span class="p">,</span> <span class="s1">'1'</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">,</span> <span class="s1">''</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">" 1, 2 "</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">' 1'</span><span class="p">,</span> <span class="s1">' 2 '</span><span class="p">]</span>
+</code></pre></div>
+<p>也就是说，<code class="highlight"><span class="n">split</span><span class="p">(</span><span class="n">sep</span><span class="p">)</span></code> 只认 <code>sep</code>，其他字符，包括空白，一律当作普通内容. 这一点和下面不带参数的 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 正好相反.</p>
+<p>不带参数的 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 则不同：它把连续的任意空白（空格、<code>\n</code>、<code>\t</code>）当作<strong>一个</strong>分隔符，并且忽略开头和结尾的空白：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"a  b   c"</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"  12   34  "</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="p">[</span><span class="s1">'12'</span><span class="p">,</span> <span class="s1">'34'</span><span class="p">]</span>
+</code></pre></div>
+<p>所以，当输入中的数据用空格隔开、但空格个数不确定时，应该用不带参数的 <code class="highlight"><span class="n">split</span><span class="p">()</span></code>.</p>
+<p><code class="highlight"><span class="n">join</span><span class="p">()</span></code> 做相反的事情：把一个列表中的字符串用指定的分隔符连接起来. 注意写法是“分隔符.join(列表)”，并且列表中的元素必须都是字符串：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">parts</span> <span class="o">=</span> <span class="s2">"2026-10-11"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">parts</span>
+<span class="p">[</span><span class="s1">'2026'</span><span class="p">,</span> <span class="s1">'10'</span><span class="p">,</span> <span class="s1">'11'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"/"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+<span class="s1">'2026/10/11'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">"P"</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">])</span>
+<span class="s1">'Py'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"-"</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="s2">"-"</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="o">~~~~~~~~^^^^^^^^</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">sequence</span> <span class="n">item</span> <span class="mi">0</span><span class="p">:</span> <span class="n">expected</span> <span class="nb">str</span> <span class="n">instance</span><span class="p">,</span> <span class="nb">int</span> <span class="n">found</span>
+</code></pre></div>
+<h3 id="_12">判断开头、结尾与内容</h3>
+<p><code class="highlight"><span class="n">startswith</span><span class="p">()</span></code> 和 <code class="highlight"><span class="n">endswith</span><span class="p">()</span></code> 判断字符串是否以某个子串开头或结尾：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"report.pdf"</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".pdf"</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"Python"</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"Py"</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"Python"</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"py"</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"Python"</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"py"</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"REPORT.PDF"</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".pdf"</span><span class="p">)</span>
+<span class="kc">True</span>
+</code></pre></div>
+<p>和 <code class="highlight"><span class="n">replace</span><span class="p">()</span></code> 一样，这两个方法是区分大小写的，所以 <code class="highlight"><span class="s2">"Python"</span></code> 不以 <code class="highlight"><span class="s2">"py"</span></code> 开头. 它们也没有“不区分大小写”的参数：可选的第二、三个参数指定的是检查的范围，与大小写无关（见<a href="https://docs.python.org/zh-cn/3/builtins/stdtypes.html#str.startswith">官方文档</a>）. 需要忽略大小写时，可以像前面“大小写”一节那样，先用 <code class="highlight"><span class="n">lower</span><span class="p">()</span></code> 把字符串变成小写，再接着调用 <code class="highlight"><span class="n">startswith</span><span class="p">()</span></code> 或 <code class="highlight"><span class="n">endswith</span><span class="p">()</span></code>. 这样写时，参数也要写成小写.</p>
+<p><code class="highlight"><span class="n">isdigit</span><span class="p">()</span></code> 判断字符串是否非空且全部由数字组成：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"2026"</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"-5"</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"3.14"</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">""</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span>
+<span class="kc">False</span>
+</code></pre></div>
+<p>它只看每个字符是不是数字，所以负号和小数点都会让它返回 <code class="highlight"><span class="kc">False</span></code>. 也就是说，它不能用来判断一个字符串是不是负数或小数.</p>
+<div class="admonition note">
+<p class="admonition-title"><code class="highlight"><span class="n">isdigit</span><span class="p">()</span></code> 为真，<code class="highlight"><span class="nb">int</span><span class="p">()</span></code> 也未必能转换</p>
+<p><code class="highlight"><span class="n">isdigit</span><span class="p">()</span></code> 认的“数字”比 0 到 9 多，例如上标 ² 也算. 但 <code class="highlight"><span class="nb">int</span><span class="p">()</span></code> 并不认它：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"²"</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"²"</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="nb">int</span><span class="p">(</span><span class="s2">"²"</span><span class="p">)</span>
+    <span class="o">~~~^^^^^</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">'²'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"²"</span><span class="o">.</span><span class="n">isdecimal</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"2026"</span><span class="o">.</span><span class="n">isdecimal</span><span class="p">()</span>
+<span class="kc">True</span>
+</code></pre></div>
+<p>字符串还有一个 <code class="highlight"><span class="n">isdecimal</span><span class="p">()</span></code> 方法，它认的数字字符和 <code class="highlight"><span class="nb">int</span><span class="p">()</span></code> 一致. 平时遇到的都是 0 到 9，两者没有区别；真要先判断再用 <code class="highlight"><span class="nb">int</span><span class="p">()</span></code> 转换，用 <code class="highlight"><span class="n">isdecimal</span><span class="p">()</span></code> 更稳妥.</p>
+</div>
+<p>顺手一提，怎样判断一个字符串是不是合法的负数或小数呢？字符串没有现成的方法能做到. 自己拼凑规则，比如“去掉开头的负号，只允许出现一个小数点”，很难考虑周全：<code>1.2.3</code> 这样的章节编号、<code>1e5</code> 这样的科学计数法、<code>--5</code> 这样多余的负号，都要一一单独处理. 最可靠的标准是 <code class="highlight"><span class="nb">float</span><span class="p">()</span></code> 本身：能被 <code class="highlight"><span class="nb">float</span><span class="p">()</span></code> 转换的就是合法的数，不能转换的会报 <code class="highlight"><span class="ne">ValueError</span></code>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"-3.14"</span><span class="p">)</span>
+<span class="o">-</span><span class="mf">3.14</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"1e5"</span><span class="p">)</span>
+<span class="mf">100000.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"1.2.3"</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="nb">float</span><span class="p">(</span><span class="s2">"1.2.3"</span><span class="p">)</span>
+    <span class="o">~~~~~^^^^^^^^^</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">convert</span> <span class="n">string</span> <span class="n">to</span> <span class="nb">float</span><span class="p">:</span> <span class="s1">'1.2.3'</span>
+</code></pre></div>
+<p>在 PTA 上做题时，题目会给出输入格式，一般不需要自己判断，直接尊重格式进行转换即可. 只有确实需要“先判断，不合法也不让程序停下”时，才要用到下面方框中的 <code class="highlight"><span class="k">try</span></code> 语句.</p>
+<div class="admonition note">
+<p class="admonition-title">用 <code class="highlight"><span class="k">try</span></code> 判断能否转换</p>
+<p><code class="highlight"><span class="k">try</span></code> 语句属于后面异常处理的内容，这里只给出写法：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">"是合法的数"</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">"不是合法的数"</span><span class="p">)</span>
+</code></pre></div>
+<p>Python 先执行 <code class="highlight"><span class="k">try</span></code> 下面的代码. 如果其中的 <code class="highlight"><span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code> 报了 <code class="highlight"><span class="ne">ValueError</span></code>，程序不会停止，而是转去执行 <code class="highlight"><span class="k">except</span> <span class="ne">ValueError</span></code> 下面的代码. 输入 <code>-3.14</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>-3.14 是合法的数
+</code></pre></div>
+<p>输入 <code>1.2.3</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>1.2.3 不是合法的数
+</code></pre></div>
+</div>
+<p><code class="highlight"><span class="n">isalpha</span><span class="p">()</span></code> 判断字符串是否非空且全部由字母组成. 这里的“字母”按 Unicode 的定义，汉字也算在内：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"abc"</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"浙大"</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"abc123"</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span>
+<span class="kc">False</span>
+</code></pre></div>
+<p>方法名中的 <code>alpha</code> 是 alphabet（字母表）的缩写.</p>
+<h2 id="3-print">3. 输出：<code class="highlight"><span class="nb">print</span><span class="p">()</span></code></h2>
+<p><code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 把参数显示在屏幕上，更准确地说，是写到标准输出（standard output/stdout）.</p>
+<h3 id="sep">多个参数与分隔符 <code>sep</code></h3>
+<p><code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 可以一次接收多个参数，显示时它们之间默认用<strong>一个空格</strong>隔开. 参数不必是字符串，数字等其他类型的值会先像 <code class="highlight"><span class="nb">str</span><span class="p">()</span></code> 那样转换成文字. 用 <code>sep</code> 可以指定别的分隔符：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"总价："</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">"元"</span><span class="p">)</span>
+<span class="n">总价</span><span class="err">：</span> <span class="mi">25</span> <span class="n">元</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"总价："</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">"元"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+<span class="n">总价</span><span class="err">：</span><span class="mi">25</span><span class="n">元</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"-"</span><span class="p">)</span>
+<span class="mi">2026</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">11</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">abc</span> <span class="mf">3.5</span> <span class="kc">True</span>
+</code></pre></div>
+<p>第一行输出中“：”和“25”之间、“25”和“元”之间各有一个空格，它们是 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 自动加上的，而不是我们写在字符串里的. 题目要求的输出格式里如果没有这些空格，就要用 <code class="highlight"><span class="n">sep</span><span class="o">=</span><span class="s2">""</span></code>，或者改用后面的 <a href="#f-string">f-字符串</a>.</p>
+<h3 id="end">结尾 <code>end</code></h3>
+<p>每次调用 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code>，输出的最后默认会加一个换行，所以下一次 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 从新的一行开始. 用 <code>end</code> 可以改变结尾. 下面是一个脚本和它的输出：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">"第一句"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"第二句"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"第三句"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">"!</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>第一句第二句
+
+第三句!
+</code></pre></div>
+<p>第一行的 <code class="highlight"><span class="n">end</span><span class="o">=</span><span class="s2">""</span></code> 去掉了换行，所以“第二句”紧接在“第一句”后面. 不带任何参数的 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 只输出一个换行，得到一个空行.</p>
+<p><strong><code>sep</code> 和 <code>end</code> 必须写成 <code>sep=...</code>、<code>end=...</code> 的形式</strong>，不能省略 <code>sep=</code> 或 <code>end=</code>，这种写法称为关键字参数（keyword argument）.</p>
+<h2 id="4-input">4. 输入：<code class="highlight"><span class="nb">input</span><span class="p">()</span></code></h2>
+<h3 id="input"><code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 返回字符串</h3>
+<p><code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 从标准输入（standard input/stdin）读取<strong>一整行</strong>，把它作为字符串返回，<strong>末尾的换行不包含在内</strong>. 自己运行程序时，标准输入就是键盘；在 PTA 上，标准输入是题目的测试数据. 即使输入的是数字，得到的也是字符串：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>  <span class="c1"># 注意下面的 42 是我们在键盘上输入的，或者是读取题目输入</span>
+<span class="mi">42</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="s1">'42'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">'</span><span class="nc">str</span><span class="s1">'&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">s</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="o">~~^~~</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">can</span> <span class="n">only</span> <span class="n">concatenate</span> <span class="nb">str</span> <span class="p">(</span><span class="ow">not</span> <span class="s2">"int"</span><span class="p">)</span> <span class="n">to</span> <span class="nb">str</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="mi">43</span>
+</code></pre></div>
+<p><code>s</code> 的值是字符串 <code class="highlight"><span class="s1">'42'</span></code>，不能直接和数字相加，要先用 <code class="highlight"><span class="nb">int</span><span class="p">()</span></code> 转换成整数.</p>
+<p><code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 可以带一个参数作为提示语，它会先被显示出来，然后再等待输入：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"你的名字："</span><span class="p">)</span>
+<span class="n">你的名字</span><span class="err">：</span><span class="n">Alice</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">name</span>
+<span class="s1">'Alice'</span>
+</code></pre></div>
+<p>提示语是<strong>输出</strong>的一部分. 自己运行程序时它很友好，但在 PTA 上做题时它会混进程序的输出里，请格外注意！</p>
+<h3 id="_13">转换成数字</h3>
+<p>最常见的写法是把读入和转换写在一起：<code class="highlight"><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span></code> 读入一个整数，<code class="highlight"><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span></code> 读入一个小数. 选用哪一个，要看数据可能是什么样子：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"3.14"</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="nb">int</span><span class="p">(</span><span class="s2">"3.14"</span><span class="p">)</span>
+    <span class="o">~~~^^^^^^^^</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">'3.14'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"3.14"</span><span class="p">)</span>
+<span class="mf">3.14</span>
+</code></pre></div>
+<p><code class="highlight"><span class="nb">int</span><span class="p">()</span></code> 只能转换表示整数的字符串，<code class="highlight"><span class="s1">'3.14'</span></code> 不是，于是报 <code class="highlight"><span class="ne">ValueError</span></code>. 题目说输入“可以是小数”时，就应该用 <code class="highlight"><span class="nb">float</span><span class="p">()</span></code>.</p>
+<p>还有两个细节. 字符串两端的空白不影响转换；<code class="highlight"><span class="nb">int</span><span class="p">()</span></code> 也可以作用于浮点数（注意这里面参数是浮点数而非浮点数的字符串），这时它直接去掉小数部分：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="s2">" 42 "</span><span class="p">)</span>
+<span class="mi">42</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="mf">3.99</span><span class="p">)</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="o">-</span><span class="mf">3.99</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">3</span>
+</code></pre></div>
+<p>这种去掉小数部分的做法称为<strong>向零截断</strong>，它既不是四舍五入，也不是向下取整. 如果是向下取整，<code class="highlight"><span class="o">-</span><span class="mf">3.99</span></code> 应当得到 <code class="highlight"><span class="o">-</span><span class="mi">4</span></code>，而这里得到的是 <code class="highlight"><span class="o">-</span><span class="mi">3</span></code>.</p>
+<p>关于类型转换的更多讨论，可以参阅<a href="../../faq/typing/">类型与值</a>.</p>
+<h3 id="_14">一行中有多个值</h3>
+<p>每次调用 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 读取一整行. 如果一行中有多个值，就先用 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 把这一行拆开，再把拆出来的各段分别赋给几个名字：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">line</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="mi">3</span> <span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">line</span>
+<span class="s1">'3 4'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="p">[</span><span class="s1">'3'</span><span class="p">,</span> <span class="s1">'4'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="mi">3</span> <span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="s1">'3'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="s1">'4'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="s1">'34'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="mi">7</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="o">^^^^</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">too</span> <span class="n">many</span> <span class="n">values</span> <span class="n">to</span> <span class="n">unpack</span> <span class="p">(</span><span class="n">expected</span> <span class="mi">2</span><span class="p">,</span> <span class="n">got</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<p><code class="highlight"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span></code> 一次完成了三件事：读入一行，按空白拆成列表，再把列表中的两个元素依次赋给 <code>a</code> 和 <code>b</code>（解包）. 拆出来的仍然是<strong>字符串</strong>，所以 <code class="highlight"><span class="n">a</span> <span class="o">+</span> <span class="n">b</span></code> 得到的是 <code class="highlight"><span class="s1">'34'</span></code> 而不是 <code class="highlight"><span class="mi">7</span></code>，计算之前要先转换.</p>
+<p>等号左边名字的个数，必须和拆出来的段数一致. 最后一次输入的 <code>1 2 3</code> 拆出了三段，左边却只有两个名字，报错的最后一行说的正是这件事：要分给名字的值太多了，只需要 2 个（expected 2），实际有 3 个（got 3）. 这样的语法实际上是<strong>解包</strong>，课上与我们后面都会有讲解.</p>
+<p>如果数据之间用逗号等其他符号隔开，就把这个符号传给 <code class="highlight"><span class="n">split</span><span class="p">()</span></code>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
+<span class="mi">3</span><span class="p">,</span><span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+<span class="p">(</span><span class="s1">'3'</span><span class="p">,</span> <span class="s1">'4'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
+<span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+<span class="p">(</span><span class="s1">'3'</span><span class="p">,</span> <span class="s1">' 4'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="mi">4</span>
+</code></pre></div>
+<p>输入 <code>3, 4</code> 时逗号后面有空格，拆出来的 <code>y</code> 是 <code class="highlight"><span class="s1">' 4'</span></code>：前面讲过，<code class="highlight"><span class="n">split</span><span class="p">(</span><span class="n">sep</span><span class="p">)</span></code> 只认分隔符，不会去掉空白. 好在 <code class="highlight"><span class="nb">int</span><span class="p">()</span></code> 会忽略两端的空白，转换结果不受影响.</p>
+<div class="admonition tip">
+<p class="admonition-title">简便写法</p>
+<p>拆出来的每一段都要转换时，可以用 <code class="highlight"><span class="nb">map</span><span class="p">()</span></code> 一次完成：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+<span class="mf">1.5</span> <span class="mi">2</span> <span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
+<span class="mf">6.5</span>
+</code></pre></div>
+<p><code class="highlight"><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span></code> 对拆出来的每一段都调用 <code class="highlight"><span class="nb">float</span><span class="p">()</span></code>. 可以把它想象成数学里的映射：<code class="highlight"><span class="nb">float</span></code> 是对应法则，<code class="highlight"><span class="n">split</span><span class="p">()</span></code> 拆出来的列表中的每一个元素，都按这同一个法则，调用 <code class="highlight"><span class="nb">float</span><span class="p">()</span></code> 变成一个浮点数. 这也是 <code class="highlight"><span class="nb">map</span></code> 这个名字的由来，map 在英文里就有“映射”的意思. 它的详细用法见 <a href="../../faq/map/">map 函数与列表推导式</a>.</p>
+</div>
+<h3 id="input-lines">读多行，还是读一行</h3>
+<p>一个 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 只读一行，所以程序中 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 的个数和写法，必须和输入数据的行数、每行的内容对应起来. 假设输入只有一行 <code>3 4</code>，下面这个程序却按两行来读：</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
+  File "main.py", line 1, in &lt;module&gt;
+    a = int(input())
+ValueError: invalid literal for int() with base 10: '3 4'
+</code></pre></div>
+<p>第一个 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 读到的是整行 <code class="highlight"><span class="s1">'3 4'</span></code>，它不是一个整数，<code class="highlight"><span class="nb">int</span><span class="p">()</span></code> 当场报错. 如果读入时没有立即转换，第一行能顺利读完，错误就出现在第二个 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 上：</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
+  File "main.py", line 2, in &lt;module&gt;
+    b = input()
+EOFError: EOF when reading a line
+</code></pre></div>
+<p>EOF 是 end of file 的缩写，意思是输入已经读完了，第二个 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 没有更多的行可读. 这两种报错都说明程序读取输入的方式和数据的格式对不上.</p>
+<h2 id="5">5. 格式化输出</h2>
+<h3 id="f-string">f-字符串</h3>
+<p>用 <code>+</code> 拼接文字和数字时，每个数字都要先用 <code class="highlight"><span class="nb">str</span><span class="p">()</span></code> 转换；用 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 的多个参数时，又会多出空格. 格式化字符串字面值（formatted string literal），简称 f-字符串（f-string），可以同时解决这两个问题：在字符串的引号前加上 <code>f</code>，字符串中用花括号 <code>{}</code> 括起来的部分会被替换成其中表达式的值.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">"Alice"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">score</span> <span class="o">=</span> <span class="mf">92.456</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"成绩："</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" 分"</span>
+<span class="s1">'成绩：92.456 分'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> 的成绩是 </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2"> 分"</span>
+<span class="s1">'Alice 的成绩是 92.456 分'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"1 + 2 = </span><span class="si">{</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'1 + 2 = 3'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2"> 有 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="si">}</span><span class="s2"> 个字母"</span>
+<span class="s1">'ALICE 有 5 个字母'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="se">{{</span><span class="s2">name</span><span class="se">}}</span><span class="s2"> 会显示成 </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'</span><span class="si">{name}</span><span class="s1"> 会显示成 Alice'</span>
+</code></pre></div>
+<p>花括号中可以是名字，也可以是任意表达式，包括计算和方法调用. 花括号外的部分原样保留，<code>1 + 2 =</code> 这几个字符就是普通文字. 如果需要在结果中显示花括号本身，就写成两个：<code>{{</code> 和 <code>}}</code>.</p>
+<h3 id="_15">格式说明符</h3>
+<p>在花括号中的<strong>表达式后面加一个冒号</strong>，冒号后面的格式说明符（format specifier）可以控制这个值显示成什么样子. 下面按用途介绍最常用的几种.</p>
+<p><strong>保留小数</strong>：<code>.nf</code> 表示以小数形式显示，保留 <code>n</code> 位小数. 其中的 <code>f</code> 取自 fixed-point，即定点表示法.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">3.14159</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'3.14'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'3'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mi">2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'2.00'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'3.14159'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">f</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'3.141590'</span>
+</code></pre></div>
+<p><code>.2f</code> 对整数同样适用，<code class="highlight"><span class="mi">2</span></code> 显示成了 <code>2.00</code>. 精度为 0 时，连小数点也不显示. 只写 <code>f</code> 不写精度，则默认保留 6 位小数.</p>
+<p><strong>宽度与对齐</strong>：冒号后的一个整数表示最少占多少个字符的宽度，不够时用空格补齐. <strong>字符串默认靠左，数字默认靠右</strong>.</p>
+<p><code>&lt;</code>、<code>&gt;</code>、<code>^</code> 分别指定靠左、靠右、居中；对齐符号前面还可以写一个用来填充的字符. 下面的例子在结果两边加了方括号，只是为了看清空格的位置：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="s1">'hi'</span><span class="si">:</span><span class="s2">6</span><span class="si">}</span><span class="s2">]"</span>
+<span class="s1">'[hi    ]'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="mi">42</span><span class="si">:</span><span class="s2">6</span><span class="si">}</span><span class="s2">]"</span>
+<span class="s1">'[    42]'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="s1">'hi'</span><span class="si">:</span><span class="s2">&lt;6</span><span class="si">}</span><span class="s2">]"</span>
+<span class="s1">'[hi    ]'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="s1">'hi'</span><span class="si">:</span><span class="s2">&gt;6</span><span class="si">}</span><span class="s2">]"</span>
+<span class="s1">'[    hi]'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="s1">'hi'</span><span class="si">:</span><span class="s2">^6</span><span class="si">}</span><span class="s2">]"</span>
+<span class="s1">'[  hi  ]'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="s1">'hi'</span><span class="si">:</span><span class="s2">*^6</span><span class="si">}</span><span class="s2">]"</span>
+<span class="s1">'[**hi**]'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="mf">3.14159</span><span class="si">:</span><span class="s2">8.2f</span><span class="si">}</span><span class="s2">]"</span>
+<span class="s1">'[    3.14]'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="mf">3.14159</span><span class="si">:</span><span class="s2">^8.2f</span><span class="si">}</span><span class="s2">]"</span>
+<span class="s1">'[  3.14  ]'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="mf">3.14159</span><span class="si">:</span><span class="s2">*^8.2f</span><span class="si">}</span><span class="s2">]"</span>
+<span class="s1">'[**3.14**]'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mi">7</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="mi">5</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'07:05'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="s1">'hello'</span><span class="si">:</span><span class="s2">3</span><span class="si">}</span><span class="s2">]"</span>
+<span class="s1">'[hello]'</span>
+</code></pre></div>
+<p><code>8.2f</code> 同时规定了宽度和小数位数：保留两位小数，整体占 8 个字符. <code>02d</code> 表示按十进制整数显示（<code>d</code> 的含义是 decimal，十进制），宽度为 2、不足时在前面补 0，常用于显示时间. 宽度只是<strong>最少</strong>的字符数，内容更长时不会被截断，最后一个例子中的 <code class="highlight"><span class="s1">'hello'</span></code> 依然完整显示.</p>
+<p><strong>千位分隔符与百分比</strong>：逗号 <code>,</code> 表示每三位插入一个千位分隔符；<code>%</code> 先把数乘以 100，再加上百分号. 下面的 <code>,.2f</code> 和 <code>.1%</code> 还同时指定了保留的小数位数：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mf">1234567.891</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'1,234,567.89'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mf">0.856</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'85.6%'</span>
+</code></pre></div>
+<p><strong>进制</strong>：<code>b</code>、<code>o</code>、<code>x</code> 分别以二进制（binary）、八进制（octal）、十六进制（hexadecimal）显示整数，前面加上 <code>#</code> 会带上 <code>0b</code>、<code>0o</code>、<code>0x</code> 前缀：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mi">255</span><span class="si">:</span><span class="s2">b</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mi">255</span><span class="si">:</span><span class="s2">o</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mi">255</span><span class="si">:</span><span class="s2">x</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'11111111 377 ff'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mi">255</span><span class="si">:</span><span class="s2">#b</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mi">255</span><span class="si">:</span><span class="s2">#o</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="mi">255</span><span class="si">:</span><span class="s2">#x</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'0b11111111 0o377 0xff'</span>
+</code></pre></div>
+<p><strong>组合使用</strong>：上面这些说明符可以写在一起. 下面的 <code>*&gt;12,.2f</code> 依次规定了填充字符、对齐方式、宽度、千位分隔符和小数位数，这个顺序不能随意调换：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mf">1234.5</span><span class="si">:</span><span class="s2">*&gt;12,.2f</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'****1,234.50'</span>
+</code></pre></div>
+<p><strong>显示表达式</strong>：在表达式后面写一个等号 <code>=</code>，结果会同时显示表达式本身和它的值，检查程序时很方便：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">19</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">age</span><span class="si">=}</span><span class="s2">"</span>
+<span class="s1">'age=19'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">=}</span><span class="s2">"</span>
+<span class="s1">'age + 1=20'</span>
+</code></pre></div>
+<p>下表汇总了这些说明符：</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>含义</th>
+<th>例子</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.nf</code></td>
+<td>保留 <code>n</code> 位小数</td>
+<td><code class="highlight"><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mf">3.14159</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span></code></td>
+<td><code>3.14</code></td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td>最小宽度为 <code>w</code></td>
+<td><code class="highlight"><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mi">42</span><span class="si">:</span><span class="s2">6</span><span class="si">}</span><span class="s2">"</span></code></td>
+<td>前面补 4 个空格，共 6 个字符</td>
+</tr>
+<tr>
+<td><code>&lt;</code>、<code>&gt;</code>、<code>^</code></td>
+<td>靠左、靠右、居中</td>
+<td><code class="highlight"><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'hi'</span><span class="si">:</span><span class="s2">^6</span><span class="si">}</span><span class="s2">"</span></code></td>
+<td>两边各补 2 个空格</td>
+</tr>
+<tr>
+<td>填充字符 + 对齐</td>
+<td>用指定字符补齐</td>
+<td><code class="highlight"><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'hi'</span><span class="si">:</span><span class="s2">*^6</span><span class="si">}</span><span class="s2">"</span></code></td>
+<td><code>**hi**</code></td>
+</tr>
+<tr>
+<td><code>0wd</code></td>
+<td>整数宽度为 <code>w</code>，前面补 0</td>
+<td><code class="highlight"><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mi">7</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span></code></td>
+<td><code>07</code></td>
+</tr>
+<tr>
+<td><code>,</code></td>
+<td>千位分隔符</td>
+<td><code class="highlight"><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mf">1234567.891</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">"</span></code></td>
+<td><code>1,234,567.89</code></td>
+</tr>
+<tr>
+<td><code>.n%</code></td>
+<td>百分比，保留 <code>n</code> 位小数</td>
+<td><code class="highlight"><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mf">0.856</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">"</span></code></td>
+<td><code>85.6%</code></td>
+</tr>
+<tr>
+<td><code>b</code>、<code>o</code>、<code>x</code></td>
+<td>二进制、八进制、十六进制</td>
+<td><code class="highlight"><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mi">255</span><span class="si">:</span><span class="s2">x</span><span class="si">}</span><span class="s2">"</span></code></td>
+<td><code>ff</code></td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td>显示表达式和它的值</td>
+<td><code class="highlight"><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">age</span><span class="si">=}</span><span class="s2">"</span></code></td>
+<td><code>age=19</code></td>
+</tr>
+</tbody>
+</table>
+<p>完整的规则见官方文档的<a href="https://docs.python.org/zh-cn/3/library/string.html#formatspec">格式规格迷你语言</a>.</p>
+<h3 id="_16">常见错误：忘记转换类型</h3>
+<p><code>.2f</code> 这样的说明符只能用于数字. <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 读到的是字符串，忘记转换就直接格式化，会得到下面的错误：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">price</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="mf">9.5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">price</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">price</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span>
+      <span class="o">^^^^^^^^^^^</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Unknown</span> <span class="nb">format</span> <span class="n">code</span> <span class="s1">'f'</span> <span class="k">for</span> <span class="nb">object</span> <span class="n">of</span> <span class="nb">type</span> <span class="s1">'str'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'9.50'</span>
+</code></pre></div>
+<p>报错的意思是：格式代码 <code>f</code> 不能用于 <code class="highlight"><span class="nb">str</span></code> 类型的对象. 先用 <code class="highlight"><span class="nb">float</span><span class="p">()</span></code> 转换就好了.</p>
+<h3 id="round">保留小数用格式化，不用 <code class="highlight"><span class="nb">round</span><span class="p">()</span></code></h3>
+<p>内置函数 <code class="highlight"><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span></code> 把 <code>x</code> <strong>舍入</strong>到 <code>n</code> 位小数，但它返回的是一个<strong>数</strong>，而不是一段文字. 数在显示时不会保留末尾的 0：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mf">3.14</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="mf">2.50</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mf">2.5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mf">2.5</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'2.50'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span>
+<span class="mf">0.30000000000000004</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mf">0.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'0.30'</span>
+</code></pre></div>
+<p>题目要求“保留两位小数”时，输出应当是 <code>2.50</code> 而不是 <code>2.5</code>. <code class="highlight"><span class="nb">round</span><span class="p">()</span></code> 做不到这一点，要用格式说明符 <code>.2f</code>. 另外，大多数小数在计算机中只能近似表示，<code class="highlight"><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span></code> 的结果并不恰好是 <code class="highlight"><span class="mf">0.3</span></code>；用格式说明符控制位数，也能避免把这样的误差显示出来.</p>
+<p>还要强调一点：<strong><code class="highlight"><span class="nb">round</span><span class="p">()</span></code> 和格式说明符都不是数学课上的“四舍五入”</strong>，它们严格按照<a href="https://docs.python.org/zh-cn/3/builtins/functions.html#round">官方文档</a>规定的规则舍入. 最明显的区别是，遇到正好一半的情况时会舍入到偶数，<code class="highlight"><span class="nb">round</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)</span></code> 得到的是 <code class="highlight"><span class="mi">2</span></code>. 下面的方框给出了更多细节.</p>
+<div class="admonition note">
+<p class="admonition-title">舍入的细节</p>
+<p>根据<a href="https://docs.python.org/zh-cn/3/library/string.html#formatspec">官方文档</a>，格式说明符对浮点数的舍入方式与 <code class="highlight"><span class="nb">round</span><span class="p">()</span></code> 相同. 首先，遇到正好一半的情况时，<code class="highlight"><span class="nb">round</span><span class="p">()</span></code> 会舍入到偶数：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="mi">2</span>
+</code></pre></div>
+<p>其次，舍入的对象是浮点数在计算机中实际存储的值，而不是我们写下的十进制数：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="mf">2.675</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mf">2.67</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mf">2.675</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'2.67'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="mf">2.675</span><span class="si">:</span><span class="s2">.20f</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'2.67499999999999982236'</span>
+</code></pre></div>
+<p><code class="highlight"><span class="mf">2.675</span></code> 实际存储的值比 2.675 略小一点，所以两种方式都舍入成了 <code>2.67</code>. 关于浮点数为什么不能精确表示，可以阅读官方教程的<a href="https://docs.python.org/zh-cn/3/tutorial/floatingpoint.html">浮点算术：问题和限制</a>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">f-字符串中的引号</p>
+<p>在 Python 3.12 之前，f-字符串的花括号内不能使用和外层相同的引号. 3.12 取消了这个限制，所以下面的写法在 3.15 中是合法的：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s2">"hi"</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span>
+<span class="s1">'HI'</span>
+</code></pre></div>
+<p>但如果 Thonny 或 PTA 使用的是较早的 Python，同样的代码会报语法错误. 为了保险，<strong>花括号内的字符串请使用和外层不同的引号</strong>，像前面的 <code class="highlight"><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'hi'</span><span class="si">:</span><span class="s2">*^6</span><span class="si">}</span><span class="s2">"</span></code> 那样.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">关于 <code class="highlight"><span class="nb">str</span><span class="o">.</span><span class="n">format</span><span class="p">()</span></code></p>
+<p>在一些较早的资料中，常常能看到字符串的 <code class="highlight"><span class="nb">format</span><span class="p">()</span></code> 方法. 它同样用 <code>{}</code> 标记要替换的位置，但要替换进去的值作为参数传给 <code class="highlight"><span class="nb">format</span><span class="p">()</span></code>，按顺序填入；也可以在花括号中写上编号，指定填入第几个参数：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s2">"</span><span class="si">{}</span><span class="s2"> 的成绩是 </span><span class="si">{:.1f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">"Alice"</span><span class="p">,</span> <span class="mf">92.456</span><span class="p">)</span>
+<span class="s1">'Alice 的成绩是 92.5'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"</span><span class="si">{0}</span><span class="s2"> 和 </span><span class="si">{1}</span><span class="s2">，</span><span class="si">{1}</span><span class="s2"> 和 </span><span class="si">{0}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">"甲"</span><span class="p">,</span> <span class="s2">"乙"</span><span class="p">)</span>
+<span class="s1">'甲 和 乙，乙 和 甲'</span>
+</code></pre></div>
+<p>冒号后面的格式说明符和 f-字符串完全相同. 新写的代码用 f-字符串即可.</p>
+</div>
+<h2 id="pta">6. 在 PTA 上做题时的输入输出</h2>
+<p>在 PTA 上提交程序后，测试数据会作为程序的输入：程序中的 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 读到的就是这些数据. 程序用 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 输出的全部内容，会与题目的标准答案进行比较. 因此，做题时的输入输出要注意以下几点.</p>
+<p><strong>不要写提示语.</strong> 前面说过，<code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 的提示语也是输出. 以下面的程序为例：</p>
+<div class="highlight"><pre><span></span><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">"请输入一个整数："</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<p>测试数据为 <code>21</code> 时，它实际输出的是：</p>
+<div class="highlight"><pre><span></span><code>请输入一个整数：42
+</code></pre></div>
+<p>而标准答案只有 <code>42</code>. 提示语混进了输出，答案就不对了. 做题时一律写成 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code>.</p>
+<p><strong>按输入格式读取.</strong> 先看清题目的“输入格式”和“输入样例”：数据分几行，每行有几个值，用什么隔开. 每一行对应一个 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code>；同一行的多个值用 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 拆开. 读取方式和数据格式对不上，就会出现<a href="#input-lines">前面</a>那样的 <code class="highlight"><span class="ne">ValueError</span></code> 或 <code class="highlight"><span class="ne">EOFError</span></code>.</p>
+<p><strong>按题意转换类型.</strong> 题目说“可以是小数”的数据要用 <code class="highlight"><span class="nb">float</span><span class="p">()</span></code>，用 <code class="highlight"><span class="nb">int</span><span class="p">()</span></code> 会在遇到小数时报错. 只有确定是整数的数据才用 <code class="highlight"><span class="nb">int</span><span class="p">()</span></code>.</p>
+<p><strong>输出与样例逐字符一致.</strong> 文字、空格、标点都要和“输出样例”完全相同，中文冒号 <code>：</code> 和英文冒号 <code>:</code> 是不同的字符. 要特别留意 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 在多个参数之间自动加上的空格. 一个稳妥的做法是从题目的输出样例中复制文字，再把其中会变化的部分换成 f-字符串的 <code>{}</code>.</p>
+<p><strong>保留小数用格式说明符.</strong> 要求保留几位小数，就用 <code>.nf</code>，不要用 <code class="highlight"><span class="nb">round</span><span class="p">()</span></code>.</p>
+<p>下面用一道例题把这一页的内容串起来.</p>
+<div class="admonition quote">
+<p class="admonition-title">例题</p>
+<p>输入一行，依次是姓名、身高（米）和体重（千克），用空格隔开. 计算 BMI（体重除以身高的平方），按样例格式输出，保留 1 位小数.</p>
+<p>输入样例：</p>
+<div class="highlight"><pre><span></span><code>Alice 1.65 55
+</code></pre></div>
+<p>输出样例：</p>
+<div class="highlight"><pre><span></span><code>Alice 的 BMI 为 20.2
+</code></pre></div>
+</div>
+<p>三个值在同一行，所以用一个 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 读入，再用 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 拆成三段. 身高和体重都可能是小数，要转换成 <code class="highlight"><span class="nb">float</span></code>；姓名本来就是文字，保持字符串即可. 输出时从样例中复制文字，再用 f-字符串填入姓名和保留 1 位小数的 BMI：</p>
+<div class="highlight"><pre><span></span><code><span class="n">name</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">height</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+<span class="n">bmi</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">/</span> <span class="n">height</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> 的 BMI 为 </span><span class="si">{</span><span class="n">bmi</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>用样例输入运行，输出为：</p>
+<div class="highlight"><pre><span></span><code>Alice 的 BMI 为 20.2
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
