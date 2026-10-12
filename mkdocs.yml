@@ -25,10 +25,10 @@ nav:
   - 主页: index.md
   - 基础知识:
     - basics/index.md
+    - 输入、输出与字符串: basics/io-string.md
   - 常见问题:
     - faq/index.md
     # - 程序安装及使用的问题: faq/installation.md
-    - 基本输入输出: faq/basic_io.md
     - 类型与值: faq/typing.md
     - 程序的控制流: faq/control_flow.md
     # - 复合类型: faq/complex_types.md
