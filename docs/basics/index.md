@@ -4,7 +4,7 @@
 
 - [输入、输出与字符串](./io-string.md)
 
-## PTA 测试方法
+## PTA 测试方法 { #pta-test }
 
 !!! warning "注意"
 
