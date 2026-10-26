@@ -27,7 +27,7 @@ nav:
     - basics/index.md
     - 输入、输出与字符串: basics/io-string.md
   - 强化班:
-    - 第五部分：上机练习参考代码: 强化班/学生资料_第五部分_参考代码.md
+    - 第五部分：上机练习参考代码: weekend_class/week3_reference.md
   - 常见问题:
     - faq/index.md
     # - 程序安装及使用的问题: faq/installation.md
