@@ -1,0 +1,3380 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../io-string/">
+      
+      
+        <link rel="next" href="../../weekend_class/week3_reference/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>流程控制 - 2026 年 Python 秋冬学习资料</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="2026 年 Python 秋冬学习资料" class="md-header__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2026 年 Python 秋冬学习资料
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              流程控制
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  基础知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../weekend_class/week3_reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  强化班
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../faq/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  常见问题
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../history/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  历史资料
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="2026 年 Python 秋冬学习资料" class="md-nav__button md-logo" aria-label="2026 年 Python 秋冬学习资料" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    2026 年 Python 秋冬学习资料
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基础知识
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    基础知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../io-string/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    输入、输出与字符串
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    流程控制
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    流程控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 表达式与语句
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 表达式与语句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        表达式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        赋值语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解包
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        增强赋值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 条件判断
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 条件判断">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        比较运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        成员运算与身份运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        逻辑运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        真值测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#short-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        and、or 的结果与短路
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 分支语句
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 分支语句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        if 语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        缩进决定语句的归属
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见的语法错误
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        if-else 语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-elif-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        if-elif-else 语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#else" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        嵌套与 else 的配对
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        条件表达式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 循环语句
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 循环语句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#while" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        while 循环
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        for 循环
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        range()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        遍历字符串的索引
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        选择 while 还是 for
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        嵌套循环
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#break-continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        break 与 continue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#else_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        循环的 else 子句
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 在 PTA 上用循环处理输入输出
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    强化班
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    强化班
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../weekend_class/week3_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第五部分：上机练习参考代码
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../faq/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    常见问题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/typing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    类型与值
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    map 函数与列表推导式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/stdlib/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    标准库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/exam_tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于实验考试的提示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    理论考前常见问题总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../history/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    历史资料
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    历史资料
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../history/labs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    往年实验文档
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    往年实验文档
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/labs/00env/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境配置指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/labs/01string/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    字符串替换系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/labs/02loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    循环和执行流控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../history/labs/application/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    面向应用的实验组
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2_5" id="__nav_5_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    面向应用的实验组
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/labs/application/01numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基于 NumPy 与 Pillow 的图像创建与基本变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/labs/application/02monte-carlo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基于 Monte-Carlo 算法实现积分计算及其可视化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/labs/application/03openai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    连接和使用 OpenAI 给出的 API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../history/labs/brainstorming/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    脑力风暴实验组
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2_6" id="__nav_5_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    脑力风暴实验组
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/labs/brainstorming/01quine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quine!
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../history/interesting-addendum/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    补充资料
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    补充资料
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/interesting-addendum/environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 虚拟环境管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 表达式与语句
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 表达式与语句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        表达式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        赋值语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解包
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        增强赋值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 条件判断
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 条件判断">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        比较运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        成员运算与身份运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        逻辑运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        真值测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#short-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        and、or 的结果与短路
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 分支语句
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 分支语句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        if 语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        缩进决定语句的归属
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见的语法错误
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        if-else 语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-elif-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        if-elif-else 语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#else" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        嵌套与 else 的配对
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        条件表达式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 循环语句
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 循环语句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#while" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        while 循环
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        for 循环
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        range()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        遍历字符串的索引
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        选择 while 还是 for
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        嵌套循环
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#break-continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        break 与 continue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#else_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        循环的 else 子句
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 在 PTA 上用循环处理输入输出
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">流程控制</h1>
+<p>到目前为止，我们写过的程序都是从第一行开始一行接一行地往下执行，每一行只执行一次. 实际的问题却常常要求程序做出选择，或者反复做同一件事. 程序中语句执行的先后顺序称为控制流（control flow）：分支语句决定执行哪些语句，往程序中引入分支；循环语句让一些语句重复执行，直到满足某个条件才停止，当然也可以永远循环下去.</p>
+<p>我们在第 1 节区分表达式和语句，并介绍几种赋值语句的写法，交换两个值、计数加 1 这类写法在后面的分支和循环中随处可见. 第 2 节讲条件的写法，第 3、4 节分别讲分支语句 <code class="highlight"><span class="k">if</span></code> 和循环语句 <code class="highlight"><span class="k">while</span></code>、<code class="highlight"><span class="k">for</span></code>，最后讲在 PTA 上做题时怎样用循环读入和输出数据.</p>
+<p>建议读者打开 Thonny，把下面的例子亲手试一遍. 和<a href="../io-string/">输入、输出与字符串</a>一样，以 <code>&gt;&gt;&gt;</code> 开头的行是在 Shell 中输入的代码，没有 <code>&gt;&gt;&gt;</code> 的行是 Python 给出的结果. 分支和循环的例子大多写成脚本，也就是在编辑区写好、再整体运行的程序；需要输入的脚本，我们在代码后面写出运行时输入的内容和程序的输出.</p>
+<h2 id="1">1. 表达式与语句</h2>
+<h3 id="_2">表达式</h3>
+<p>在 Shell 中输入 <code class="highlight"><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span></code>，Python 立即给出 <code class="highlight"><span class="mi">3</span></code>. 像这样能计算出一个值的代码，称为表达式（expression），计算出它的值的过程称为求值. 我们已经写过不少表达式：</p>
+<ul>
+<li>字面量，如 <code class="highlight"><span class="mi">42</span></code>、<code class="highlight"><span class="s2">"Hi"</span></code>，它的值就是它本身；</li>
+<li>名字，如 <code>x</code>，它的值是这个名字所绑定的对象；</li>
+<li>运算，如 <code class="highlight"><span class="n">a</span> <span class="o">+</span> <span class="n">b</span></code>、<code class="highlight"><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span></code>；</li>
+<li>函数调用和方法调用，如 <code class="highlight"><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code>、<code class="highlight"><span class="nb">input</span><span class="p">()</span></code>、<code class="highlight"><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span></code>，它们的值是函数返回的结果.</li>
+</ul>
+<p>小的表达式可以组合成大的表达式. 在 <code class="highlight"><span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span> <span class="o">*</span> <span class="mi">2</span></code> 中，先对 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 求值，得到一个字符串；这个字符串作为参数交给 <code class="highlight"><span class="nb">int</span><span class="p">()</span></code>，求值得到一个整数；这个整数再参与乘法. 哪一部分先算，由括号和运算符的优先级决定.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="s2">"Python"</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="mi">12</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span>
+<span class="kc">True</span>
+</code></pre></div>
+<p><code class="highlight"><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span></code> 也是一个表达式，它的值是布尔值 <code class="highlight"><span class="kc">True</span></code>. 后面分支和循环中的条件，就是这样的表达式. 中间的 <code class="highlight"><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span></code> 却什么也没有显示，因为它不是表达式，而是一条语句.</p>
+<h3 id="_3">语句</h3>
+<p>语句（statement）是程序执行的基本单位，程序由一条条语句组成. <code class="highlight"><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span></code> 是一条赋值语句：它先对右边的表达式 <code class="highlight"><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span></code> 求值，再把名字 <code>x</code> 绑定到结果 <code class="highlight"><span class="mi">3</span></code> 上. 赋值语句本身不产生值，而 Shell 只自动显示表达式的值，所以这一行什么也没有显示.</p>
+<p>表达式也可以单独写成一行，成为一条语句，称为表达式语句. 最常见的是单独一行的函数调用，比如 <code class="highlight"><span class="nb">print</span><span class="p">(</span><span class="s2">"Hi"</span><span class="p">)</span></code>：我们需要的是它在屏幕上输出文字，并不使用它求出的值. 在脚本中，表达式语句的值算出来以后就被丢弃，不会显示出来.</p>
+<p>到目前为止，我们写的赋值语句和表达式语句都是简单语句. 本页要讲的 <code class="highlight"><span class="k">if</span></code>、<code class="highlight"><span class="k">while</span></code>、<code class="highlight"><span class="k">for</span></code> 则是复合语句（compound statement）：它们的内部还包含别的语句，用来控制这些语句是否执行、执行几次.</p>
+<p>Python 中通常<strong>一行写一条语句</strong>. 一条语句太长时，可以拆成几行：在圆括号里可以直接换行；不在括号里时，要在行末加一个反斜杠 <code>\</code>，表示这条语句还没有结束. 井号 <code>#</code> 后面直到行末的内容是注释，Python 运行时会忽略它.</p>
+<div class="highlight"><pre><span></span><code><span class="n">total</span> <span class="o">=</span> <span class="p">(</span><span class="mi">90</span> <span class="o">+</span> <span class="mi">85</span> <span class="o">+</span> <span class="mi">77</span>
+         <span class="o">+</span> <span class="mi">68</span> <span class="o">+</span> <span class="mi">95</span><span class="p">)</span>  <span class="c1"># 括号里可以直接换行</span>
+<span class="n">average</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> \
+          <span class="mi">5</span>          <span class="c1"># 上一行末尾的反斜杠表示语句还没有结束</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">average</span><span class="p">)</span>
+</code></pre></div>
+<p>运行后的输出是：</p>
+<div class="highlight"><pre><span></span><code>415 83.0
+</code></pre></div>
+<p>也可以用分号 <code>;</code> 把几条语句写在同一行，比如 <code class="highlight"><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span></code>，但这样不容易阅读，不建议使用.</p>
+<h3 id="_4">赋值语句</h3>
+<p>赋值语句 <code class="highlight"><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span></code> 把名字 <code>x</code> <strong>绑定</strong>到对象 <code class="highlight"><span class="mi">1</span></code> 上：名字就像一张贴在对象上的标签，而不是一个装着值的盒子. 第 3 章在此基础上介绍了几种赋值的写法.</p>
+<p>循环开始之前，常常要把几个名字设成同一个初始值，比如几个计数器都从 0 开始. 这时可以写成 <code class="highlight"><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span></code>，称为链式赋值. 它看起来像是先执行 <code class="highlight"><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span></code>，再把结果交给 <code>x</code>. 但赋值语句不产生值，<code class="highlight"><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span></code> 没有“结果”可以交给 <code>x</code>，真把它当作一个值来用，Python 会报错：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+         <span class="o">^^^^^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span><span class="o">.</span> <span class="n">Maybe</span> <span class="n">you</span> <span class="n">meant</span> <span class="s1">'=='</span> <span class="ow">or</span> <span class="s1">':='</span> <span class="n">instead</span> <span class="n">of</span> <span class="s1">'='</span><span class="err">?</span>
+</code></pre></div>
+<p>括号里需要的是一个表达式，<code class="highlight"><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span></code> 却是一条语句. Python 猜我们想写的是比较运算 <code>==</code>，所以给出了这样的提示. 提示中的 <code>:=</code> 称为赋值表达式（Python 3.8 加入），能在表达式中完成赋值，课件只是顺带提到，这里不展开.</p>
+<p><code class="highlight"><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span></code> 其实是<strong>一条</strong>赋值语句，等号左边有两个要绑定的目标. 根据<a href="https://docs.python.org/zh-cn/3/reference/simple_stmts.html#assignment-statements">语言参考手册</a>，Python 先对最右边的表达式求值，只求值一次，得到一个对象，再把左边的名字<strong>从左往右</strong>依次绑定到这个对象上，相当于先算出 <code class="highlight"><span class="mi">0</span></code>，再依次执行“<code>x</code> = 它”和“<code>y</code> = 它”. 所以几个名字都贴在同一个对象上：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span>
+<span class="mi">0</span>
+</code></pre></div>
+<p><code class="highlight"><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span></code> 只是把标签 <code>x</code> 揭下来，贴到对象 <code class="highlight"><span class="mi">5</span></code> 上；<code>y</code> 仍然贴在 <code class="highlight"><span class="mi">0</span></code> 上，不受影响.</p>
+<div class="admonition note">
+<p class="admonition-title">绑定的顺序</p>
+<p>左边只有名字时，先绑定哪一个结果都一样，看不出区别. 只有当一个目标要用到另一个目标时，顺序才会显现出来：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">i</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+<p>从左往右，先把 <code>i</code> 绑定到 <code class="highlight"><span class="mi">1</span></code>，再执行 <code class="highlight"><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span></code>. 这时 <code>i</code> 已经是 1，所以改的是 <code class="highlight"><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></code>，结果是 <code class="highlight"><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span></code>. 如果是从右往左，就会先改 <code class="highlight"><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code>，结果应该是 <code class="highlight"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span></code>. 列表和 <code class="highlight"><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span></code> 这样的写法后面的章节才会讲；这样的代码也很难读懂，实际编程中不要这样写.</p>
+</div>
+<p>多重赋值则用逗号把几个名字和几个值按位置对应起来，一次完成几个绑定：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span>
+<span class="mi">8</span>
+</code></pre></div>
+<p>它最常见的用途是交换两个名字的值. 如果按顺序写两条赋值语句，是交换不成的：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<p>执行 <code class="highlight"><span class="n">a</span> <span class="o">=</span> <span class="n">b</span></code> 之后，<code>a</code> 和 <code>b</code> 都绑定到了 <code class="highlight"><span class="mi">2</span></code>，原来的 <code class="highlight"><span class="mi">1</span></code> 已经没有名字能找到它了，第二句 <code class="highlight"><span class="n">b</span> <span class="o">=</span> <span class="n">a</span></code> 也就无从交换. 许多编程语言要借助第三个名字暂存原来的值，Python 用多重赋值一行就能完成：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="mi">1</span>
+</code></pre></div>
+<p><code class="highlight"><span class="n">b</span><span class="p">,</span> <span class="n">a</span></code> 也是一个表达式：用逗号连起来的几个值，求值得到一个元组（tuple），Shell 显示它时带着圆括号，前面的 <code class="highlight"><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span></code> 也是这样来的. 元组后面的章节会讲. 多重赋值 <code class="highlight"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span></code> 分两步：先对右边求值，得到 <code class="highlight"><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></code>；再把其中的元素依次分给 <code>a</code> 和 <code>b</code>. 右边在绑定之前就已经全部算好，所以 <code>a</code> 和 <code>b</code> 正好交换.</p>
+<h3 id="_5">解包</h3>
+<p>上面的第二步，把右边的元素依次分给左边的名字，称为解包（unpacking）. <a href="../io-string/">输入、输出与字符串</a>“一行中有多个值”一节中的 <code class="highlight"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span></code> 也是解包. 等号右边不一定要用逗号写出几个值，只要它是一个能逐个取出元素的对象，Python 就会把其中的元素依次取出，分给左边的名字. 元组是这样的对象，<code class="highlight"><span class="n">split</span><span class="p">()</span></code> 拆出来的列表也是，字符串也是：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s2">"34"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="s1">'3'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="s1">'4'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">"34"</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">"34"</span>
+    <span class="o">^^^^^^^</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="ow">not</span> <span class="n">enough</span> <span class="n">values</span> <span class="n">to</span> <span class="n">unpack</span> <span class="p">(</span><span class="n">expected</span> <span class="mi">3</span><span class="p">,</span> <span class="n">got</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<p>左边名字的个数必须和元素的个数相同. 这里左边有 3 个名字，<code class="highlight"><span class="s2">"34"</span></code> 只有 2 个字符，所以报错说值不够（not enough values）：需要 3 个（expected 3），实际只有 2 个（got 2）. 输入、输出与字符串一页中遇到的 <code>too many values to unpack</code> 则是值多了.</p>
+<p>如果元素的个数不确定，可以在某一个名字前面加星号 <code>*</code>，让它收集剩下的元素：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="s2">"1234"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="s1">'1'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="p">[</span><span class="s1">'2'</span><span class="p">,</span> <span class="s1">'3'</span><span class="p">,</span> <span class="s1">'4'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s2">"1234"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="p">[</span><span class="s1">'1'</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">,</span> <span class="s1">'3'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="s1">'4'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">"1234"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="p">[</span><span class="s1">'2'</span><span class="p">,</span> <span class="s1">'3'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">"12"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">"1"</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">"1"</span>
+    <span class="o">^^^^^^^^</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="ow">not</span> <span class="n">enough</span> <span class="n">values</span> <span class="n">to</span> <span class="n">unpack</span> <span class="p">(</span><span class="n">expected</span> <span class="n">at</span> <span class="n">least</span> <span class="mi">2</span><span class="p">,</span> <span class="n">got</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>可以把解包想象成把一队小朋友按顺序分给几个名字. 不带星号的名字从队伍两头领人，每个名字领一个：星号前面的名字依次领走队首的人，星号后面的名字依次领走队尾的人. 带星号的名字领走中间剩下的所有人，结果总是一个列表；中间一个人也不剩时，它领到空列表 <code class="highlight"><span class="p">[]</span></code>. 人数连不带星号的名字都分不够时，就会报 <code class="highlight"><span class="ne">ValueError</span></code>：<code class="highlight"><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span></code> 至少需要 2 个元素（expected at least 2）.</p>
+<p>如果写两个带星号的名字，中间剩下的人该怎么分就说不清了，所以 Python 直接报语法错误：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="s2">"1234"</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin-0&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="s2">"1234"</span>
+    <span class="o">^^^^^^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">multiple</span> <span class="n">starred</span> <span class="n">expressions</span> <span class="ow">in</span> <span class="n">assignment</span>
+</code></pre></div>
+<p>在 PTA 上，这种写法可以把一行中的第一个值和其余的值分开：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">scores</span> <span class="o">=</span> <span class="s2">"Alice 90 85 77"</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">name</span>
+<span class="s1">'Alice'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">scores</span>
+<span class="p">[</span><span class="s1">'90'</span><span class="p">,</span> <span class="s1">'85'</span><span class="p">,</span> <span class="s1">'77'</span><span class="p">]</span>
+</code></pre></div>
+<p>和 <code class="highlight"><span class="n">split</span><span class="p">()</span></code> 拆出来的其他结果一样，<code>scores</code> 中的元素仍然是字符串.</p>
+<h3 id="_6">增强赋值</h3>
+<p>循环中经常要在一个名字原来的值上再加一些，比如计数加 1、把新读到的数累加起来. <code class="highlight"><span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">3</span></code> 可以简写成 <code class="highlight"><span class="n">j</span> <span class="o">+=</span> <span class="mi">3</span></code>，称为增强赋值（augmented assignment）：先用 <code>j</code> 原来的值计算 <code class="highlight"><span class="n">j</span> <span class="o">+</span> <span class="mi">3</span></code>，再把结果重新绑定到 <code>j</code> 上. 类似的写法还有 <code>-=</code>、<code>*=</code>、<code>/=</code>、<code>//=</code>、<code>%=</code>、<code>**=</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">j</span>
+<span class="mi">8</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">k</span> <span class="o">/=</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">k</span>
+<span class="mf">2.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"hello"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">+=</span> <span class="s2">" world"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>
+<span class="s1">'hello world'</span>
+</code></pre></div>
+<p>注意，<code class="highlight"><span class="n">k</span> <span class="o">/=</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">2</span></code> 是先算出右边整个表达式 <code class="highlight"><span class="n">j</span> <span class="o">-</span> <span class="mi">2</span></code>，再用它去除 <code>k</code>，相当于 <code class="highlight"><span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">/</span> <span class="p">(</span><span class="n">j</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span></code>，而不是 <code class="highlight"><span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">/</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">2</span></code>. 对字符串来说，<code>+=</code> 就是拼接.</p>
+<div class="admonition note">
+<p class="admonition-title">提示</p>
+<p>学过 C 语言的读者请注意，Python 没有 <code>++</code> 和 <code>--</code> 运算符，加 1 要写成 <code class="highlight"><span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span></code>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">i</span><span class="o">++</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">i</span><span class="o">++</span>
+       <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+</code></pre></div>
+</div>
+<p>赋值语句的完整规则见语言参考手册的<a href="https://docs.python.org/zh-cn/3/reference/simple_stmts.html#assignment-statements">赋值语句</a>和<a href="https://docs.python.org/zh-cn/3/reference/simple_stmts.html#augmented-assignment-statements">增强赋值语句</a>.</p>
+<h2 id="2">2. 条件判断</h2>
+<p>分支和循环都要先判断一个条件是否成立. 条件是一个表达式，对它求值就得到答案. 最直接的条件是比较运算，它的值是布尔值 <code class="highlight"><span class="kc">True</span></code> 或 <code class="highlight"><span class="kc">False</span></code>.</p>
+<h3 id="_7">比较运算</h3>
+<p>比较两个值的大小或是否相等，有以下六种运算符：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>含义</th>
+<th>例子</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>==</code></td>
+<td>等于</td>
+<td><code class="highlight"><span class="mi">3</span> <span class="o">==</span> <span class="mi">2</span></code></td>
+<td><code class="highlight"><span class="kc">False</span></code></td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>不等于</td>
+<td><code class="highlight"><span class="mi">3</span> <span class="o">!=</span> <span class="mi">2</span></code></td>
+<td><code class="highlight"><span class="kc">True</span></code></td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>大于</td>
+<td><code class="highlight"><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">2</span></code></td>
+<td><code class="highlight"><span class="kc">True</span></code></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>小于</td>
+<td><code class="highlight"><span class="mi">3</span> <span class="o">&lt;</span> <span class="mi">2</span></code></td>
+<td><code class="highlight"><span class="kc">False</span></code></td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>大于或等于</td>
+<td><code class="highlight"><span class="mi">3</span> <span class="o">&gt;=</span> <span class="mi">2</span></code></td>
+<td><code class="highlight"><span class="kc">True</span></code></td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>小于或等于</td>
+<td><code class="highlight"><span class="mi">3</span> <span class="o">&lt;=</span> <span class="mi">2</span></code></td>
+<td><code class="highlight"><span class="kc">False</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>判断是否相等要用<strong>两个等号</strong> <code>==</code>，一个等号 <code>=</code> 是赋值. 比较运算还可以像数学中的 <span class="arithmatex">\(0 \le x &lt; 10\)</span> 那样连着写，称为链式比较：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span>
+<span class="kc">True</span>
+</code></pre></div>
+<p><code class="highlight"><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span></code> 的意思是“<code class="highlight"><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">x</span></code> 并且 <code class="highlight"><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span></code>”，和第二行相同（<code class="highlight"><span class="ow">and</span></code> 就是“并且”，后面会细讲）. 链式比较把相邻的两个比较用“并且”连起来，而不是先算出左边的比较，再拿结果和右边比：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">1</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span>
+<span class="kc">False</span>
+</code></pre></div>
+<p><code class="highlight"><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">1</span></code> 表示 <code class="highlight"><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">2</span></code> 并且 <code class="highlight"><span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">1</span></code>，结果为真. 加上括号以后，先算出 <code class="highlight"><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">2</span></code> 得到 <code class="highlight"><span class="kc">True</span></code>，再比较 <code class="highlight"><span class="kc">True</span> <span class="o">&gt;</span> <span class="mi">1</span></code>. 课上讲过 <code class="highlight"><span class="kc">True</span></code> 相当于 <code class="highlight"><span class="mi">1</span></code>，<code class="highlight"><span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">1</span></code> 不成立，所以结果为假.</p>
+<p>整数和浮点数之间可以直接比较，比较的是数值本身. 字符串之间也能比较大小：从第一个字符开始，逐个比较两边对应字符的编码，也就是 <code class="highlight"><span class="nb">ord</span><span class="p">()</span></code> 的结果，第一个不同的字符决定大小：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">1</span> <span class="o">==</span> <span class="mf">1.0</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"apple"</span> <span class="o">&lt;</span> <span class="s2">"banana"</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"Apple"</span> <span class="o">&lt;</span> <span class="s2">"apple"</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"10"</span> <span class="o">&lt;</span> <span class="s2">"9"</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">10</span> <span class="o">&lt;</span> <span class="mi">9</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"5"</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"5"</span> <span class="o">&lt;</span> <span class="mi">3</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="s2">"5"</span> <span class="o">&lt;</span> <span class="mi">3</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="s1">'&lt;'</span> <span class="ow">not</span> <span class="n">supported</span> <span class="n">between</span> <span class="n">instances</span> <span class="n">of</span> <span class="s1">'str'</span> <span class="ow">and</span> <span class="s1">'int'</span>
+</code></pre></div>
+<p>大写字母 <code class="highlight"><span class="s1">'A'</span></code> 的编码是 65，小写字母 <code class="highlight"><span class="s1">'a'</span></code> 是 97，所以 <code class="highlight"><span class="s2">"Apple"</span></code> 比 <code class="highlight"><span class="s2">"apple"</span></code> 小. <code class="highlight"><span class="s2">"10"</span></code> 和 <code class="highlight"><span class="s2">"9"</span></code> 比较的是第一个字符 <code class="highlight"><span class="s1">'1'</span></code> 和 <code class="highlight"><span class="s1">'9'</span></code>，于是 <code class="highlight"><span class="s2">"10"</span></code> 反而更小. 字符串和数字之间，<code>==</code> 的结果总是 <code class="highlight"><span class="kc">False</span></code>；用 <code>&lt;</code>、<code>&gt;</code> 这类运算符比较大小，则直接报 <code class="highlight"><span class="ne">TypeError</span></code>.</p>
+<p>这正是忘记转换类型时会发生的事. <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 返回的是字符串，下面的程序忘了把它转换成整数：</p>
+<div class="highlight"><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"成年"</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>20</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
+  File "main.py", line 2, in &lt;module&gt;
+    if age &gt;= 18:
+       ^^^^^^^^^
+TypeError: '&gt;=' not supported between instances of 'str' and 'int'
+</code></pre></div>
+<p>报错的最后一行说，<code>&gt;=</code> 不能用在 <code class="highlight"><span class="nb">str</span></code> 和 <code class="highlight"><span class="nb">int</span></code> 之间. 如果条件写的是 <code class="highlight"><span class="n">age</span> <span class="o">==</span> <span class="mi">18</span></code>，程序不会报错，只是这个条件永远不成立，错误反而更难发现.</p>
+<h3 id="_8">成员运算与身份运算</h3>
+<p><a href="../io-string/">输入、输出与字符串</a>中用过运算符 <code class="highlight"><span class="ow">in</span></code>，它判断一个字符串是否出现在另一个字符串中；<code class="highlight"><span class="ow">not</span> <span class="ow">in</span></code> 则判断是否<strong>不</strong>出现. 要判断一个字符是不是某几个字符之一，用它很方便：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">ch</span> <span class="o">=</span> <span class="s2">"e"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ch</span> <span class="ow">in</span> <span class="s2">"aeiou"</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"x"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">"aeiou"</span>
+<span class="kc">True</span>
+</code></pre></div>
+<p>后面学到列表等类型时，<code class="highlight"><span class="ow">in</span></code> 同样可以判断一个元素是否在其中.</p>
+<p><code class="highlight"><span class="ow">is</span></code> 和 <code class="highlight"><span class="ow">is</span> <span class="ow">not</span></code> 是身份运算符，判断两个名字是否绑定到<strong>同一个</strong>对象上. 它和 <code>==</code> 不同，<code>==</code> 比较的是两个对象的<strong>值</strong>是否相等：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="ow">is</span> <span class="n">a</span>
+<span class="kc">True</span>
+</code></pre></div>
+<p><code>a</code> 和 <code>b</code> 是两个内容相同的列表，值相等，却是两个不同的对象；<code class="highlight"><span class="n">c</span> <span class="o">=</span> <span class="n">a</span></code> 则把 <code>c</code> 贴到了 <code>a</code> 所贴的那个对象上. 每个对象都有一个标识，可以用内置函数 <a href="https://docs.python.org/zh-cn/3/builtins/functions.html#id"><code class="highlight"><span class="nb">id</span><span class="p">()</span></code></a> 查看，<code class="highlight"><span class="ow">is</span></code> 比较的就是标识. 在 CPython（官方的 Python 解释器）中，这个标识就是对象在内存中的地址，但这是实现细节，不是语言的规定. 判断两个值是否相等，一律用 <code>==</code>. <code>==</code> 和 <code class="highlight"><span class="ow">is</span></code> 的更多区别，可以参阅<a href="../../faq/typing/">类型与值</a>中“<code>0</code> 不是 <code>False</code>”一节.</p>
+<h3 id="_9">逻辑运算</h3>
+<p>一个条件不够用时，可以用逻辑运算符 <code class="highlight"><span class="ow">and</span></code>（与）、<code class="highlight"><span class="ow">or</span></code>（或）、<code class="highlight"><span class="ow">not</span></code>（非）把几个条件组合起来：</p>
+<table>
+<thead>
+<tr>
+<th><code>x</code></th>
+<th><code>y</code></th>
+<th><code class="highlight"><span class="n">x</span> <span class="ow">and</span> <span class="n">y</span></code></th>
+<th><code class="highlight"><span class="n">x</span> <span class="ow">or</span> <span class="n">y</span></code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="highlight"><span class="kc">True</span></code></td>
+<td><code class="highlight"><span class="kc">True</span></code></td>
+<td><code class="highlight"><span class="kc">True</span></code></td>
+<td><code class="highlight"><span class="kc">True</span></code></td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="kc">True</span></code></td>
+<td><code class="highlight"><span class="kc">False</span></code></td>
+<td><code class="highlight"><span class="kc">False</span></code></td>
+<td><code class="highlight"><span class="kc">True</span></code></td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="kc">False</span></code></td>
+<td><code class="highlight"><span class="kc">True</span></code></td>
+<td><code class="highlight"><span class="kc">False</span></code></td>
+<td><code class="highlight"><span class="kc">True</span></code></td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="kc">False</span></code></td>
+<td><code class="highlight"><span class="kc">False</span></code></td>
+<td><code class="highlight"><span class="kc">False</span></code></td>
+<td><code class="highlight"><span class="kc">False</span></code></td>
+</tr>
+</tbody>
+</table>
+<p><code class="highlight"><span class="ow">and</span></code> 要求两边都为真，<code class="highlight"><span class="ow">or</span></code> 只要有一边为真. <code class="highlight"><span class="ow">not</span></code> 只作用于一个值，把真变成假、假变成真.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">85</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span> <span class="ow">and</span> <span class="n">score</span> <span class="o">&lt;=</span> <span class="mi">100</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">60</span> <span class="o">&lt;=</span> <span class="n">score</span> <span class="o">&lt;=</span> <span class="mi">100</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="ow">not</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span>
+<span class="kc">False</span>
+</code></pre></div>
+<p>几种运算符混在一起时，按优先级从高到低依次是：算术运算、比较运算（包括 <code class="highlight"><span class="ow">in</span></code> 和 <code class="highlight"><span class="ow">is</span></code>）、<code class="highlight"><span class="ow">not</span></code>、<code class="highlight"><span class="ow">and</span></code>、<code class="highlight"><span class="ow">or</span></code>. 所以 <code class="highlight"><span class="ow">not</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span></code> 是先算 <code class="highlight"><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span></code>，再取反. 判断闰年是一个典型的例子：能被 4 整除但不能被 100 整除，或者能被 400 整除：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">year</span> <span class="o">=</span> <span class="mi">2024</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">year</span> <span class="o">=</span> <span class="mi">1900</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">year</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="kc">True</span>
+</code></pre></div>
+<p>2024 能被 4 整除、不能被 100 整除，括号里的前半部分成立；1900 能被 100 整除，又不能被 400 整除，两部分都不成立；2000 能被 400 整除，后半部分成立.</p>
+<p>因为 <code class="highlight"><span class="ow">and</span></code> 的优先级比 <code class="highlight"><span class="ow">or</span></code> 高，这里的括号去掉也不影响结果. 不过加上括号，读的人不必再去想优先级，不容易出错，推荐这样写. 完整的优先级表见语言参考手册的<a href="https://docs.python.org/zh-cn/3/reference/expressions.html#operator-precedence">运算符优先级</a>.</p>
+<h3 id="_10">真值测试</h3>
+<p>常能看到这样的条件：<code class="highlight"><span class="k">if</span> <span class="n">s</span><span class="p">:</span></code>. 条件的位置上只有一个字符串，既没有比较，也没有 <code class="highlight"><span class="ow">and</span></code>、<code class="highlight"><span class="ow">or</span></code>，这是什么意思？条件不一定是 <code class="highlight"><span class="kc">True</span></code> 或 <code class="highlight"><span class="kc">False</span></code>，任何值都可以充当条件，Python 会判断它算“真”还是算“假”. 这称为真值测试，官方文档译作“逻辑值检测”. 在课程会用到的值中，算作假的有：</p>
+<ul>
+<li><code class="highlight"><span class="kc">False</span></code> 和 <code class="highlight"><span class="kc">None</span></code>（<code class="highlight"><span class="kc">None</span></code> 后面的章节会讲到）；</li>
+<li>数值零，如 <code class="highlight"><span class="mi">0</span></code>、<code class="highlight"><span class="mf">0.0</span></code>；</li>
+<li>空字符串 <code class="highlight"><span class="s2">""</span></code>，以及后面会学到的空列表 <code class="highlight"><span class="p">[]</span></code> 等空的容器.</li>
+</ul>
+<p>其他的值都算真. 用 <code class="highlight"><span class="nb">bool</span><span class="p">()</span></code> 可以看到一个值在条件中算真还是算假：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">" "</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">"0"</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="s2">"False"</span><span class="p">)</span>
+<span class="kc">True</span>
+</code></pre></div>
+<p>只含一个空格的字符串 <code class="highlight"><span class="s2">" "</span></code> 不是空字符串，所以算真；<code class="highlight"><span class="s2">"0"</span></code> 和 <code class="highlight"><span class="s2">"False"</span></code> 也一样，Python 不会去看字符串的内容像什么. 所以 <code class="highlight"><span class="k">if</span> <span class="n">s</span><span class="p">:</span></code> 的意思是“<code>s</code> 不是空字符串”；<code class="highlight"><span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span></code> 的意思是“<code>n</code> 除以 2 的余数不为 0”，也就是 <code>n</code> 是奇数.</p>
+<p>对 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 读到的字符串做真值测试时，这一点尤其要注意：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">n</span>
+<span class="s1">'0'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="kc">False</span>
+</code></pre></div>
+<p>输入的 <code>0</code> 读进来是字符串 <code class="highlight"><span class="s1">'0'</span></code>，它不是空字符串，所以算真. 要按数值判断，必须先转换成整数. 完整的规则见官方文档的<a href="https://docs.python.org/zh-cn/3/builtins/stdtypes.html#truth-value-testing">逻辑值检测</a>.</p>
+<h3 id="short-circuit"><code class="highlight"><span class="ow">and</span></code>、<code class="highlight"><span class="ow">or</span></code> 的结果与短路</h3>
+<p>想判断 <code>x</code> 是不是 1 或 2，照着说话的顺序，很容易写成 <code class="highlight"><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="mi">2</span></code>. 可是把它写在 <code class="highlight"><span class="k">if</span></code> 后面，无论 <code>x</code> 是多少，条件都成立. 在 Shell 中看看它的值：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="mi">2</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bool</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="mi">2</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="kc">False</span>
+</code></pre></div>
+<p>结果既不是 <code class="highlight"><span class="kc">True</span></code> 也不是 <code class="highlight"><span class="kc">False</span></code>，而是 <code class="highlight"><span class="mi">2</span></code>：<code class="highlight"><span class="ow">and</span></code> 和 <code class="highlight"><span class="ow">or</span></code> 的结果不一定是布尔值. 根据<a href="https://docs.python.org/zh-cn/3/builtins/stdtypes.html#boolean-operations-and-or-not">官方文档</a>，它们的规则是：</p>
+<ul>
+<li><code class="highlight"><span class="n">x</span> <span class="ow">and</span> <span class="n">y</span></code>：如果 <code>x</code> 算假，结果就是 <code>x</code>；否则结果是 <code>y</code>.</li>
+<li><code class="highlight"><span class="n">x</span> <span class="ow">or</span> <span class="n">y</span></code>：如果 <code>x</code> 算真，结果就是 <code>x</code>；否则结果是 <code>y</code>.</li>
+</ul>
+<p><code>==</code> 的优先级比 <code class="highlight"><span class="ow">or</span></code> 高，<code class="highlight"><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="mi">2</span></code> 的意思是 <code class="highlight"><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">2</span></code>. <code class="highlight"><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span></code> 为假，所以结果是右边的 <code class="highlight"><span class="mi">2</span></code>；<code class="highlight"><span class="mi">2</span></code> 不是零，算真，于是条件总是成立. 正确的写法是把两个比较都写完整：<code class="highlight"><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span></code>. 如果 <code>x</code> 是单个字符，也可以用前面的 <code class="highlight"><span class="ow">in</span></code>，比如 <code class="highlight"><span class="n">ch</span> <span class="ow">in</span> <span class="s2">"ab"</span></code>.</p>
+<p>按照这个规则，结果总是两边的值之一. 两边都是比较运算时，结果自然是布尔值；两边是别的值时，就能看出区别：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">3</span> <span class="ow">and</span> <span class="mi">0</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="mi">3</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="mi">0</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">""</span> <span class="ow">or</span> <span class="s2">"游客"</span>
+<span class="s1">'游客'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"Alice"</span> <span class="ow">or</span> <span class="s2">"游客"</span>
+<span class="s1">'Alice'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="ow">not</span> <span class="s2">"Alice"</span>
+<span class="kc">False</span>
+</code></pre></div>
+<p>有些代码会利用 <code class="highlight"><span class="ow">or</span></code> 的这个特点提供默认值，比如 <code class="highlight"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">"游客"</span></code>：用户直接按回车时，<code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 返回空字符串，<code>name</code> 就是 <code class="highlight"><span class="s1">'游客'</span></code>. <code class="highlight"><span class="ow">not</span></code> 则不同，它的结果总是布尔值.</p>
+<p>上面的规则还意味着：只看 <code>x</code> 就能确定结果时，Python <strong>不会计算</strong> <code>y</code>. 对 <code class="highlight"><span class="ow">and</span></code> 来说，<code>x</code> 算假时结果已经确定；对 <code class="highlight"><span class="ow">or</span></code> 来说，<code>x</code> 算真时结果已经确定. 这称为短路（short-circuit）. 短路可以用来避免出错：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="mi">10</span> <span class="o">/</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span>
+    <span class="o">~~~^~~</span>
+<span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division</span> <span class="n">by</span> <span class="n">zero</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span>
+<span class="kc">False</span>
+</code></pre></div>
+<p><code class="highlight"><span class="n">x</span> <span class="o">!=</span> <span class="mi">0</span></code> 为假，<code class="highlight"><span class="ow">and</span></code> 的结果已经确定是 <code class="highlight"><span class="kc">False</span></code>，后面的 <code class="highlight"><span class="mi">10</span> <span class="o">/</span> <span class="n">x</span></code> 没有被计算，也就不会除以零. 写这样的条件时，起保护作用的那一半要放在前面.</p>
+<p>这里补充 <code class="highlight"><span class="ow">and</span></code>、<code class="highlight"><span class="ow">or</span></code> 的结果规则，主要是为了判断选择题中 <code class="highlight"><span class="mi">3</span> <span class="ow">and</span> <span class="mi">0</span></code> 这类表达式的值. 自己写代码时，<code class="highlight"><span class="ow">and</span></code>、<code class="highlight"><span class="ow">or</span></code> 的两边都应当是条件，不要把它们的结果当作数或字符串来用，否则代码很难读懂. 像上面这样用短路避免出错，则是清楚、常见的写法，本页最后的例题也会用到.</p>
+<h2 id="3">3. 分支语句</h2>
+<p>有一个流传很广的笑话：甲对乙说：“回来的时候帮我带四个包子，如果看到卖西瓜的，就买一个”，结果乙只买回来一个包子，理由是“我看到卖西瓜的了”. 歧义在于“就买一个”既没说买什么，也没说它和“带四个包子”是什么关系. 程序中不会这样：条件成立时要做的事必须一条一条写出来，哪几条归这个条件管，由缩进决定.</p>
+<p>按照能走的路有几条，分支语句有三种格式：只有 <code class="highlight"><span class="k">if</span></code> 的单分支，做或不做；<code class="highlight"><span class="k">if</span></code>-<code class="highlight"><span class="k">else</span></code> 的二分支，二选一；<code class="highlight"><span class="k">if</span></code>-<code class="highlight"><span class="k">elif</span></code>-<code class="highlight"><span class="k">else</span></code> 的多分支，多选一.</p>
+<h3 id="if"><code class="highlight"><span class="k">if</span></code> 语句</h3>
+<p>先看一个最简单的例子：输入一个整数，输出它的绝对值. 负数要变号，其他的数原样输出：</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>-5</code> 时输出 <code>5</code>；输入 <code>3</code> 时，条件不成立，<code class="highlight"><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span></code> 被跳过，输出 <code>3</code>.</p>
+<p>第 2 行的 <code class="highlight"><span class="k">if</span></code> 后面是条件，行末必须有冒号；冒号下面<strong>向右缩进</strong>的语句组成一个语句块，缩进通常是 4 个空格. 程序执行到 <code class="highlight"><span class="k">if</span></code> 时，先对条件做真值测试：条件为真，就执行语句块；条件为假，就跳过整个语句块. 无论哪种情况，之后都接着执行 <code class="highlight"><span class="k">if</span></code> 语句后面没有缩进的语句，这里是 <code class="highlight"><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. 一般地，<code class="highlight"><span class="k">if</span></code> 语句写成：</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">条件</span><span class="p">:</span>
+    <span class="n">语句块</span>
+</code></pre></div>
+<p>语句块可以有很多行，只要缩进相同，就都归这个 <code class="highlight"><span class="k">if</span></code> 管.</p>
+<div class="admonition note">
+<p class="admonition-title">在 Shell 中输入语句块</p>
+<p>在 Shell 中输入以冒号结尾的一行后，下一行的开头会出现 <code>...</code>，表示语句还没有结束，可以继续输入. 输完整个语句块后，再输入一个空行，Python 才会执行它：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"正数"</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">正数</span>
+</code></pre></div>
+<p>这个例子还说明，语句块只有一条语句时，可以直接写在冒号后面，<code class="highlight"><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"正数"</span><span class="p">)</span></code> 是合法的. 不过为了清楚，我们一般还是换行缩进.</p>
+</div>
+<h3 id="_11">缩进决定语句的归属</h3>
+<p>缩进不是为了美观，而是语法的一部分：<strong>一条语句是否缩进，决定了它是否受 <code class="highlight"><span class="k">if</span></code> 控制</strong>. 下面的程序处理“满 100 减 20”的优惠：</p>
+<div class="highlight"><pre><span></span><code><span class="n">price</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">price</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">-=</span> <span class="mi">20</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"满 100 减 20"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"实付 </span><span class="si">{</span><span class="n">price</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> 元"</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>150</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>满 100 减 20
+实付 130.00 元
+</code></pre></div>
+<p>输入 <code>80</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>实付 80.00 元
+</code></pre></div>
+<p>如果把第 4 行的缩进去掉：</p>
+<div class="highlight"><pre><span></span><code><span class="n">price</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">price</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">-=</span> <span class="mi">20</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"满 100 减 20"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"实付 </span><span class="si">{</span><span class="n">price</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> 元"</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>80</code> 时，输出变成了：</p>
+<div class="highlight"><pre><span></span><code>满 100 减 20
+实付 80.00 元
+</code></pre></div>
+<p>去掉缩进之后，<code class="highlight"><span class="nb">print</span><span class="p">(</span><span class="s2">"满 100 减 20"</span><span class="p">)</span></code> 不再属于 <code class="highlight"><span class="k">if</span></code> 的语句块，无论条件是否成立都会执行. 程序没有报错，结果却不对，所以写完分支语句，要逐行检查每条语句的缩进是否符合本意.</p>
+<h3 id="_12">常见的语法错误</h3>
+<p>分支语句的格式写错了，程序一条语句也不会执行，Python 直接报告语法错误. 这类报错没有 <code>Traceback</code> 那一行，<code>File "main.py", line 2</code> 指出出错的行号，<code>^</code> 指出大致的位置，最后一行说明错误的原因. 比如忘了写冒号：</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"正数"</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>  File "main.py", line 2
+    if x &gt; 0
+            ^
+SyntaxError: expected ':'
+</code></pre></div>
+<p><code>^</code> 指在行末，那里本该有一个冒号. 再如把判断相等的 <code>==</code> 写成了赋值的 <code>=</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"五"</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>  File "main.py", line 2
+    if x = 5:
+       ^^^^^
+SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?
+</code></pre></div>
+<p>条件的位置需要一个表达式，而 <code class="highlight"><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span></code> 是一条赋值语句，本身不产生值，不能写在这里. 这和第 1 节中 <code class="highlight"><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span></code> 报的是同一个错误，Python 猜到我们想写的多半是 <code>==</code>.</p>
+<p>缩进出错时，报的是 <code class="highlight"><span class="ne">IndentationError</span></code>. 冒号后面的语句忘了缩进：</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"正数"</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>  File "main.py", line 3
+    print("正数")
+    ^^^^^
+IndentationError: expected an indented block after 'if' statement on line 2
+</code></pre></div>
+<p>同一个语句块中的几行缩进不一致：</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"正数"</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">"大于零"</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>  File "main.py", line 4
+    print("大于零")
+                   ^
+IndentationError: unindent does not match any outer indentation level
+</code></pre></div>
+<p>第 4 行只缩进了 2 个空格，既不和语句块中的第 3 行对齐，也不和外面的 <code class="highlight"><span class="k">if</span></code> 对齐，Python 不知道它属于哪一层. 同一层的缩进要用同样多的空格. 另外，Tab 和空格不要混用，否则可能报 <code>TabError: inconsistent use of tabs and spaces in indentation</code>.</p>
+<p>这些带有具体提示的报错信息（<code>expected ':'</code>、<code>Maybe you meant '=='</code>、<code>after 'if' statement on line 2</code> 等）是 Python 3.10 才加入的. 如果 Thonny 或 PTA 使用的 Python 版本较早，同样的错误可能只显示 <code>SyntaxError: invalid syntax</code>，这时就要自己检查行号附近的冒号、等号和缩进.</p>
+<h3 id="if-else"><code class="highlight"><span class="k">if</span></code>-<code class="highlight"><span class="k">else</span></code> 语句</h3>
+<p>条件不成立时也要做点什么，就加上 <code class="highlight"><span class="k">else</span></code> 子句：</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">条件</span><span class="p">:</span>
+    <span class="n">语句块</span> <span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">语句块</span> <span class="mi">2</span>
+</code></pre></div>
+<p>条件为真时执行语句块 1，为假时执行语句块 2，两者恰好执行一个，然后继续执行后面的语句. <code class="highlight"><span class="k">else</span></code> 后面没有条件，但同样要写冒号，并且要和 <code class="highlight"><span class="k">if</span></code> 左对齐.</p>
+<div class="highlight"><pre><span></span><code><span class="n">score</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"及格"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"不及格"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"成绩录入完毕"</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>75</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>及格
+成绩录入完毕
+</code></pre></div>
+<p>输入 <code>42</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>不及格
+成绩录入完毕
+</code></pre></div>
+<p>不用 <code class="highlight"><span class="k">else</span></code>，写成 <code class="highlight"><span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span></code> 和 <code class="highlight"><span class="k">if</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span></code> 两个 <code class="highlight"><span class="k">if</span></code> 语句，结果也一样. 但这样要判断两次，而且两个条件要我们自己保证恰好相反，改动其中一个时很容易忘了另一个. <code class="highlight"><span class="k">else</span></code> 则保证两条路恰好走一条.</p>
+<div class="admonition tip">
+<p class="admonition-title">什么也不做：<code class="highlight"><span class="k">pass</span></code></p>
+<p>有时某个分支暂时还不知道写什么，或者确实什么也不用做. 但冒号后面必须有一个语句块，空着会报错：</p>
+<div class="highlight"><pre><span></span><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"不是正数"</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>  File "main.py", line 3
+    else:
+    ^^^^
+IndentationError: expected an indented block after 'if' statement on line 2
+</code></pre></div>
+<p>这时可以写一条 <code class="highlight"><span class="k">pass</span></code> 语句占位，它执行时什么也不做：</p>
+<div class="highlight"><pre><span></span><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">pass</span>  <span class="c1"># 正数的情况以后再写</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"不是正数"</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>-1</code> 时，输出 <code>不是正数</code>；输入 <code>3</code> 时，没有任何输出. 这个例子直接写成 <code class="highlight"><span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span></code> 更好.</p>
+</div>
+<h3 id="if-elif-else"><code class="highlight"><span class="k">if</span></code>-<code class="highlight"><span class="k">elif</span></code>-<code class="highlight"><span class="k">else</span></code> 语句</h3>
+<p>情况多于两种时，用 <code class="highlight"><span class="k">elif</span></code> 子句继续添加条件. <code class="highlight"><span class="k">elif</span></code> 是 else if 的缩写，可以有任意多个；最后的 <code class="highlight"><span class="k">else</span></code> 可以省略. 下面的程序按 BMI 判断体重类别：</p>
+<div class="highlight"><pre><span></span><code><span class="n">bmi</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mf">18.5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"偏瘦"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mi">24</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"正常"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mi">28</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"超重"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"肥胖"</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>17</code> 时输出 <code>偏瘦</code>，输入 <code>22.5</code> 时输出 <code>正常</code>，输入 <code>30</code> 时输出 <code>肥胖</code>.</p>
+<p>Python <strong>从上往下</strong>依次检查各个条件，执行第一个为真的条件下面的语句块，然后跳过整个 <code class="highlight"><span class="k">if</span></code> 语句，后面的条件不再检查；所有条件都为假时，执行 <code class="highlight"><span class="k">else</span></code> 下面的语句块. 所以 <code class="highlight"><span class="k">elif</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mi">24</span></code> 虽然没有写 <code class="highlight"><span class="n">bmi</span> <span class="o">&gt;=</span> <span class="mf">18.5</span></code>，能走到这里时，前一个条件 <code class="highlight"><span class="n">bmi</span> <span class="o">&lt;</span> <span class="mf">18.5</span></code> 一定已经不成立了.</p>
+<p>正因为如此，条件的顺序很重要. 把上面的条件倒过来写：</p>
+<div class="highlight"><pre><span></span><code><span class="n">bmi</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mi">28</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"超重"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mi">24</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"正常"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mf">18.5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"偏瘦"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"肥胖"</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>22.5</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>超重
+</code></pre></div>
+<p><code class="highlight"><span class="mf">22.5</span> <span class="o">&lt;</span> <span class="mi">28</span></code> 成立，执行第一个分支以后，后面两个条件不再检查. 所以条件要和顺序配合：从小往大判断时用 <code>&lt;</code>，从大往小判断时用 <code>&gt;=</code>.</p>
+<p>如果把 <code class="highlight"><span class="k">elif</span></code> 写成了 <code class="highlight"><span class="k">if</span></code>，问题又不一样：</p>
+<div class="highlight"><pre><span></span><code><span class="n">bmi</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mf">18.5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"偏瘦"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mi">24</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"正常"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mi">28</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"超重"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"肥胖"</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>17</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>偏瘦
+正常
+超重
+</code></pre></div>
+<p>现在这是三个独立的 <code class="highlight"><span class="k">if</span></code> 语句，各自判断，每一个条件成立都会执行. 最后的 <code class="highlight"><span class="k">else</span></code> 只属于第三个 <code class="highlight"><span class="k">if</span></code>. <strong><code class="highlight"><span class="k">if</span></code>-<code class="highlight"><span class="k">elif</span></code>-<code class="highlight"><span class="k">else</span></code> 是一个语句，至多走一个分支；几个 <code class="highlight"><span class="k">if</span></code> 是几个语句，可能走好几个分支.</strong></p>
+<h3 id="else">嵌套与 <code class="highlight"><span class="k">else</span></code> 的配对</h3>
+<p><code class="highlight"><span class="k">else</span></code> 总是和它<strong>同一缩进层次上、离它最近的</strong> <code class="highlight"><span class="k">if</span></code> 配对. 下面的程序计算门票价格：12 岁以下 50 元，60 岁及以上免费，其他人 100 元. 它的写法有问题：</p>
+<div class="highlight"><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>70</code> 时输出 <code>0</code>，输入 <code>30</code> 时输出 <code>100</code>，都没有问题. 输入 <code>8</code> 时，输出却是：</p>
+<div class="highlight"><pre><span></span><code>100
+</code></pre></div>
+<p>这里有两个独立的 <code class="highlight"><span class="k">if</span></code> 语句，<code class="highlight"><span class="k">else</span></code> 属于第二个. 输入 <code>8</code> 时，第一个 <code class="highlight"><span class="k">if</span></code> 把 <code>price</code> 设为 <code class="highlight"><span class="mi">50</span></code>；接着第二个 <code class="highlight"><span class="k">if</span></code> 语句判断 <code class="highlight"><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">60</span></code> 不成立，执行它的 <code class="highlight"><span class="k">else</span></code>，又把 <code>price</code> 改成了 <code class="highlight"><span class="mi">100</span></code>. 把第二个 <code class="highlight"><span class="k">if</span></code> 改成 <code class="highlight"><span class="k">elif</span></code>，三种情况就合成了一个语句，输入 <code>8</code> 时输出 <code>50</code>.</p>
+<p>分支语句的语句块里还可以再写分支语句，称为嵌套. 这时，缩进层次决定了每个 <code class="highlight"><span class="k">else</span></code> 属于哪个 <code class="highlight"><span class="k">if</span></code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">score</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"优秀"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"及格"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"不及格"</span><span class="p">)</span>
+</code></pre></div>
+<p>分别输入 <code>95</code>、<code>75</code>、<code>42</code> 时，输出依次为 <code>优秀</code>、<code>及格</code>、<code>不及格</code>. 第一个 <code class="highlight"><span class="k">else</span></code> 缩进了 4 个空格，和里层的 <code class="highlight"><span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span></code> 对齐，属于里层；第二个 <code class="highlight"><span class="k">else</span></code> 没有缩进，属于外层. 如果去掉里层的 <code class="highlight"><span class="k">else</span></code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">score</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"优秀"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"不及格"</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>75</code> 时，程序没有任何输出：外层条件成立，进入里层；里层条件不成立，又没有自己的 <code class="highlight"><span class="k">else</span></code>；剩下的那个 <code class="highlight"><span class="k">else</span></code> 属于外层，不会执行.</p>
+<p>嵌套的层数多了，代码就不容易读懂. 上面的嵌套也可以改写成 <code class="highlight"><span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span></code>、<code class="highlight"><span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span></code>、<code class="highlight"><span class="k">else</span></code> 三个分支，效果相同，层次少了一层，读起来更清楚.</p>
+<h3 id="_13">条件表达式</h3>
+<p>如果分支只是为了在两个值中选一个，可以用条件表达式（conditional expression）：</p>
+<div class="highlight"><pre><span></span><code><span class="n">值</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">条件</span> <span class="k">else</span> <span class="n">值</span> <span class="mi">2</span>
+</code></pre></div>
+<p>条件为真时，它的值是值 1；否则是值 2.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">"偶数"</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">"奇数"</span>
+<span class="s1">'奇数'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="k">else</span> <span class="n">b</span>
+<span class="mi">8</span>
+</code></pre></div>
+<p>第 1 节说过，表达式能算出一个值，语句则不产生值. 条件表达式正是一个表达式，所以它可以写在赋值语句的右边、函数的参数里，或者 f-字符串的花括号中，比如 <code class="highlight"><span class="n">big</span> <span class="o">=</span> <span class="n">a</span> <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="k">else</span> <span class="n">b</span></code>. <code class="highlight"><span class="k">if</span></code> 语句则是语句，它本身没有值，不能这样用. 条件表达式适合简单的二选一；判断复杂、需要嵌套时，还是用 <code class="highlight"><span class="k">if</span></code> 语句更清楚.</p>
+<div class="admonition note">
+<p class="admonition-title"><code class="highlight"><span class="k">match</span></code> 语句</p>
+<p>Python 3.10 加入了 <code class="highlight"><span class="k">match</span></code> 语句，它把一个值依次与各个 <code class="highlight"><span class="k">case</span></code> 后面的模式比较，执行第一个匹配的分支：</p>
+<div class="highlight"><pre><span></span><code><span class="n">cmd</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="k">match</span> <span class="n">cmd</span><span class="p">:</span>
+    <span class="k">case</span> <span class="s2">"start"</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"开始"</span><span class="p">)</span>
+    <span class="k">case</span> <span class="s2">"stop"</span> <span class="o">|</span> <span class="s2">"quit"</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"结束"</span><span class="p">)</span>
+    <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"未知命令"</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>quit</code> 时输出 <code>结束</code>，输入 <code>hello</code> 时输出 <code>未知命令</code>. <code>|</code> 表示“或”，<code>_</code> 可以匹配任何值，相当于 <code class="highlight"><span class="k">else</span></code>. 这个程序用 <code class="highlight"><span class="k">if</span></code>-<code class="highlight"><span class="k">elif</span></code>-<code class="highlight"><span class="k">else</span></code> 同样能写出来. 课件中只是顺带提到 <code class="highlight"><span class="k">match</span></code>，Python 3.10 之前的版本也不支持它. 有兴趣的读者可以阅读官方教程的 <a href="https://docs.python.org/zh-cn/3/tutorial/controlflow.html#match-statements"><code>match</code> 语句</a>一节.</p>
+</div>
+<h2 id="4">4. 循环语句</h2>
+<p>循环语句让一段代码重复执行. Python 有两种循环：<code class="highlight"><span class="k">while</span></code> 循环在条件成立时不断重复，适合事先不知道要重复多少次的情况；<code class="highlight"><span class="k">for</span></code> 循环从一组元素中每次取出一个，取完为止，重复的次数由元素的个数决定.</p>
+<h3 id="while"><code class="highlight"><span class="k">while</span></code> 循环</h3>
+<p><code class="highlight"><span class="k">while</span></code> 循环的格式和 <code class="highlight"><span class="k">if</span></code> 很像：</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="n">条件</span><span class="p">:</span>
+    <span class="n">循环体</span>
+</code></pre></div>
+<p>区别在于，<code class="highlight"><span class="k">if</span></code> 的语句块最多执行一次；<code class="highlight"><span class="k">while</span></code> 的循环体执行完之后，会<strong>回到开头再判断一次条件</strong>，条件仍然成立，就再执行一遍. 直到某一次判断时条件不成立，循环才结束，程序接着执行循环后面的语句. 下面的程序从 3 开始倒数：</p>
+<div class="highlight"><pre><span></span><code><span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"发射！"</span><span class="p">)</span>
+</code></pre></div>
+<p>运行后的输出是：</p>
+<div class="highlight"><pre><span></span><code>3
+2
+1
+发射！
+</code></pre></div>
+<p>把每一次判断条件时的情况列出来，执行过程就很清楚了：</p>
+<table>
+<thead>
+<tr>
+<th>第几次判断</th>
+<th><code>n</code> 的值</th>
+<th><code class="highlight"><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span></code></th>
+<th>接下来做什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>3</td>
+<td><code class="highlight"><span class="kc">True</span></code></td>
+<td>输出 <code>3</code>，<code>n</code> 变为 2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td><code class="highlight"><span class="kc">True</span></code></td>
+<td>输出 <code>2</code>，<code>n</code> 变为 1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td><code class="highlight"><span class="kc">True</span></code></td>
+<td>输出 <code>1</code>，<code>n</code> 变为 0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0</td>
+<td><code class="highlight"><span class="kc">False</span></code></td>
+<td>结束循环，执行后面的 <code class="highlight"><span class="nb">print</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>读不懂一段循环时，可以像这样列一张表，或者在循环体里临时加一行 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code>，把每一轮的变量值打印出来.</p>
+<p>循环体中<strong>必须有语句改变条件中用到的值</strong>，这里是 <code class="highlight"><span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span></code>. 如果漏掉这一句，<code>n</code> 永远是 3，条件永远成立，程序会不停地输出 <code>3</code>，永远不会结束，这称为死循环. 在 Thonny 中遇到死循环，可以点击工具栏上红色的停止按钮，或者按 Ctrl+C 中断程序. 提交到 PTA 的程序陷入死循环，会因为超过时间限制而得到“运行超时”的结果.</p>
+<p><code class="highlight"><span class="k">while</span></code> 循环最适合“不知道要重复几次，只知道什么时候停”的问题. 比如，一张厚 0.1 毫米的纸，对折多少次以后，厚度会超过珠穆朗玛峰的高度？</p>
+<div class="highlight"><pre><span></span><code><span class="n">thickness</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># 纸的厚度，单位是毫米</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>        <span class="c1"># 已经对折的次数</span>
+<span class="k">while</span> <span class="n">thickness</span> <span class="o">&lt;</span> <span class="mi">8848860</span><span class="p">:</span>  <span class="c1"># 珠峰高 8848.86 米，即 8848860 毫米</span>
+    <span class="n">thickness</span> <span class="o">*=</span> <span class="mi">2</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"对折 </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> 次，厚度约为 </span><span class="si">{</span><span class="n">thickness</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> 米"</span><span class="p">)</span>
+</code></pre></div>
+<p>运行后的输出是：</p>
+<div class="highlight"><pre><span></span><code>对折 27 次，厚度约为 13421.77 米
+</code></pre></div>
+<p>注意 <code>thickness</code> 和 <code>count</code> 都要在循环开始<strong>之前</strong>给出初始值：循环第一次判断条件时就要用到 <code>thickness</code>，<code class="highlight"><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span></code> 也要在 <code>count</code> 原来的值上加 1.</p>
+<h3 id="for"><code class="highlight"><span class="k">for</span></code> 循环</h3>
+<p><code class="highlight"><span class="k">for</span></code> 循环不看条件，而是从一组元素中每次取出一个，直到取完为止. 对字符串来说，元素就是其中的每一个字符：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="s2">"Hi!"</span><span class="p">:</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">H</span>
+<span class="n">i</span>
+<span class="err">!</span>
+</code></pre></div>
+<p>每一轮，<code class="highlight"><span class="k">for</span></code> 从 <code class="highlight"><span class="s2">"Hi!"</span></code> 中取出下一个字符，绑定到名字 <code>ch</code> 上，然后执行一遍循环体；三个字符都取完，循环就结束了. 一般地，<code class="highlight"><span class="k">for</span></code> 循环写成：</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">变量</span> <span class="ow">in</span> <span class="n">可迭代对象</span><span class="p">:</span>
+    <span class="n">循环体</span>
+</code></pre></div>
+<p><code class="highlight"><span class="ow">in</span></code> 后面的对象要能逐个取出元素，这样的对象称为可迭代对象（iterable），比如字符串、后面要讲的 <code class="highlight"><span class="nb">range</span><span class="p">()</span></code>，以及列表等.</p>
+<p>结合前面的分支语句，可以对每个字符分别做判断. 下面的程序统计一个单词中有几个元音字母：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ch</span> <span class="ow">in</span> <span class="s2">"aeiou"</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>education</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>5
+</code></pre></div>
+<p><code>count</code> 是一个计数器：循环开始之前设为 0，每遇到一个元音字母就加 1，循环结束时它就是元音字母的个数.</p>
+<h3 id="range"><code class="highlight"><span class="nb">range</span><span class="p">()</span></code></h3>
+<p>要让循环重复固定的次数，或者遍历一串整数，就用 <code class="highlight"><span class="nb">range</span><span class="p">()</span></code>. <code class="highlight"><span class="nb">range</span><span class="p">()</span></code> 本身不会直接列出其中的数，用 <code class="highlight"><span class="nb">list</span><span class="p">()</span></code> 把它转换成列表，就能看到其中有哪些数：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="p">[]</span>
+</code></pre></div>
+<p><code class="highlight"><span class="nb">range</span><span class="p">()</span></code> 有三种写法：</p>
+<ul>
+<li><code class="highlight"><span class="nb">range</span><span class="p">(</span><span class="n">stop</span><span class="p">)</span></code>：从 0 开始，到 <code>stop</code> 为止，<strong>不包括</strong> <code>stop</code>；</li>
+<li><code class="highlight"><span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span></code>：从 <code>start</code> 开始，到 <code>stop</code> 为止，同样不包括 <code>stop</code>；</li>
+<li><code class="highlight"><span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span></code>：每次增加 <code>step</code>，<code>step</code> 称为步长；步长为负数时从大往小数.</li>
+</ul>
+<p>和字符串的切片一样，<code class="highlight"><span class="nb">range</span><span class="p">()</span></code> 也是<strong>左闭右开</strong>的：<code class="highlight"><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span></code> 是 1 到 5. 所以 <code class="highlight"><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></code> 正好有 <code>n</code> 个数，<code class="highlight"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span></code> 的循环体正好执行 <code>n</code> 次. <code class="highlight"><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></code> 的步长是默认的 1，起点 5 却不小于终点 1，所以一个数也取不到，用它写的 <code class="highlight"><span class="k">for</span></code> 循环一次也不会执行.</p>
+<p><code class="highlight"><span class="nb">range</span><span class="p">()</span></code> 的参数必须是整数：</p>
+<div class="highlight"><pre><span></span><code><span class="n">n</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>3</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
+  File "main.py", line 2, in &lt;module&gt;
+    for i in range(n):
+             ~~~~~^^^
+TypeError: 'float' object cannot be interpreted as an integer
+</code></pre></div>
+<p><code class="highlight"><span class="nb">float</span><span class="p">()</span></code> 转换出来的 <code class="highlight"><span class="mf">3.0</span></code> 是浮点数，不能用作 <code class="highlight"><span class="nb">range</span><span class="p">()</span></code> 的参数. 表示次数、个数的数据应该用 <code class="highlight"><span class="nb">int</span><span class="p">()</span></code> 读入. <code class="highlight"><span class="nb">range</span></code> 的详细说明见官方文档的 <a href="https://docs.python.org/zh-cn/3/builtins/stdtypes.html#ranges">range 对象</a>.</p>
+<p>下面的程序计算 <span class="arithmatex">\(1 + 2 + \cdots + n\)</span>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>100</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>5050
+</code></pre></div>
+<p>要包括 <code>n</code> 本身，<code class="highlight"><span class="nb">range</span><span class="p">()</span></code> 的终点要写 <code class="highlight"><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span></code>. <code>total</code> 用来累加，和前面的计数器一样，要在循环之前设为 0. 如果把 <code class="highlight"><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span></code> 写进循环体里：</p>
+<div class="highlight"><pre><span></span><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>100</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>100
+</code></pre></div>
+<p>现在每一轮都先把 <code>total</code> 清零，再加上这一轮的 <code>i</code>，之前累加的结果全部丢掉了，最后剩下的只是最后一轮的 <code class="highlight"><span class="mi">0</span> <span class="o">+</span> <span class="mi">100</span></code>. <strong>只需要设置一次初始值的变量，要放在循环之前</strong>.</p>
+<h3 id="_14">遍历字符串的索引</h3>
+<p><code class="highlight"><span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">s</span></code> 只能拿到字符本身. 如果还需要知道字符的位置，比如要把一个字符和它后面的字符比较，就要遍历索引. <code class="highlight"><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))</span></code> 正好是字符串 <code>s</code> 的所有索引：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">"abc"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)))</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</code></pre></div>
+<p>下面的程序统计一个字符串中有几处“相邻的两个字符相同”：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>aabccc</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>3
+</code></pre></div>
+<p>相同的相邻字符出现在索引 0 和 1、3 和 4、4 和 5 三处. 循环的范围是 <code class="highlight"><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></code>，因为最后一个字符后面已经没有字符了. 如果写成 <code class="highlight"><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))</span></code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>aabccc</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
+  File "main.py", line 4, in &lt;module&gt;
+    if s[i] == s[i + 1]:
+               ~^^^^^^^
+IndexError: string index out of range
+</code></pre></div>
+<p>最后一轮 <code>i</code> 是 5，<code class="highlight"><span class="n">s</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span></code> 就是 <code class="highlight"><span class="n">s</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span></code>. 用<a href="../io-string/">输入、输出与字符串</a>中的尺子来想，刻度 6 已经在尺子的最右端，后面没有格子了，所以报 <code class="highlight"><span class="ne">IndexError</span></code>. 用索引写循环时，要检查第一轮和最后一轮的索引是否在范围之内.</p>
+<div class="admonition note">
+<p class="admonition-title"><code class="highlight"><span class="nb">enumerate</span><span class="p">()</span></code></p>
+<p>同时需要索引和字符时，还可以用内置函数 <a href="https://docs.python.org/zh-cn/3/builtins/functions.html#enumerate"><code class="highlight"><span class="nb">enumerate</span><span class="p">()</span></code></a>，写成 <code class="highlight"><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">):</span></code>，每一轮 <code>i</code> 是索引，<code>ch</code> 是对应的字符. 课上没有讲到它，用 <code class="highlight"><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))</span></code> 完全可以.</p>
+</div>
+<h3 id="while-for">选择 <code class="highlight"><span class="k">while</span></code> 还是 <code class="highlight"><span class="k">for</span></code></h3>
+<p>事先知道要处理哪些元素、或者要重复几次的，用 <code class="highlight"><span class="k">for</span></code>：遍历一个字符串，对 1 到 <code>n</code> 求和，读入 <code>n</code> 行数据. 什么时候停止要在循环过程中才能知道的，用 <code class="highlight"><span class="k">while</span></code>：纸要对折到多厚，读到某个结束标志为止. 同一个问题往往两种循环都能写，选更自然的那一种即可.</p>
+<h3 id="_15">嵌套循环</h3>
+<p>循环体里还可以再写循环，称为嵌套循环. 下面的程序找出两个骰子点数之和为 7 的所有情况：</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<p>运行后的输出是：</p>
+<div class="highlight"><pre><span></span><code>1 6
+2 5
+3 4
+4 3
+5 2
+6 1
+</code></pre></div>
+<p>外层循环每取一个 <code>a</code>，里层循环都要把 <code>b</code> 从 1 到 6 完整地走一遍，然后外层才取下一个 <code>a</code>. 外层 6 次，每次里层 6 次，<code class="highlight"><span class="k">if</span></code> 一共判断了 36 次.</p>
+<h3 id="break-continue"><code class="highlight"><span class="k">break</span></code> 与 <code class="highlight"><span class="k">continue</span></code></h3>
+<p><code class="highlight"><span class="k">break</span></code> 语句<strong>立即结束</strong>它所在的循环，循环体中剩下的语句不再执行，直接跳到循环后面的语句. 它常和 <code class="highlight"><span class="k">while</span> <span class="kc">True</span></code> 一起使用：条件永远为真，什么时候结束由循环体中的 <code class="highlight"><span class="k">break</span></code> 决定. 下面的程序不断读入整数，读到 0 为止，输出读到的数之和：</p>
+<div class="highlight"><pre><span></span><code><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</code></pre></div>
+<p>依次输入：</p>
+<div class="highlight"><pre><span></span><code>3
+5
+-2
+0
+</code></pre></div>
+<p>输出为：</p>
+<div class="highlight"><pre><span></span><code>6
+</code></pre></div>
+<p>这种写法的结构是：</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">读入或计算的语句</span>  <span class="c1"># 每一轮先做什么？</span>
+    <span class="k">if</span> <span class="n">结束条件</span><span class="p">:</span>      <span class="c1"># 什么时候应该停下？</span>
+        <span class="k">break</span>
+    <span class="n">处理的语句</span>        <span class="c1"># 还没有停下的话，还要做什么？</span>
+</code></pre></div>
+<p>对初学者来说，先想清楚这三个问题，再把答案填进去，往往比直接写出 <code class="highlight"><span class="k">while</span></code> 的条件更容易.</p>
+<p><code class="highlight"><span class="k">continue</span></code> 语句<strong>跳过本轮</strong>循环体中剩下的语句，直接进入下一轮：<code class="highlight"><span class="k">while</span></code> 循环回去判断条件，<code class="highlight"><span class="k">for</span></code> 循环取下一个元素. 下面的程序读入一行整数，只把其中的非负数加起来：</p>
+<div class="highlight"><pre><span></span><code><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>3 -1 4 -1 5</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>12
+</code></pre></div>
+<p><code class="highlight"><span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span></code> 拆出一个列表，<code class="highlight"><span class="k">for</span></code> 循环依次取出其中的每一段. 遇到负数时，<code class="highlight"><span class="k">continue</span></code> 跳过了后面的 <code class="highlight"><span class="n">total</span> <span class="o">+=</span> <span class="n">x</span></code>. 这个例子也可以不用 <code class="highlight"><span class="k">continue</span></code>，写成 <code class="highlight"><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">total</span> <span class="o">+=</span> <span class="n">x</span></code>. 不过后面要做的处理很多时，先用 <code class="highlight"><span class="k">continue</span></code> 把不需要处理的情况排除掉，后面的语句就不必都缩进在 <code class="highlight"><span class="k">if</span></code> 里面.</p>
+<p>在嵌套循环中，<code class="highlight"><span class="k">break</span></code> 和 <code class="highlight"><span class="k">continue</span></code> 只作用于它们所在的<strong>那一层</strong>循环：</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<p>运行后的输出是：</p>
+<div class="highlight"><pre><span></span><code>1 1
+2 1
+3 1
+</code></pre></div>
+<p><code class="highlight"><span class="k">break</span></code> 只结束了里层循环，外层循环照常取下一个 <code>a</code>.</p>
+<h3 id="else_1">循环的 <code class="highlight"><span class="k">else</span></code> 子句</h3>
+<p>再看一个问题：找出一个单词中的第一个元音字母；如果没有，就输出“没有元音字母”. 找到第一个就可以用 <code class="highlight"><span class="k">break</span></code> 停下. 难点在于循环结束以后，怎么区分是找到了才停下，还是找遍了也没有. 一种办法是用一个名字记下来：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ch</span> <span class="ow">in</span> <span class="s2">"aeiou"</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"第一个元音字母是"</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">break</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"没有元音字母"</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>python</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>第一个元音字母是 o
+</code></pre></div>
+<p>输入 <code>rhythm</code> 时，输出为：</p>
+<div class="highlight"><pre><span></span><code>没有元音字母
+</code></pre></div>
+<p>Python 为这种情况准备了循环的 <code class="highlight"><span class="k">else</span></code> 子句，不需要额外的名字：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ch</span> <span class="ow">in</span> <span class="s2">"aeiou"</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"第一个元音字母是"</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"没有元音字母"</span><span class="p">)</span>
+</code></pre></div>
+<p>两个程序的效果完全相同. 循环<strong>正常结束</strong>时，也就是 <code class="highlight"><span class="k">for</span></code> 循环取完了所有元素，或者 <code class="highlight"><span class="k">while</span></code> 循环的条件变为假，会执行一次 <code class="highlight"><span class="k">else</span></code> 下面的语句块；循环如果是被 <code class="highlight"><span class="k">break</span></code> 结束的，<code class="highlight"><span class="k">else</span></code> 就会被跳过. 不妨把这里的 <code class="highlight"><span class="k">else</span></code> 读作“没有被 <code class="highlight"><span class="k">break</span></code> 打断”.</p>
+<p>要特别注意 <code class="highlight"><span class="k">else</span></code> 的缩进：它和 <code class="highlight"><span class="k">for</span></code> 对齐，属于 <code class="highlight"><span class="k">for</span></code> 循环. 如果把它缩进到和 <code class="highlight"><span class="k">if</span></code> 对齐：</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ch</span> <span class="ow">in</span> <span class="s2">"aeiou"</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"第一个元音字母是"</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"没有元音字母"</span><span class="p">)</span>
+</code></pre></div>
+<p>输入 <code>python</code> 时，输出变成了：</p>
+<div class="highlight"><pre><span></span><code>没有元音字母
+没有元音字母
+没有元音字母
+没有元音字母
+第一个元音字母是 o
+</code></pre></div>
+<p>现在 <code class="highlight"><span class="k">else</span></code> 属于循环体中的 <code class="highlight"><span class="k">if</span></code>，每遇到一个不是元音的字母就执行一次. 循环的 <code class="highlight"><span class="k">else</span></code> 子句的详细说明见官方教程的<a href="https://docs.python.org/zh-cn/3/tutorial/controlflow.html#else-clauses-on-loops">循环的 <code>else</code> 子句</a>.</p>
+<h2 id="pta">5. 在 PTA 上用循环处理输入输出</h2>
+<p><a href="../io-string/#input-lines">输入、输出与字符串</a>中说过，一个 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 只读一行，程序中 <code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 的个数必须和输入的行数对应. 有了循环，<code class="highlight"><span class="nb">input</span><span class="p">()</span></code> 就可以写在循环体中，读多少行由数据本身决定.</p>
+<p><strong>先读个数，再循环读入.</strong> 很多题目的第一行给出数据的个数 <code>n</code>，后面跟着 <code>n</code> 行数据. 先读入 <code>n</code>，再用 <code class="highlight"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span></code> 循环 <code>n</code> 次，每次读一行：</p>
+<div class="highlight"><pre><span></span><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>依次输入：</p>
+<div class="highlight"><pre><span></span><code>3
+90
+85.5
+77
+</code></pre></div>
+<p>输出为：</p>
+<div class="highlight"><pre><span></span><code>84.17
+</code></pre></div>
+<p><strong>读到结束标志为止.</strong> 有的题目不给出个数，而是用一个特殊的值（比如 0 或 <code>end</code>）表示输入结束. 这时用前面 <code class="highlight"><span class="k">break</span></code> 一节中 <code class="highlight"><span class="k">while</span> <span class="kc">True</span></code> 加 <code class="highlight"><span class="k">break</span></code> 的写法.</p>
+<p><strong>一行中有多个值.</strong> 个数确定时，像<a href="../io-string/">输入、输出与字符串</a>中那样，用 <code class="highlight"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span></code> 解包；个数不确定时，用 <code class="highlight"><span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">():</span></code> 逐个处理，见前面 <code class="highlight"><span class="k">continue</span></code> 一节的例子.</p>
+<p><strong>不要写提示语.</strong> 循环中的 <code class="highlight"><span class="nb">input</span><span class="p">(</span><span class="s2">"请输入："</span><span class="p">)</span></code> 每执行一次，提示语就输出一次，输出就和标准答案不一致了.</p>
+<p><strong>在同一行输出多个值.</strong> 循环中用 <code class="highlight"><span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">" "</span><span class="p">)</span></code> 输出，每个值后面都会跟一个空格，最后一个值也不例外，而行末的空格在屏幕上看不出来. <a href="../io-string/">输入、输出与字符串</a>中说过，Shell 显示字符串就像打开了 Word 的“显示编辑标记”，引号标出了字符串的结尾. 把这些值拼接成一个字符串，就能在 Shell 中看到末尾的空格：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">line</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+<span class="o">...</span>     <span class="n">line</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" "</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">line</span>
+<span class="s1">'1 2 3 4 5 '</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
+<span class="s1">'1 2 3 4 5'</span>
+</code></pre></div>
+<p>很多题目要求“行末不得有多余空格”，多出的这个空格会让这一行和标准答案不一致. 在 PTA 的测试界面中，空格显示为 <code>·</code>，可以借此检查（见 <a href="../#pta-test">PTA 测试方法</a>）. 解决的办法有两种：像上面那样先拼接成字符串，再用 <code class="highlight"><span class="n">rstrip</span><span class="p">()</span></code> 去掉末尾的空格后输出；或者在<strong>除第一个值以外</strong>的每个值<strong>前面</strong>输出空格：</p>
+<div class="highlight"><pre><span></span><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+</code></pre></div>
+<p>输入 <code>5</code> 时，输出为 <code>1 2 3 4 5</code>，行末没有空格. 最后的 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 输出换行，结束这一行.</p>
+<div class="admonition note">
+<p class="admonition-title">用 <code>*</code> 一次输出</p>
+<p>把 <code>*</code> 写在 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code> 的参数前面，会把其中的元素逐个取出，作为多个参数传给 <code class="highlight"><span class="nb">print</span><span class="p">()</span></code>，元素之间用 <code>sep</code> 隔开，行末不会有多余的空格：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">","</span><span class="p">)</span>
+<span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span>
+</code></pre></div>
+<p>这种写法实际上利用了解包，可以思考一下.</p>
+</div>
+<p><strong>避免死循环.</strong> 程序陷入死循环时，PTA 会给出“运行超时”. 检查 <code class="highlight"><span class="k">while</span></code> 循环体中是否有改变条件的语句，以及 <code class="highlight"><span class="k">while</span> <span class="kc">True</span></code> 循环是否一定能遇到 <code class="highlight"><span class="k">break</span></code>.</p>
+<p>下面用一道例题把这一页的内容串起来.</p>
+<div class="admonition quote">
+<p class="admonition-title">例题</p>
+<p>第一行输入天数 <code>n</code>（<code>n</code> 至少为 1），接下来 <code>n</code> 行，每行是一天的最低气温（可以是小数，也可以是负数）. 输出这些气温中的最高值（保留 1 位小数），以及气温低于 0 度的天数，格式见样例.</p>
+<p>输入样例：</p>
+<div class="highlight"><pre><span></span><code>5
+-3.5
+2
+-1
+0.5
+-7
+</code></pre></div>
+<p>输出样例：</p>
+<div class="highlight"><pre><span></span><code>最高气温 2.0 度，有 3 天低于 0 度
+</code></pre></div>
+</div>
+<p>数据的个数在第一行给出，所以先读入 <code>n</code>，再用 <code class="highlight"><span class="k">for</span></code> 循环读 <code>n</code> 行. 低于 0 度的天数用计数器 <code>count</code> 统计. 最高值则用一个名字 <code>highest</code> 记录“到目前为止见过的最高气温”，每读到一个比它高的气温就更新它. 问题在于 <code>highest</code> 的初始值. 照着计数器的习惯，把它设为 0：</p>
+<div class="highlight"><pre><span></span><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">highest</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="n">highest</span><span class="p">:</span>
+        <span class="n">highest</span> <span class="o">=</span> <span class="n">t</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"最高气温 </span><span class="si">{</span><span class="n">highest</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 度，有 </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> 天低于 0 度"</span><span class="p">)</span>
+</code></pre></div>
+<p>样例能够通过，但气温全是负数时就错了. 依次输入：</p>
+<div class="highlight"><pre><span></span><code>3
+-5
+-2
+-8
+</code></pre></div>
+<p>输出为：</p>
+<div class="highlight"><pre><span></span><code>最高气温 0.0 度，有 3 天低于 0 度
+</code></pre></div>
+<p>三个气温都比 0 低，<code>highest</code> 一次也没有被更新，输出的 0.0 并不是读到的数据. 正确的做法是用<strong>第一个</strong>读到的气温作为初始值，再和后面的气温比较：</p>
+<div class="highlight"><pre><span></span><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="n">highest</span><span class="p">:</span>
+        <span class="n">highest</span> <span class="o">=</span> <span class="n">t</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"最高气温 </span><span class="si">{</span><span class="n">highest</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> 度，有 </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> 天低于 0 度"</span><span class="p">)</span>
+</code></pre></div>
+<p>用同样的输入运行，输出为：</p>
+<div class="highlight"><pre><span></span><code>最高气温 -2.0 度，有 3 天低于 0 度
+</code></pre></div>
+<p>第一轮 <code>i</code> 为 0，<code class="highlight"><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span></code> 为真，<code class="highlight"><span class="ow">or</span></code> 的结果已经确定，后面的 <code class="highlight"><span class="n">t</span> <span class="o">&gt;</span> <span class="n">highest</span></code> 不会被计算，这时 <code>highest</code> 还没有绑定任何对象也不要紧. 这里用到的正是前面讲的<a href="#short-circuit">短路</a>，两个条件的顺序不能颠倒：写成 <code class="highlight"><span class="n">t</span> <span class="o">&gt;</span> <span class="n">highest</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span></code>，第一轮就要先计算 <code class="highlight"><span class="n">t</span> <span class="o">&gt;</span> <span class="n">highest</span></code>，程序会报 <code class="highlight"><span class="ne">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s1">'highest'</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span></code>.</p>
+<p>读者也许会问：前面不是说，只需要设置一次初始值的变量要放在循环之前吗？区别在于，<code>count</code> 的初始值 0 在读入数据之前就知道；<code>highest</code> 的初始值是第一个气温，要读入之后才知道. <code class="highlight"><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span></code> 只在第一轮成立，保证了 <code>highest</code> 的初始值恰好设置一次，之后每一轮只做比较和更新.</p>
+<p>另外，循环体中的两个 <code class="highlight"><span class="k">if</span></code> 不能合并成 <code class="highlight"><span class="k">if</span></code>-<code class="highlight"><span class="k">elif</span></code>. 同一天的气温可能既是目前的最高值、又低于 0 度，比如第一天的 <code>-5</code>，两件事都要做. 如果第二个 <code class="highlight"><span class="k">if</span></code> 写成 <code class="highlight"><span class="k">elif</span></code>，用上面的输入运行，结果只数出 1 天.</p>
+<div class="admonition note">
+<p class="admonition-title">用负无穷作初始值</p>
+<p><code>highest</code> 的初始值也可以在循环之前设为负无穷 <code class="highlight"><span class="nb">float</span><span class="p">(</span><span class="s2">"-inf"</span><span class="p">)</span></code>，它比任何有限的数都小. 这样第一轮的 <code class="highlight"><span class="n">t</span> <span class="o">&gt;</span> <span class="n">highest</span></code> 一定成立，条件里就不再需要 <code class="highlight"><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span></code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../assets/js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
