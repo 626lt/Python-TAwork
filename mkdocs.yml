@@ -26,13 +26,13 @@ nav:
   - 基础知识:
     - basics/index.md
     - 输入、输出与字符串: basics/io-string.md
+    - 流程控制: basics/control-flow.md
   - 强化班:
     - 第五部分：上机练习参考代码: weekend_class/week3_reference.md
   - 常见问题:
     - faq/index.md
     # - 程序安装及使用的问题: faq/installation.md
     - 类型与值: faq/typing.md
-    - 程序的控制流: faq/control_flow.md
     # - 复合类型: faq/complex_types.md
     - map 函数与列表推导式: faq/map.md
     - 标准库: faq/stdlib.md

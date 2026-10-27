@@ -3,6 +3,7 @@
 ## 目录
 
 - [输入、输出与字符串](./io-string.md)
+- [流程控制](./control-flow.md)
 
 ## PTA 测试方法 { #pta-test }
 
