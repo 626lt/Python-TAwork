@@ -4,6 +4,7 @@
 
 - [输入、输出与字符串](./io-string.md)
 - [流程控制](./control-flow.md)
+- [列表与元组](./list-tuple.md)
 
 ## PTA 测试方法 { #pta-test }
 

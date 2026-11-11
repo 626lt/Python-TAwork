@@ -39,7 +39,7 @@ True
 
 表达式也可以单独写成一行，成为一条语句，称为表达式语句. 最常见的是单独一行的函数调用，比如 `#!python print("Hi")`：我们需要的是它在屏幕上输出文字，并不使用它求出的值. 在脚本中，表达式语句的值算出来以后就被丢弃，不会显示出来.
 
-到目前为止，我们写的赋值语句和表达式语句都是简单语句. 本页要讲的 `#!python if`、`#!python while`、`#!python for` 则是复合语句（compound statement）：它们的内部还包含别的语句，用来控制这些语句是否执行、执行几次.
+到目前为止，我们写的赋值语句和表达式语句都是简单语句. 本章要讲的 `#!python if`、`#!python while`、`#!python for` 则是复合语句（compound statement）：它们的内部还包含别的语句，用来控制这些语句是否执行、执行几次.
 
 Python 中通常**一行写一条语句**. 一条语句太长时，可以拆成几行：在圆括号里可以直接换行；不在括号里时，要在行末加一个反斜杠 `\`，表示这条语句还没有结束. 井号 `#` 后面直到行末的内容是注释，Python 运行时会忽略它.
 
@@ -104,7 +104,7 @@ SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?
     [0, 1]
     ```
 
-    从左往右，先把 `i` 绑定到 `#!python 1`，再执行 `#!python x[i] = 1`. 这时 `i` 已经是 1，所以改的是 `#!python x[1]`，结果是 `#!python [0, 1]`. 如果是从右往左，就会先改 `#!python x[0]`，结果应该是 `#!python [1, 0]`. 列表和 `#!python x[i] = ...` 这样的写法后面的章节才会讲；这样的代码也很难读懂，实际编程中不要这样写.
+    从左往右，先把 `i` 绑定到 `#!python 1`，再执行 `#!python x[i] = 1`. 这时 `i` 已经是 1，所以改的是 `#!python x[1]`，结果是 `#!python [0, 1]`. 如果是从右往左，就会先改 `#!python x[0]`，结果应该是 `#!python [1, 0]`. 列表和 `#!python x[i] = ...` 这样的写法要到[列表与元组](list-tuple.md)才会讲；这样的代码也很难读懂，实际编程中不要这样写.
 
 多重赋值则用逗号把几个名字和几个值按位置对应起来，一次完成几个绑定：
 
@@ -141,7 +141,7 @@ SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?
 1
 ```
 
-`#!python b, a` 也是一个表达式：用逗号连起来的几个值，求值得到一个元组（tuple），Shell 显示它时带着圆括号，前面的 `#!python (2, 2)` 也是这样来的. 元组后面的章节会讲. 多重赋值 `#!python a, b = b, a` 分两步：先对右边求值，得到 `#!python (2, 1)`；再把其中的元素依次分给 `a` 和 `b`. 右边在绑定之前就已经全部算好，所以 `a` 和 `b` 正好交换.
+`#!python b, a` 也是一个表达式：用逗号连起来的几个值，求值得到一个元组（tuple），Shell 显示它时带着圆括号，前面的 `#!python (2, 2)` 也是这样来的. 元组在[列表与元组](list-tuple.md)中讲. 多重赋值 `#!python a, b = b, a` 分两步：先对右边求值，得到 `#!python (2, 1)`；再把其中的元素依次分给 `a` 和 `b`. 右边在绑定之前就已经全部算好，所以 `a` 和 `b` 正好交换.
 
 ### 解包
 
@@ -161,7 +161,7 @@ Traceback (most recent call last):
 ValueError: not enough values to unpack (expected 3, got 2)
 ```
 
-左边名字的个数必须和元素的个数相同. 这里左边有 3 个名字，`#!python "34"` 只有 2 个字符，所以报错说值不够（not enough values）：需要 3 个（expected 3），实际只有 2 个（got 2）. 输入、输出与字符串一页中遇到的 `too many values to unpack` 则是值多了.
+左边名字的个数必须和元素的个数相同. 这里左边有 3 个名字，`#!python "34"` 只有 2 个字符，所以报错说值不够（not enough values）：需要 3 个（expected 3），实际只有 2 个（got 2）. 输入、输出与字符串一章中遇到的 `too many values to unpack` 则是值多了.
 
 如果元素的个数不确定，可以在某一个名字前面加星号 `*`，让它收集剩下的元素：
 
@@ -344,7 +344,7 @@ True
 True
 ```
 
-后面学到列表等类型时，`#!python in` 同样可以判断一个元素是否在其中.
+`#!python in` 同样可以判断一个元素是否在列表、元组中，见[列表与元组](list-tuple.md)“成员判断”一节.
 
 `#!python is` 和 `#!python is not` 是身份运算符，判断两个名字是否绑定到**同一个**对象上. 它和 `==` 不同，`==` 比较的是两个对象的**值**是否相等：
 
@@ -503,7 +503,7 @@ False
 
 `#!python x != 0` 为假，`#!python and` 的结果已经确定是 `#!python False`，后面的 `#!python 10 / x` 没有被计算，也就不会除以零. 写这样的条件时，起保护作用的那一半要放在前面.
 
-这里补充 `#!python and`、`#!python or` 的结果规则，主要是为了判断选择题中 `#!python 3 and 0` 这类表达式的值. 自己写代码时，`#!python and`、`#!python or` 的两边都应当是条件，不要把它们的结果当作数或字符串来用，否则代码很难读懂. 像上面这样用短路避免出错，则是清楚、常见的写法，本页最后的例题也会用到.
+这里补充 `#!python and`、`#!python or` 的结果规则，主要是为了判断选择题中 `#!python 3 and 0` 这类表达式的值. 自己写代码时，`#!python and`、`#!python or` 的两边都应当是条件，不要把它们的结果当作数或字符串来用，否则代码很难读懂. 像上面这样用短路避免出错，则是清楚、常见的写法，本章最后的例题也会用到.
 
 ## 3. 分支语句
 
@@ -1122,7 +1122,7 @@ IndexError: string index out of range
 
 !!! note "`#!python enumerate()`"
 
-    同时需要索引和字符时，还可以用内置函数 [`#!python enumerate()`](https://docs.python.org/zh-cn/3/builtins/functions.html#enumerate)，写成 `#!python for i, ch in enumerate(s):`，每一轮 `i` 是索引，`ch` 是对应的字符. 课上没有讲到它，用 `#!python range(len(s))` 完全可以.
+    同时需要索引和字符时，还可以用内置函数 [`#!python enumerate()`](https://docs.python.org/zh-cn/3/builtins/functions.html#enumerate)，写成 `#!python for i, ch in enumerate(s):`，每一轮 `i` 是索引，`ch` 是对应的字符. 课上讲到列表时才介绍它，详见[列表与元组](list-tuple.md)“遍历”一节；现在用 `#!python range(len(s))` 完全可以.
 
 ### 选择 `#!python while` 还是 `#!python for`
 
@@ -1376,7 +1376,7 @@ print()
 
 **避免死循环.** 程序陷入死循环时，PTA 会给出“运行超时”. 检查 `#!python while` 循环体中是否有改变条件的语句，以及 `#!python while True` 循环是否一定能遇到 `#!python break`.
 
-下面用一道例题把这一页的内容串起来.
+下面用一道例题把这一章的内容串起来.
 
 !!! quote "例题"
 

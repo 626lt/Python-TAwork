@@ -27,6 +27,7 @@ nav:
     - basics/index.md
     - 输入、输出与字符串: basics/io-string.md
     - 流程控制: basics/control-flow.md
+    - 列表与元组: basics/list-tuple.md
   - 强化班:
     - 第五部分：上机练习参考代码: weekend_class/week3_reference.md
   - 常见问题:
